@@ -4,9 +4,9 @@
             <div class="col-md-12 px-2 mt-3">
                 <h5 class="border-bottom border-top mb-0 p-2 transform1 text-muted">Overall stats</h5>
             <ul>
-                <li><a href="#">100000</a></li>
-                <li><a href="#">css</a></li>
-                <li><a href="#">java</a></li>
+                <li><a href="#">15000</a></li>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSSgit</a></li>
             </ul>
             </div>
             
