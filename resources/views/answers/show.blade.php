@@ -29,7 +29,7 @@
     <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">
     <p class="p-0 mb-0">
-        How to build OpenCV for Python 2 when both Python 2 and Python 3 are Installed on windows</p>
+        THIS IS SOME COMMENT</p>
         </div>
         <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0 ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">
@@ -39,7 +39,7 @@
         <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0 ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">
     <p class="p-0 mb-0">
-        You are right.</p>
+        You are rights.</p>
         </div>
     <!--/.COMMENTS-->
 
