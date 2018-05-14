@@ -55,7 +55,7 @@
   </div>
 </nav>
 <!-- /HEADER -->
-<div class="container p-0 border transform1">
+<div class="container p-0 transform1">
 
 <nav class="navbar navbar-expand-lg navbar-white border-top myNav z">
 
