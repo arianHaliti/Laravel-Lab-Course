@@ -36,11 +36,11 @@
                 <div class="stats bg-light p-1 w-10 rounded-circle">
                     <img  src='/storage/image/photo.jpg' class="rounded m-auto">
                 </div>
-                <div class="q-content ml-2 p-2 border border-bottom-0 rounded-top ml-auto">
-                <h6 class=""><a href="#">
+                <div class="q-content ml-2 p-2 mb-4 ml-auto">
+                <h6 class="p-0 mb-0 color-muted"><a href="#" >
                     {{$question->question_title}}</a></h6>
                     </div>
-                <div class="q-content ml-2 p-2 border rounded-bottom  ml-auto">
+                <div class="q-content q-content-desc ml-2 p-2 border  ml-auto">
                  
                     {!!$question->question_desc!!}
                 </div>

@@ -168,6 +168,15 @@ background:rgb(245,245,245);
 	width:71.4%;
 	background:rgb(248,248,248);
 	border:1px solid rgb(240,240,240);
+	border-left:2px solid rgb(150,150,150);
+	
+}
+.q-content h6 a{
+	color:rgb(120,120,120);
+	text-decoration:underline;
+}
+.q-content-desc{
+	margin-top:-15px;
 }
 .u-content{
 	width:78.3%;
@@ -231,14 +240,25 @@ background:rgb(245,245,245);
 	margin-left:20px;
 	
 }
+
+
 .disabled{
 	border:1px solid rgb(230,230,230) !important;
 	
 }
 .myPagination ul li a{
-	border:0px ;
-	background:rgb(240,240,240);
+	color:rgb(100,100,100) ;
+	background:rgb(240, 240, 240);
+	
 }
+.myPagination ul li a:hover{
+	background:rgb(235, 235, 235) !important;
+	border:1px solid rgba(0, 123, 254,0.3);
+}
+
+.tags ul a{
+	
+	}
 .stat-ul li:first-child{
 	border-top-left-radius:5px;
 }

@@ -6,7 +6,7 @@
 <!--answer BOX-->
 @foreach($answers as $ans)
         
-<div class="row p-2 myShadow border-bottom">
+<div class="row p-2  border-bottom">
 
     <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
         <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
@@ -22,7 +22,7 @@
         <img src="/storage/image/photo.jpg" class="rounded m-auto">
     </div>
 
-    <div class="q-content ml-2 p-2 border rounded">
+    <div class="q-content ml-2 p-2 border">
         {!!$ans->answer_desc!!}
     </div>
     <!--COMMENTS-->
