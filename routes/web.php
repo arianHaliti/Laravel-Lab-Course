@@ -36,5 +36,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::resource('answers','AnswerController');
 
 Route::post('/answers/create','AnswerController@store');
-Route::post('/answers/update','AnswerController@update');
+Route::put('/answers/{id}','AnswerController@update');
 Route::get('/answers/{id}/edit','AnswerController@edit');
