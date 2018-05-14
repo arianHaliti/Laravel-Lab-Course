@@ -11,7 +11,7 @@ body{
 #search:-ms-input-placeholder { /* IE 10+ */
  	color:rgb(240,240,240);
 }
-#search:-moz-placeholder { /* Firefox 18- */
+#search:-moz-placeholder { /* Firefox 18-12312123112 */
   	color:rgb(240,240,240);
 }
 .navbar-nav a{
