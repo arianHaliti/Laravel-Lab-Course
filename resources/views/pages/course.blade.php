@@ -48,7 +48,7 @@
 
                         <?php  use App\Course;
 
-                        $courses = Course::orderBy('created_at')->paginate(1);
+                        $courses = Course::orderBy('created_at')->paginate(5);
                         ?>
                         @if(count($courses))
                             @foreach($courses as $c)
