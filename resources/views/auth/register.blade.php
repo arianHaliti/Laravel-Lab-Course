@@ -11,7 +11,7 @@ Teach a man to program, frustrate him for a lifetime.” </p>
 
         <div class="col-md-5">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header bg-light">{{ __('Register') }}</div>
 
                 <div class="card-body px-5">
                     <form method="POST" action="{{ route('register') }}">
@@ -72,6 +72,7 @@ Teach a man to program, frustrate him for a lifetime.” </p>
                                 <button type="submit" class="btn btn-primary w-100">
                                     {{ __('Register') }}
                                 </button>
+                                <p class="w-100 f-14 text-center mt-4">By signing up, you agree to our <a href="#">Terms</a> & <a href="#">Privacy Policy.</a></p>
                             </div>
                         </div>
                     </form>
@@ -79,9 +80,9 @@ Teach a man to program, frustrate him for a lifetime.” </p>
             </div>
 
             <div class="row p-3 mt-0">
-                    <div class="col-md-12 border p-2 px-5 text-centered">
-                        <span class="float-left py-2">Have an account?</span>
-                            <a class=" btn btn-link border-0 py-2 px-2" href="{{ route('password.request') }}">
+                    <div class="col-md-12 border p-3 px-5 text-center">
+                        <span class="py-0">Have an account?</span>
+                            <a class="btn btn-link border-0 py-0 px-0" href="#">
                                     {{ __('Log In') }}
                                 </a>
                             </div>
