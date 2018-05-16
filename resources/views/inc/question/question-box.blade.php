@@ -1,10 +1,11 @@
 <!--question BOX-->
 <?php 
 use App\Answer;
+use App\Tag;
 $answers = Answer::where('answer_active',0)
             ->where('question_id',$q->question_id);
 $sum = $answers->count();
-    
+
 ?>
 <div class="row p-2 border-bottom myShadow">
 			
@@ -32,12 +33,17 @@ $sum = $answers->count();
 <ul class="pagination tags pagination-sm mb-0">
 
 
-
-    <li class="page-item"><a class="page-link" href="#">html</a></li>
-    <li class="page-item"><a class="page-link" href="#">css</a></li>
-    <li class="page-item"><a class="page-link" href="#">java</a></li>
-    <li class="page-item"><a class="page-link" href="#">java</a></li>
-
+    <?php 
+        $q_id= $q['question_id'];
+        
+        $tags = Tag::whereHas('questions', function($c) use($q_id) {
+        $c->where('question.question_id', $q_id);   
+            })->get();
+        
+     ?>
+    @foreach($tags as $t)
+    <li class="page-item"><a class="page-link" href="#">{{$t->tag_name}}</a></li>
+    @endforeach
 </ul>
 </nav>
     </div>

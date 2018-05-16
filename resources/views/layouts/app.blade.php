@@ -13,10 +13,11 @@
     <!-- Scripts -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
     
     <script  src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-    
+    <script src="{{ asset('js/jquery.min.js') }}" ></script>
+    <script src ="{{asset('js/jquery.validate.min.js')}}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">

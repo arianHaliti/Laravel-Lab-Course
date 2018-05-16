@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Tag;
+use App\TagQuestion;
 class QuestionController extends Controller
 {
     public function __construct()
@@ -48,7 +50,8 @@ class QuestionController extends Controller
     {
         $this->validate($request, [
             'title' =>'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tags' => 'required'
         ]);
 
         //KRIJIMI I PYTJES
@@ -64,6 +67,29 @@ class QuestionController extends Controller
         //MERR ID E PYTJES TE KRIJUAR
         $last_id = $quest->question_id;
         
+        $tags = $request->input('tags');
+        $tags = explode(",",$tags);
+
+        $new_tag =1;
+		foreach($tags as $t){
+            $search_t = Tag::where('tag_name','=',$t);
+        
+            if($search_t->first()==null){
+                
+                $new_tag = new Tag;
+                $new_tag->tag_name = $t;
+
+                $new_tag->save();
+                $last_tag_id =$new_tag->tag_id;
+            }else{
+                $last_tag_id = $search_t->first()->tag_id;
+            }
+            $conn = new TagQuestion;
+            $conn->question_id = $last_id;
+            $conn->tag_id = $last_tag_id; 
+            $conn->save();
+            
+        } 
         return redirect('/questions/'.$last_id)->with('success','Pytja u krijua');
     }
 
