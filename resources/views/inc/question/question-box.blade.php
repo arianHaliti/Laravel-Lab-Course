@@ -23,7 +23,7 @@ $sum = $answers->count();
         <p class="w-100 text-center m-auto">{{$q->question_views}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
-        <a href="/profile"><img src="storage/image/photo.jpg" class="rounded m-auto"></a>
+        <a href="/profile"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
     </div>
     <div class="q-content ml-2 p-2 border2 rounded">
      <h6 class="mb-2"><a href="/questions/{{$q->question_id}}">
@@ -42,7 +42,7 @@ $sum = $answers->count();
         
      ?>
     @foreach($tags as $t)
-    <li class="page-item"><a class="page-link" href="#">{{$t->tag_name}}</a></li>
+    <li class="page-item"><a class="page-link" href="questions/tag/{{urlencode ($t->tag_name)}}">{{$t->tag_name}}</a></li>
     @endforeach
 </ul>
 </nav>

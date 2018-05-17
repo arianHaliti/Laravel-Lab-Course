@@ -59,10 +59,14 @@
 
 
                 <?php
-
+                  
                   use App\Question;
-                  $quest = Question::where('question_active',0)->orderBy('created_at')->paginate(10);
-                
+                  if(isset($questions)){
+                    $quest= $questions;
+                  }
+                  else{
+                    $quest = Question::where('question_active',0)->orderBy('created_at')->paginate(10);
+                  }
                   
                 ?>
                 @if(count($quest))
