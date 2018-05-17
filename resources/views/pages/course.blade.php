@@ -43,7 +43,7 @@
                     
                     </div>
                     
-                    <div class="row p-2 border-bottom courses">
+                    <div class="row p-0 border-bottom courses">
                 
 
                         <?php  use App\Course;

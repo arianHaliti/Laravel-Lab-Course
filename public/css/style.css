@@ -391,6 +391,9 @@ background:rgb(245,245,245);
  .login-form input{
 	 padding:5px 15px !important;
  }
+ .c-desc{
+	 height:90px;
+ }
  .courses img{
 	 width:100px;
 	 height:150px;

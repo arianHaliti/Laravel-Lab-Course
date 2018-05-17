@@ -6,7 +6,7 @@
     <div class="col-md-12 border-left mt-2 float-left border-top-0 px-2 mb-0">
         <a href="#" class="px-0 py-0 float-left">{{$c->course_title}}</a>
 
-        <p class="f-12 float-left mt-1 mb-2"><?php echo substr($c['course_description'],0,200) ?></p>
+        <p class="f-14 float-left mt-1 mb-2 c-desc"><?php echo substr($c['course_description'],0,250) ?></p>
 
 
     <div class="col-md-12 border-top border-bottom p-0 float-left mb-2">
