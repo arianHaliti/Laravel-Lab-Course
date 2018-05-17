@@ -1,6 +1,8 @@
 <div class="col-md-3 mt-2">
         <div class="row px-2 mt-4">
-        
+        <div class="col-md-12 px-2 py-2 mt-2 transform1">
+        <button type="button" class="btn mt-1 btn-outline-primary w-100 bg-light cr-button text-dark">Create a question</button>
+        </div>
             <div class="col-md-12 px-2 mt-3">
                 <h5 class="border-bottom border-top mb-0 p-2 transform1 text-muted">Overall stats</h5>
             <ul>

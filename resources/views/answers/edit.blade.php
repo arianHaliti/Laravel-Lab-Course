@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit a Answer</h1>
+    <h1>Edit an Answer</h1>
     {!! Form::open(['action' => ['AnswerController@update' , $ans->answer_id] ,'method'=> 'POST']) !!}
         
         <div class="form-group">

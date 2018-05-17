@@ -11,7 +11,7 @@
     
 <div class="row mt-4 ">
 		
-    <div class="col-md-9">
+    <div class="col-md-9 p-0">
         <div class="col-md-12 border-bottom-0 ">
         
         <!--question BOX-->
