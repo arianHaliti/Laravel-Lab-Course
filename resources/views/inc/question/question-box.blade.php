@@ -42,7 +42,7 @@ $sum = $answers->count();
         
      ?>
     @foreach($tags as $t)
-    <li class="page-item"><a class="page-link" href="questions/tag/{{urlencode ($t->tag_name)}}">{{$t->tag_name}}</a></li>
+    <li class="page-item"><a class="page-link" href ="{{asset('questions/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
     @endforeach
 </ul>
 </nav>
