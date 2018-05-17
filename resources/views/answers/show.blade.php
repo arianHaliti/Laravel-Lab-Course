@@ -1,6 +1,7 @@
-<div class="row p-2 border-bottom mt-5">
+
+<div class="row p-2 border-bottom border-top mt-5 transform1">
     <div class="col-md-12">
-        <h5>{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
+        <h5 class="mb-0 text-muted">{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
     </div>
 </div>
 <!--answer BOX-->
