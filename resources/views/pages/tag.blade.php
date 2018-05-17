@@ -43,98 +43,33 @@
                         </div>
                     
                     </div>
-                    
+                    <?php use App\Tag;
+                        $myTime = Carbon\Carbon::now();
+                        
+                        $tags = Tag::join('tag_questions','tag_questions.tag_id','=','tags.tag_id')
+                        ->join('question','question.question_id','=','tag_questions.question_id')
+                        ->orderBy('tag_count','desc')
+                        ->groupBy('tag_id','tag_name')
+                        ->get(['tags.tag_id','tags.tag_name',
+                        DB::raw('count(tag_questions.question_id) as tag_count'),
+                        DB::raw('SUM(if(question.created_at > '.'\''.$myTime->subDays(1).'\''.', 1, 0)) AS daily'),
+                        DB::raw('SUM(if(question.created_at > '.'\''.$myTime->subDays(30).'\''.', 1, 0)) AS monthly')
+                        ]);
+                    ?>
+
                     <div class="row p-2 border-bottom tags">
-                <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">html</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">javascript</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">css</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">0 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">java</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">php</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">mysql</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">c++</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">jquery</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">html</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">javascript</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">css</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">0 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">java</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                                <a href="#" class="px-2 py-1 rounded border float-left">php</a><p class="float-left f-12 mt-1 px-2">x 120000</p>
-                                <p class="f-12 float-left border-left mt-1 pl-2">1000 today,20k this month.</p>
-                            </div>
-                            </div>
+                        @foreach($tags as $t)
+                        <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
+                            <a href="#" class="px-2 py-1 rounded border float-left">{{$t->tag_name}}</a><p class="float-left f-12 mt-1 px-2">x {{$t->tag_count}}</p>
+                            <p class="f-12 float-left border-left mt-1 pl-2">{{$t->daily}} today,{{$t->monthly}} this month.</p>
+                        </div>
+                        @endforeach
+                            
+                    </div>
                 
                 
                 
-                <nav aria-label="..." class="mb-3 mt-3 myPagination">
-      <ul class="pagination pagination-sm mb-2">
-      <li class="page-item ml-0">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item disabled">
-          <a class="page-link border-left" href="#" tabindex="-1">1</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-         <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-         <li class="page-item"><a class="page-link" href="#">6</a></li>
-        <li class="page-item"><a class="page-link" href="#">7</a></li>
-         <li class="page-item"><a class="page-link" href="#">8</a></li>
-        <li class="page-item"><a class="page-link" href="#">9</a></li>
-         <li class="page-item"><a class="page-link" href="#">10</a></li>
-        <li class="page-item"><a class="page-link" href="#">11</a></li>
-        <li class="page-item"><a class="page-link" href="#">12</a></li>
-        <li class="page-item"><a class="page-link" href="#">13</a></li>
-        <li class="page-item"><a class="page-link" href="#">14</a></li>
-        <li class="page-item"><a class="page-link" href="#">15</a></li>
-        <li class="page-item"><a class="page-link" href="#">2301</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+                
                 </div>
                 
                 
