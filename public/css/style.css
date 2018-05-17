@@ -300,6 +300,19 @@ background:rgb(245,245,245);
 	margin-top:80px;
 	margin-left:170px;
 }
+.cr-button:hover{
+	color:rgb(100,100,100) !important;
+	
+	border:1px solid rgb(160,160,160) !important;
+}
+.cr-button{
+	border:1px solid rgba(0, 123, 254,0.3) !important;
+	color: rgba(0, 123, 254,0.7) !important;
+}
+.q-title-input{
+	padding-left:20px ;
+	padding-right:20px;
+}
 .tags a{
 	background:rgb(240,240,240);
 	font-size:14px;

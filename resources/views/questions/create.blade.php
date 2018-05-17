@@ -28,15 +28,44 @@
             color: red;
         }
 </style>
+        <div class="container p-0">
+        <div class="row mt-0">
+            
+            <div class="col-md-9 p-0">
+            
+                <div class="col-md-12  mt-5">
+                
+                    <div class="row p-2 transform1 border-top border-bottom mb-0">
+                        <div class="col-md-6 p-0">
+                            <h5 class="mb-0 mt text-muted">Ask A Question</h5>
+                        </div>
+                        <div class="col-md-6">
+                            
+         
+            
+    
+            
+         
+             
+           
+            
         
-    <h1>Ask a Question</h1>
+        
+                        </div>
+                    
+                     </div>
+    <div class="row">
+        <div class="col-md-3 border">
+            <p>Help me please</p>
+        </div>
+        <div class="col-md-9 px-2">
     {!! Form::open(['id'=>'form','action' => 'QuestionController@store' , 'method'=> 'POST']) !!}
         <div class ="form-group">
-            {{Form::label('title','Title')}}
-            {{Form::text('title','',['class' => 'form-control','placeholder' => 'Title'])}}
+            
+            {{Form::text('title','',['class' => 'form-control q-title-input','placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
-            {{Form::label('body','Body')}}
+           
             {{Form::textarea('body','',['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
         </div>
         <div>   
@@ -46,7 +75,8 @@
         {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}   
 
-
+</div>
+    </div>
 <script>
 
 jQuery.validator.addMethod("tagC", function(value, element) {
