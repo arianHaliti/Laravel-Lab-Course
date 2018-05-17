@@ -54,9 +54,18 @@
                         </div>
                     
                      </div>
-    <div class="row">
-        <div class="col-md-3 border">
-            <p>Help me please</p>
+    <div class="row mt-4">
+        <div class="col-md-3 pr-2 pl-0">
+            <div class="col-md-12 border bg-light pb-2">
+                <h6 class="border-bottom py-2">How to ask</h6>
+                <p class="f-16 ">A ka te beje pyetja juaj me programim?</p>
+                <p class="f-14">We prefer questions that can be answered, not just discussed.</p>
+                <p class="f-14">Quisque ac bibendum velit, a dapibus arcu. Etiam maximus, leo quis feugiat pulvinar, 
+                    arcu orci efficitur arcu, in commodo urna mauris eu lorem.
+                     Vivamus lectus ex, ultrices quis tortor ac, luctus maximus ante.</p>
+                
+                    <a href="#" class="f-14">For more visit the help center ></a>
+             </div>
         </div>
         <div class="col-md-9 px-2">
     {!! Form::open(['id'=>'form','action' => 'QuestionController@store' , 'method'=> 'POST']) !!}
