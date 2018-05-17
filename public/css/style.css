@@ -309,6 +309,42 @@ background:rgb(245,245,245);
 	border:1px solid rgba(0, 123, 254,0.3) !important;
 	color: rgba(0, 123, 254,0.7) !important;
 }
+.edit-btn{
+	float:left;
+	padding-top:0px;
+	padding-bottom:0px;
+	border:1px solid rgb(240,240,240);
+	border-top:0px;
+}
+.del-btn{
+	float:left;
+	padding-top:0px;
+	padding-bottom:0px;
+	border:1px solid rgb(240,240,240);
+	border-top:0px;
+}
+.edit-btn1{
+	float:left;
+	padding-top:0px;
+	padding-bottom:0px;
+	border:1px solid rgb(240,240,240);
+	border-top:0px;
+}
+.del-btn1{
+	margin-top:-50px;
+	float:left;
+	padding-top:0px;
+	padding-bottom:0px;
+	border:1px solid rgb(240,240,240);
+	border-top:0px;
+}
+.edit-del{
+	float:left;
+	margin-top:-8px;
+}
+.edit-del-nav{
+	width:100px;
+}
 .q-title-input{
 	padding-left:20px ;
 	padding-right:20px;

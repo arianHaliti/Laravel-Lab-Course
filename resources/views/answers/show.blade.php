@@ -24,8 +24,22 @@
     </div>
 
     <div class="q-content ml-2 p-2 border">
-        {!!$ans->answer_desc!!}
+    <div class="col-md-12 edit-del float-left">
+                            <div class="float-right edit-del-nav">
+        @if(!Auth::guest() && Auth::user()->id ==$ans->user_id)
+    <a href= "/answers/{{$ans->answer_id}}/edit" class ="btn btn-outline-primary btn-sm edit-btn border-top-0">Edit</a>
+
+    {!! Form::open(['action' => ['QuestionController@destroy' , $ans->answer_id] ,'method'=> 'POST']) !!}
+
+    {{Form::hidden('_method','DELETE')}}
+    {{Form::submit('Delete',['class'=>'btn btn-outline-danger btn-sm  del-btn'])}}
+    {!! Form::close() !!}
+@endif
     </div>
+</div>
+        {!!$ans->answer_desc!!}
+        
+</div>
     <!--COMMENTS-->
     <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">
@@ -47,13 +61,5 @@
 
 </div>
 
-@if(!Auth::guest() && Auth::user()->id ==$ans->user_id)
-    <a href= "/answers/{{$ans->answer_id}}/edit" class ="btn btn-default">Edit</a>
 
-    {!! Form::open(['action' => ['QuestionController@destroy' , $ans->answer_id] ,'method'=> 'POST']) !!}
-
-    {{Form::hidden('_method','DELETE')}}
-    {{Form::submit('DELETE',['class'=>'btn btn-danger'])}}
-    {!! Form::close() !!}
-@endif
 @endforeach

@@ -36,27 +36,36 @@
                 <div class="stats bg-light p-1 w-10 rounded-circle">
                     <img  src='/storage/image/photo.jpg' class="rounded m-auto">
                 </div>
-                <div class="q-content ml-2 p-2 mb-4 ml-auto">
-                <h6 class="p-0 mb-0 color-muted"><a href="#" >
-                    {{$question->question_title}}</a></h6>
-                    </div>
-                <div class="q-content q-content-desc ml-2 p-2 border  ml-auto">
-                 
-                    {!!$question->question_desc!!}
-                </div>
-
-            
-            
-        </div>
-        @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
-            <a href= "/questions/{{$question->question_id}}/edit" class ="btn btn-default">Edit</a>
+                <div class="q-content ml-2 p-2 mb-4 ml-auto">   
+                        <div class="col-md-12 edit-del float-left">
+                            <div class="float-right edit-del-nav">
+                        @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
+            <a href= "/questions/{{$question->question_id}}/edit" class ="btn btn-outline-primary btn-sm edit-btn border-top-0">Edit</a>
 
             {!! Form::open(['action' => ['QuestionController@destroy' , $question->question_id] ,'method'=> 'POST']) !!}
             
             {{Form::hidden('_method','DELETE')}}
-            {{Form::submit('DELETE',['class'=>'btn btn-danger'])}}
+            {{Form::submit('Delete',['class'=>'btn btn-outline-danger btn-sm del-btn'])}}
             {!! Form::close() !!}
         @endif
+                        </div>
+</div>
+                <h6 class="p-0 mb-0 color-muted"><a href="#" >
+                    {{$question->question_title}}</a></h6>
+
+                   
+                    </div>
+                <div class="q-content q-content-desc ml-2 p-2 border  ml-auto">
+                 
+                    {!!$question->question_desc!!}
+
+                    
+                </div>
+
+           
+            
+        </div>
+       
         <!--/.QUESTION BOX-->
         
        
@@ -74,7 +83,7 @@
         
         </div>
 
-    <div class="row p-2 transform1 border-top border-bottom mb-0">
+    <div class="row p-2 transform1 border-top border-bottom mb-0 mt-5">
                         <div class="col-md-6 p-0">
                             <h5 class="mb-0 mt text-muted">Add An Answer</h5>
                         </div>
@@ -119,9 +128,10 @@
             {{Form::hidden('q_id',$question->question_id)}}
             {{Form::submit('Answer',['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}   
-        </div>
-</div>
+       
     @endguest
+    </div>
+</div>
     </div>
 
     
