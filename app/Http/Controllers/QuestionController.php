@@ -90,7 +90,7 @@ class QuestionController extends Controller
             $conn->save();
             
         } 
-        return redirect('/questions/'.$last_id)->with('success','Pytja u krijua');
+        return redirect('/questions/'.$last_id)->with('success','Question Created');
     }
 
     /**
@@ -146,7 +146,7 @@ class QuestionController extends Controller
         //MERR ID E PYTJES TE KRIJUAR
         $last_id = $quest->question_id;
         
-        return redirect('/questions/'.$last_id)->with('success','Post Updated');
+        return redirect('/questions/'.$last_id)->with('success','Question Updated');
     }
 
     /**
@@ -160,11 +160,12 @@ class QuestionController extends Controller
         $quest = Question::find($id);
         if(auth()->user()->id !== $quest->user_id){
             return redirect('/questions');
+            //OR PAGE NOT FOUND
         }
         $quest->question_active =1;
 
         $quest->save();
 
-        return redirect('/questions')->with('success','Post Deleted');
+        return redirect('/questions')->with('success','Question Deleted');
     }
 }

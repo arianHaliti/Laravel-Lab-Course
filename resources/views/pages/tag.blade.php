@@ -60,7 +60,7 @@
                     <div class="row p-2 border-bottom tags">
                         @foreach($tags as $t)
                         <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
-                            <a href="questions/tag/{{$t->tag_name}}" class="px-2 py-1 rounded border float-left">{{$t->tag_name}}</a><p class="float-left f-12 mt-1 px-2">x {{$t->tag_count}}</p>
+                            <a href="questions/tag/{{urlencode($t->tag_name)}}" class="px-2 py-1 rounded border float-left">{{$t->tag_name}}</a><p class="float-left f-12 mt-1 px-2">x {{$t->tag_count}}</p>
                             <p class="f-12 float-left border-left mt-1 pl-2">{{$t->daily}} today,{{$t->monthly}} this month.</p>
                         </div>
                         @endforeach

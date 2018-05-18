@@ -41,7 +41,7 @@
              </div>
         </div>
         <div class="col-md-9 px-2">
-    {!! Form::open(['action' => ['AnswerController@update' , $ans->answer_id] ,'method'=> 'POST']) !!}
+    {!! Form::open(['id'=>'form','action' => ['AnswerController@update' , $ans->answer_id] ,'method'=> 'POST']) !!}
         
         <div class="form-group">
            
@@ -53,5 +53,40 @@
     {!! Form::close() !!}   
     </div>
     </div>
+<script>
+    $.validator.addMethod("desc", function(value, element) {
+    var html=CKEDITOR.instances['article-ckeditor'].getSnapshot();
+    var dom=document.createElement("DIV");
+    dom.innerHTML=html;
+    var plain_text=(dom.textContent || dom.innerText);
 
+    
+    if(plain_text.length <=20 ){
+        return false;
+    }else{
+        return true;
+    }
+
+}, "Please Elaborate your Answer (At least 20 chars) ");
+
+$("#form").validate({
+    ignore: [],
+    
+    rules: {
+        body:{
+            desc:true
+        }
+        
+    },
+    messages: {
+        body:{
+            required:"Please enter Text",
+            minlength:"Please enter 10 characters"
+        }
+    },
+    submitHandler: function (form) { 
+        form.submit();
+    }
+});
+</script>
 @endsection

@@ -51,7 +51,7 @@ class AnswerController extends Controller
         
         $last_id = Input::get('q_id');
         
-        return redirect('/questions/'.$last_id)->with('success','Answer created');
+        return redirect('/questions/'.$last_id)->with('success','Answer created' );
    
     }
 
@@ -118,6 +118,16 @@ class AnswerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ans = Answer::find($id);
+
+        if(auth()->user()->id !== $ans->user_id){
+            return redirect('/questions');
+            //OR PAGE NOT FOUND
+        }
+        $ans->answer_active =1;
+
+        $ans->save();
+
+        return redirect('/questions/'.$ans->question_id)->with('success','Answer Deleted');
     }
 }

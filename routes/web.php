@@ -38,7 +38,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/answers/create','AnswerController@store');
 Route::put('/answers/{id}','AnswerController@update');
 Route::get('/answers/{id}/edit','AnswerController@edit');
-
+Route::delete('/answers/{id}','AnswerController@destroy')->middleware('auth');
 
 // ROUTE FOR QUESTION TAGS 
 // EX : questions/tag/javascript 

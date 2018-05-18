@@ -29,10 +29,9 @@
         @if(!Auth::guest() && Auth::user()->id ==$ans->user_id)
     <a href= "/answers/{{$ans->answer_id}}/edit" class ="btn btn-outline-primary btn-sm edit-btn border-top-0">Edit</a>
 
-    {!! Form::open(['action' => ['QuestionController@destroy' , $ans->answer_id] ,'method'=> 'POST']) !!}
-
-    {{Form::hidden('_method','DELETE')}}
-    {{Form::submit('Delete',['class'=>'btn btn-outline-danger btn-sm  del-btn'])}}
+    {!! Form::open(['action' => ['AnswerController@destroy' , $ans->answer_id] ,'method'=> 'POST']) !!}
+        {{Form::hidden('_method','DELETE')}}
+        {{Form::submit('Delete',['class'=>'btn btn-outline-danger btn-sm  del-btn'])}}
     {!! Form::close() !!}
 @endif
     </div>

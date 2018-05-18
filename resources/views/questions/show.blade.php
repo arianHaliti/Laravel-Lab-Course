@@ -8,7 +8,16 @@
 @extends('layouts.app')
 
 @section('content')
-    
+<style>
+        input.error {
+            border: 1px solid red;
+        }
+        
+        label.error {
+            font-weight: normal;
+            color: red;
+        }
+</style>
 <div class="row mt-4 ">
 		
     <div class="col-md-9 p-0">
@@ -119,7 +128,7 @@
         <h3>You need an account to add an answers</h3>
         <a href='/register'>Register Here</a>
     @else        
-        {!! Form::open(['action' => 'AnswerController@store' , 'method'=> 'POST']) !!}
+        {!! Form::open(['id'=>'form','action' => 'AnswerController@store' , 'method'=> 'POST']) !!}
             
             <div class="form-group">
                 {{Form::label('body',' ')}}
@@ -144,5 +153,40 @@
     </div>
     
 </div>
+<script>
+   $.validator.addMethod("desc", function(value, element) {
+    var html=CKEDITOR.instances['article-ckeditor'].getSnapshot();
+    var dom=document.createElement("DIV");
+    dom.innerHTML=html;
+    var plain_text=(dom.textContent || dom.innerText);
 
+    
+    if(plain_text.length <=20 ){
+        return false;
+    }else{
+        return true;
+    }
+
+}, "Please Elaborate your Answer (At least 20 chars) ");
+
+$("#form").validate({
+    ignore: [],
+    
+    rules: {
+        body:{
+            desc:true
+        }
+        
+    },
+    messages: {
+        body:{
+            required:"Please enter Text",
+            minlength:"Please enter 10 characters"
+        }
+    },
+    submitHandler: function (form) { 
+        form.submit();
+    }
+});
+</script>
 @endsection
