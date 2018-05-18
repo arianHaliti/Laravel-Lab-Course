@@ -1,6 +1,6 @@
 
 <div class="col-md-4 p-0 p-2 mt-2 mb-2 ">
-    <a href="#" class="p-0 border bg-light position-absolute mt-1">tag1</a>
+    <a href="#" class="p-0 border bg-light position-absolute mt-1 ml-1 f-14 rounded px-2 rgba-white">html</a>
     <a href="#"><img src="/storage/image/photo.jpg" class="w-100"></a>
 
     <div class="col-md-12 border-left mt-2 float-left border-top-0 px-2 mb-0">

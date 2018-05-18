@@ -29,10 +29,10 @@
             
                 <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
                     
-                    <p class="w-100 m-auto text-center"id ="up"><i class="fas fa-sort-up"></i></p>
+                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr" id ="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                     
-                    <p class="w-100 m-auto text-center"id="down"><i class="fas fa-sort-down"></i></p>
-                    <p class="w-100 text-center m-auto"id="total_votes"></p>
+                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr" id="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <p class="w-100 text-center m-auto float-left"id="total_votes"></p>
                 </div>
                 <div class="stats stats-full-post bg-light p-1 w-10 mr-2">
                     <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>

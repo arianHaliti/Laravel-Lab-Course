@@ -27,13 +27,13 @@
                   </a>
 
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="nav-link" href="/home">Home
+                      <a class="nav-link text-dark border-bottom" href="/home">Home
                         <span class="sr-only">(current)</span>
                       </a>
-                      <a class="nav-link" href="/questions/create">Ask a Question
+                      <a class="nav-link text-dark border-bottom" href="/questions/create">Ask a Question
                         <span class="sr-only">(current)</span>
                       </a>
-                      <a class="dropdown-item" href="{{ route('logout') }}"
+                      <a class="dropdown-item text-dark border-bottom" href="{{ route('logout') }}"
                           onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                           {{ __('Logout') }}

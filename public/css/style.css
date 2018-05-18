@@ -84,6 +84,32 @@ body{
 .stats{
 	border:1px solid rgb(245,245,245);
 }
+.stats .up-do-arr{
+	float:left;
+	font-size:26px !important;
+	height:26px;
+	color:black !important;
+	margin-bottom:5px !important;
+	margin-top:-5px !important;
+}
+
+.stats .up-do-arr svg{
+	margin-top:0px;
+	float:left;
+	margin-left:13px !important;
+}
+.stats .up-do-arr:nth-child(2){
+	margin-bottom:0px !important;
+}
+.stats .up-arr{
+	margin-bottom:0px !important;
+	font-size:22px !important;
+	height:22px;
+	margin-top:0px !important;
+}
+#total-votes{
+	float:left;
+}
 .bg-grey{
 	background:rgb(250,250,250);
 }
@@ -393,6 +419,9 @@ background:rgb(245,245,245);
  }
  .c-desc{
 	 height:90px;
+ }
+ .rgba-white{
+	 background:rgba(250,250,250,0.9) !important;
  }
  .courses img{
 	 width:100px;

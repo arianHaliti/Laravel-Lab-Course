@@ -14,10 +14,10 @@
     </div>
     <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
 
-        <p class="w-100 m-auto text-center"><i class="fas fa-sort-up"></i></p>
+          <a href="#" class="float-left w-100 m-auto text-center up-do-arr"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
-        <p class="w-100 m-auto text-center"><i class="fas fa-sort-down"></i></p>
-        <p class="w-100 text-center m-auto">33</p>
+         <a href="#" class="float-left w-100 m-auto text-center up-do-arr"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+         <p class="w-100 text-center m-auto float-left" >33</p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
         <img src="/storage/image/photo.jpg" class="rounded m-auto">

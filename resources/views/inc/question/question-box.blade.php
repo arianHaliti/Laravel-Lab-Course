@@ -16,8 +16,9 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
 			
 				
     <div class="stats bg-light p-1 w-10 h-10 mr-2">
-        <p class="w-100 m-auto text-center"><i class="fas fa-sort-up"></i></p>
-        <p class="w-100 text-center m-auto">{{$voteQuest}}</p>
+      
+        <p class="float-left w-100 m-auto text-center up-do-arr up-arr"><i class="fa fa-caret-up" aria-hidden="true"></i></p>
+        <p class="w-100 text-center m-auto float-left">{{$voteQuest}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 mr-2">
         <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>
