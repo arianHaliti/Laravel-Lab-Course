@@ -29,10 +29,10 @@
             
                 <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
                     
-                    <p class="w-100 m-auto text-center"><i class="fas fa-sort-up"></i></p>
+                    <p class="w-100 m-auto text-center"id ="up"><i class="fas fa-sort-up"></i></p>
                     
-                    <p class="w-100 m-auto text-center"><i class="fas fa-sort-down"></i></p>
-                    <p class="w-100 text-center m-auto">99.4k</p>
+                    <p class="w-100 m-auto text-center"id="down"><i class="fas fa-sort-down"></i></p>
+                    <p class="w-100 text-center m-auto"id="total_votes"></p>
                 </div>
                 <div class="stats stats-full-post bg-light p-1 w-10 mr-2">
                     <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>
@@ -188,5 +188,11 @@ $("#form").validate({
         form.submit();
     }
 });
+</script>
+<script src="{{asset ('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
+<script>                 
+    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!});
+    
+   
 </script>
 @endsection

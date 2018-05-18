@@ -43,3 +43,8 @@ Route::delete('/answers/{id}','AnswerController@destroy')->middleware('auth');
 // ROUTE FOR QUESTION TAGS 
 // EX : questions/tag/javascript 
 Route::get('questions/tag/{tag}','TagQuestionController@tag');
+
+//ROUTES FOR VOTE
+Route::post('/downvote','VoteController@downvote')->middleware('auth');
+Route::post('/vote','VoteController@vote')->middleware('auth');
+Route::post('/showvote','VoteController@showvote');

@@ -2,9 +2,14 @@
 <?php 
 use App\Answer;
 use App\Tag;
+use App\Vote;
+
 $answers = Answer::where('answer_active',0)
             ->where('question_id',$q->question_id);
 $sum = $answers->count();
+//GET VOTES OF QUESTION
+$voteQuest = Vote::where('content_id','=',$q->question_id)
+        ->where('content_type','=',0)->sum('vote_type');
 
 ?>
 <div class="row p-2 border-bottom myShadow">
@@ -12,7 +17,7 @@ $sum = $answers->count();
 				
     <div class="stats bg-light p-1 w-10 h-10 mr-2">
         <p class="w-100 m-auto text-center"><i class="fas fa-sort-up"></i></p>
-        <p class="w-100 text-center m-auto">99.4k</p>
+        <p class="w-100 text-center m-auto">{{$voteQuest}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 mr-2">
         <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>
