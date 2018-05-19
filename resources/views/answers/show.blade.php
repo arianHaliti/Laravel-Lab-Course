@@ -5,8 +5,9 @@
     </div>
 </div>
 <!--answer BOX-->
+<?php $c=0;?>
 @foreach($answers as $ans)
-        
+<?php  $c++;?>        
 <div class="row p-2  border-bottom">
 
     <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
@@ -14,10 +15,10 @@
     </div>
     <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
 
-          <a href="#" class="float-left w-100 m-auto text-center up-do-arr"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+          <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
-         <a href="#" class="float-left w-100 m-auto text-center up-do-arr"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-         <p class="w-100 text-center m-auto float-left" >33</p>
+         <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+         <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" >33</p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
         <img src="/storage/image/photo.jpg" class="rounded m-auto">
@@ -59,6 +60,12 @@
 
 
 </div>
+<script src="{{asset ('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
 
+<script>                 
+    var a_total = "#a_total<?php echo $c?>";
+    var a_vote =".a_vote<?php echo $c?>";   
+    voteAjax({!! json_encode($ans->answer_id) !!},{!! json_encode(Auth::check()) !!},1,a_total,a_vote);
+</script>
 
 @endforeach

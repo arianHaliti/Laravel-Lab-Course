@@ -1,4 +1,4 @@
-function voteAjax(id,check) {
+function voteAjax(id,check,type,show,btn) {
 	
 	load_data(id);
     function load_data(id){
@@ -8,12 +8,12 @@ function voteAjax(id,check) {
                
             url: '/showvote',
             type: 'POST',
-            data: {_token: CSRF_TOKEN,vote:$("#total_votes").text(),q : id},
+            data: {_token: CSRF_TOKEN,vote:$(show).text(),id : id,t :type},
             dataType: 'JSON',
             
             success: function (data) {
                 // alert(data['sumVote']);
-                $("#total_votes").html(data['sumVote']);
+                $(show).html(data['sumVote']);
                 
             },
             erro: function(){
@@ -26,57 +26,58 @@ function voteAjax(id,check) {
     $(document).ready(function(){
         
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        var q_id = id;
-        var islog = check ;
         
         //var q_i = "{{$question->question_id}}";
-       
-        $("#up").on('click',function(){
-            if(islog){
-            $.ajax({
+        
+        $(btn).click(function() {
+            if(check){
+                var name = $(this).attr("name");
                
-                url: '/vote',
-                type: 'POST',
-                data: {_token: CSRF_TOKEN,vote:$("#total_votes").text(),q : q_id,t :'up'},
-                dataType: 'JSON',
-                
-                success: function (data) {
-                   // alert(data['sumVote']);
-                    $("#total_votes").html(data['sumVote']);
-                    
-                },
-                erro: function(){
-                    alert(0);
+                //
+                if(name =='up'){
+                    $.ajax({
+
+                        url: '/vote',
+                        type: 'POST',
+                        data: {_token: CSRF_TOKEN,vote:$(show).text(),id : id,t :type},
+                        dataType: 'JSON',
+
+                        success: function (data) {
+                        // alert(data['sumVote']);
+                            $(show).html(data['sumVote']);
+                            
+                        },
+                        erro: function(){
+                            alert(0);
+                        }
+                    });         
+                }else{
+                    //alert(name);
+                    $.ajax({
+
+                        url: '/downvote',
+                        type: 'POST',
+                        data: {_token: CSRF_TOKEN,vote:$(show).text(),id : id,t :type},
+                        dataType: 'JSON',
+
+                        success: function (data) {
+                            // alert(data['sumVote']);
+                            $(show).html(data['sumVote']);
+
+                        },
+                        erro: function(){
+                            alert(0);
+                        }
+                    });       
                 }
-            }); 
-        }else{
-            alert('Need Log');
-        }
+            
+            }else{
+                alert('Need Log');
+            }
 
         });
-        $("#down").on('click',function(){
-            if(islog){
-            $.ajax({
-               
-                url: '/downvote',
-                type: 'POST',
-                data: {_token: CSRF_TOKEN,vote:$("#total_votes").text(),q : q_id,t :'down'},
-                dataType: 'JSON',
-                
-                success: function (data) {
-                   // alert(data['sumVote']);
-                    $("#total_votes").html(data['sumVote']);
-                    
-                },
-                erro: function(){
-                    alert(0);
-                }
-            }); 
-        }else{
-            alert('Need Log');
-        }
-        });        
+            
         
-    });   
+    });    
 
 }

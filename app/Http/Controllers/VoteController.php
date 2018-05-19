@@ -11,10 +11,11 @@ class VoteController extends Controller
         $this->middleware('auth',['except'=> ['showvote']]);
     }
     public function vote(Request $request){
-
+        if($request->t<0 || $request->t>2)
+            return null;
         //KQYR NESE KA VOTU NAJ HER
-        $v = Vote::where('content_id','=',$request->q)
-            ->where('content_type','=',0)
+        $v = Vote::where('content_id','=',$request->id)
+            ->where('content_type','=',$request->t)
             ->where('user_id','=',auth()->user()->id)
             ->get()
             ->first();
@@ -26,8 +27,8 @@ class VoteController extends Controller
         if(count($v)==0){
             $new_v = new Vote;
             $new_v->vote_type = 1;
-            $new_v->content_type=0;
-            $new_v->content_id=$request->q;
+            $new_v->content_type=$request->t;
+            $new_v->content_id=$request->id;
             $new_v->user_id = auth()->user()->id;
 
             $new_v ->save();
@@ -46,8 +47,8 @@ class VoteController extends Controller
             $vote->vote_type=1;
             $vote->save();
         }
-        $count = Vote::where('content_id','=',$request->q)
-            ->where('content_type','=',0)->sum('vote_type');
+        $count = Vote::where('content_id','=',$request->id)
+            ->where('content_type','=',$request->t)->sum('vote_type');
     
         $response = array(
             'status' => 'success',
@@ -58,10 +59,11 @@ class VoteController extends Controller
 
 
      public function downvote(Request $request){
-
+        if($request->t<0 || $request->t>2)
+            return null;
         //KQYR NESE KA VOTU NAJ HER
-        $v = Vote::where('content_id','=',$request->q)
-            ->where('content_type','=',0)
+        $v = Vote::where('content_id','=',$request->id)
+            ->where('content_type','=',$request->t)
             ->where('user_id','=',auth()->user()->id)
             ->get()
             ->first();
@@ -73,8 +75,8 @@ class VoteController extends Controller
         if(count($v)==0){
             $new_v = new Vote;
             $new_v->vote_type = -1;
-            $new_v->content_type=0;
-            $new_v->content_id=$request->q;
+            $new_v->content_type=$request->t;
+            $new_v->content_id=$request->id;
             $new_v->user_id = auth()->user()->id;
 
             $new_v ->save();
@@ -93,8 +95,8 @@ class VoteController extends Controller
             $vote->vote_type=-1;
             $vote->save();
         }
-        $count = Vote::where('content_id','=',$request->q)
-            ->where('content_type','=',0)->sum('vote_type');
+        $count = Vote::where('content_id','=',$request->id)
+            ->where('content_type','=',$request->t)->sum('vote_type');
     
         $response = array(
             'status' => 'success',
@@ -104,8 +106,8 @@ class VoteController extends Controller
      }
 
      public function showvote(Request $request){
-        $count = Vote::where('content_id','=',$request->q)
-        ->where('content_type','=',0)->sum('vote_type');
+        $count = Vote::where('content_id','=',$request->id)
+        ->where('content_type','=',$request->t)->sum('vote_type');
 
         $response = array(
             'status' => 'success',

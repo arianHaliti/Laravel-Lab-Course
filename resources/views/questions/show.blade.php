@@ -29,10 +29,10 @@
             
                 <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
                     
-                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr" id ="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                     
-                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr" id="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-                    <p class="w-100 text-center m-auto float-left"id="total_votes"></p>
+                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    <p class="w-100 text-center m-auto float-left"id="q_total"></p>
                 </div>
                 <div class="stats stats-full-post bg-light p-1 w-10 mr-2">
                     <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>
@@ -90,7 +90,7 @@
         </div>
         <div class="col-md-6"></div>
     </div>
-    @include('answers.create');
+    @include('answers.create')
     </div>
 
     
@@ -141,8 +141,6 @@ $("#form").validate({
 </script>
 <script src="{{asset ('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
 <script>                 
-    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!});
-    
-   
+    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!},0,"#q_total",".q_vote");
 </script>
 @endsection
