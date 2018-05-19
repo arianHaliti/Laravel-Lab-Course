@@ -1,7 +1,10 @@
 <?php 
     use App\Answer;
-    $answers = Answer::where('answer_active',0)
-            ->where('question_id',$question->question_id)->get();
+    use App\CorrectAnswer;
+    $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
+            ->where('answer_active',0)
+            ->where('question_id',$question->question_id)
+            ->get(['answers.answer_id','answer_desc','user_id','correct_id']);
     $sum = $answers->count();
 ?>
 

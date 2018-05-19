@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vote;
+use App\CorrectAnswer;
 class VoteController extends Controller
 {
     public function __construct()
@@ -114,5 +115,27 @@ class VoteController extends Controller
             'sumVote'=> $count,
         );
         return response()->json($response); 
+     }
+     public function correct(Request $request){
+        $c = CorrectAnswer::where('answer_id','=',$request->id)
+        ->get()
+        ->first();
+        
+        
+
+        if(count($c) !=0){
+            $c->delete();
+            if($c->answer_id == $request->id)
+                return null;
+            
+        }
+        $new_c = new CorrectAnswer;
+        $new_c->answer_id = $request->id;
+        $new_c ->save();
+
+        $response = array(
+            'status' => 'success',
+        );
+       
      }
 }

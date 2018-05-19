@@ -48,3 +48,7 @@ Route::get('questions/tag/{tag}','TagQuestionController@tag');
 Route::post('/downvote','VoteController@downvote')->middleware('auth');
 Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
+
+
+//ROUTE FOR CORRECT ANSWER
+Route::post('/correct','VoteController@correct')->middleware('auth');

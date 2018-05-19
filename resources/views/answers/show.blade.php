@@ -9,16 +9,30 @@
 @foreach($answers as $ans)
 <?php  $c++;?>        
 <div class="row p-2  border-bottom">
+    @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
+        @if($ans->correct_id)
+            <!-- ADD A CLASS PER MIA NDRRU NGJYREN  QE ME TREGU QE E KA SELEKTU QITA -->
+            <a href="#"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
+                <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
+            {{$ans->correct_id}}</div></a>
+        @else
 
-    <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
+            <a href="#"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
+            <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
+            </div></a>
+        @endif
+    @elseif($ans->correct_id)
+        <!-- NESE OSHT ANSWER E SAKT EDHE NUK ESHTE AUTHORI I PYTJES ME QIT TIKUN (QITJA EDHE KSAJ 1 KLAS)  shko edhe te 105 ngjitja 1 klas me JQUERY -->
+        <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
         <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
-    </div>
+        </div>
+    @endif
     <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
 
           <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
          <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-         <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" >33</p>
+         <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" ></p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
         <img src="/storage/image/photo.jpg" class="rounded m-auto">
@@ -67,5 +81,36 @@
     var a_vote =".a_vote<?php echo $c?>";   
     voteAjax({!! json_encode($ans->answer_id) !!},{!! json_encode(Auth::check()) !!},1,a_total,a_vote);
 </script>
+<script>
+    $(document).ready(function(){
+        
+        var correct = "#correct<?php echo $c?>";
+        //alert(correct);
+        $(correct).click(function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           
+            var id = {!! json_encode($ans->answer_id) !!};
+            var q_id = {!! json_encode($question->question_id) !!};
 
+            alert(q_id);
+            $.ajax({
+
+                url: '/correct',
+                type: 'POST',
+                data: {_token: CSRF_TOKEN,vote:$(correct).text(),id : id,q_id :q_id},
+                dataType: 'JSON',
+
+                success: function (data) {
+                // alert(data['sumVote']);
+                    $(correct).addClass(""); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                    
+                },
+                erro: function(){
+                    alert(0);
+                }
+            });         
+        });
+    
+    });
+</script>
 @endforeach
