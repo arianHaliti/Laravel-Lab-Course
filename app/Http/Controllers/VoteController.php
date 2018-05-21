@@ -121,12 +121,18 @@ class VoteController extends Controller
         ->get()
         ->first();
         
+       
         
 
         if(count($c) !=0){
             $c->delete();
-            if($c->answer_id == $request->id)
-                return null;
+            if($c->answer_id == $request->id){
+                
+                $response = array (
+                    'status' => 'removed',
+                );
+                return response()->json($response);
+            }
             
         }
         $new_c = new CorrectAnswer;
@@ -136,6 +142,6 @@ class VoteController extends Controller
         $response = array(
             'status' => 'success',
         );
-       
+        return response()->json($response);
      }
 }

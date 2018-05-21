@@ -241,6 +241,9 @@ background:rgb(245,245,245);
 	margin-top:-67px;
 
 }
+.correct-color{
+	color:green !important;
+}
 .stat-ul2{
 	float:right;
 	right:0px;

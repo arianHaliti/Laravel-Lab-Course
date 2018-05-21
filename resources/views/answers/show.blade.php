@@ -12,12 +12,12 @@
     @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
         @if($ans->correct_id)
             <!-- ADD A CLASS PER MIA NDRRU NGJYREN  QE ME TREGU QE E KA SELEKTU QITA -->
-            <a href="#"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
+            <a href="#" id="{{'correct'.$c}}" class="correct-color"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
                 <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
-            {{$ans->correct_id}}</div></a>
+            </div></a>
         @else
 
-            <a href="#"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
+            <a href="#"  id="{{'correct'.$c}}"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
             <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
             </div></a>
         @endif
@@ -86,13 +86,13 @@
         
         var correct = "#correct<?php echo $c?>";
         //alert(correct);
+        //alert(correct); 
         $(correct).click(function() {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
            
             var id = {!! json_encode($ans->answer_id) !!};
             var q_id = {!! json_encode($question->question_id) !!};
-
-            alert(q_id);
+           // alert(1);
             $.ajax({
 
                 url: '/correct',
@@ -101,8 +101,15 @@
                 dataType: 'JSON',
 
                 success: function (data) {
-                // alert(data['sumVote']);
-                    $(correct).addClass(""); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                
+                   
+                   if(data['status']=='removed'){
+                  
+                    $(correct).removeClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                   }else{
+                    
+                    $(correct).addClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                   }
                     
                 },
                 erro: function(){
