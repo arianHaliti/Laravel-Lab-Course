@@ -1,6 +1,6 @@
 <nav class="navbar main-nav navbar-expand-lg bg-dark fixed-top py-0">
   <div class="container">
-    <a class="navbar-brand" href="/">LAB 2</a>
+    <a class="navbar-brand" href="/questions">LAB 2</a>
 
 <div class="input-group input-group-sm mySearch border-0 rounded">
 
@@ -68,7 +68,7 @@
     <div class="navbar-collapse navbar3" id="navbarResponsive">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active pl-0">
-          <a class="nav-link px-5" href="/"><i class="fas fa-question-circle"></i> Questions
+          <a class="nav-link px-5" href="/questions"><i class="fas fa-question-circle"></i> Questions
             <span class="sr-only">(current)</span>
           </a>
         </li>

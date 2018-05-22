@@ -40,7 +40,7 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
 
 
     <?php 
-        $q_id= $q['question_id'];
+        $q_id= $q->question_id;
         
         $tags = Tag::whereHas('questions', function($c) use($q_id) {
         $c->where('question.question_id', $q_id);   

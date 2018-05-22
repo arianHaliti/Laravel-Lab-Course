@@ -21,27 +21,27 @@
            <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white p-0">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Latest
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=latest">Latest
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                  <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Votes
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=votes">Votes
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Featured
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=featured">Featured
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Views
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=views">Views
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                  <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Unanswered
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=unanswered">Unanswered
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>

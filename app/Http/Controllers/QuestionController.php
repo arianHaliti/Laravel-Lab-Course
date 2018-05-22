@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Tag;
 use App\TagQuestion;
+use Illuminate\Support\Facades\DB;
 class QuestionController extends Controller
 {
     public function __construct()
@@ -23,7 +24,67 @@ class QuestionController extends Controller
         //$q = Question::all();
         //$question = Question::orderBy('created_at', 'desc')->paginate(10);
         //$q = Question::orderBy('created_at','desc')->get();
-        
+        $pp = 5;
+        if(isset($_GET['sort'])){
+            if($_GET['sort']=='latest'){
+                $questions = Question::where('question_active',0)->orderBy('created_at','desc')->paginate($pp);
+                $questions->appends(['sort' => 'latest'])->links();
+            }
+            else if($_GET['sort']=='featured'){
+                $questions = Question::where('question_active',0)->orderBy('created_at','desc')->paginate($pp);
+                $questions->appends(['sort' => 'latest'])->links();
+            }
+            else if($_GET['sort']=='views'){
+                $questions = Question::where('question_active',0)->orderBy('question_views','desc')->paginate($pp);
+                $questions->appends(['sort' => 'views'])->links();
+            }
+            // QUERY FOR VOTE QUESTIONS
+            else if ($_GET['sort']=='votes'){
+                $questions = DB::table('question')
+                ->leftjoin('votes', 'votes.content_id', '=', 'question.question_id')
+                ->select('question.*', DB::raw('SUM(votes.vote_type) as total_votes'))
+                ->where('question.question_active',0)
+                ->groupBy('question.question_id')
+                ->orderBy('total_votes','desc')->paginate($pp);
+                $questions->appends(['sort' => 'votes'])->links();
+            }
+            // QUERY FOR UNASWERED QUESTIONS
+            else if ($_GET['sort']=='unanswered'){
+                $questions = DB::table('question')
+                ->select('question.*',
+                     DB::raw(" ( SELECT count(*) from answers a 
+                     inner join question q on a.question_id = q.question_id
+                      where a.answer_active=0 and q.question_id=question.question_id ) as c"   ))
+               
+                ->leftjoin('answers','answers.question_id','=','question.question_id')  
+                ->where('question.question_active',0)
+                ->groupBy('question.question_id')
+                ->having('c','=',0);
+             
+
+                //Bug me havign dhe paginate got to make manual paginate
+                $perPage = $pp;
+                
+                $curPage = \Illuminate\Pagination\Paginator::resolveCurrentPage();
+
+                $itemQuery = clone $questions;
+
+                $items = $itemQuery->forPage($curPage, $perPage)->get();
+                if(count($items)==0){
+                    $questions =[];
+                }
+                else{
+                    $totalResult = $questions->addSelect(DB::raw('count(*) as count'))->get();
+                    $totalItems = $totalResult->count();
+                    
+                    $questions = new \Illuminate\Pagination\LengthAwarePaginator($items->all(), $totalItems, $perPage);
+                    $questions = $questions->setPath("http://lab.lab/questions/");
+                    $questions->appends(['sort' => 'unanswered'])->links();
+                }
+           
+            }
+            return view('pages.index')->with('questions',$questions);
+        }
         return view('pages.index');
 
         //PRINTS SAME AS PAGES.INDEX !
