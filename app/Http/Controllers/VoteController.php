@@ -15,6 +15,7 @@ class VoteController extends Controller
         if($request->t<0 || $request->t>2)
             return null;
         //KQYR NESE KA VOTU NAJ HER
+        $status =0;
         $v = Vote::where('content_id','=',$request->id)
             ->where('content_type','=',$request->t)
             ->where('user_id','=',auth()->user()->id)
@@ -34,25 +35,28 @@ class VoteController extends Controller
 
             $new_v ->save();
 
-            
+            $status =1;
         }
         //UPDATE VOTE FROM 1 TO 0 !
         else if ($v->vote_type==1){
             $vote = $v;
             $vote->vote_type =0;
             $vote->save();
+
+            $status =0;
         }
         //UPDATE VOTE FROM -1 TO 0 !
         else{
             $vote =$v;
             $vote->vote_type=1;
             $vote->save();
+            $status =1;
         }
         $count = Vote::where('content_id','=',$request->id)
             ->where('content_type','=',$request->t)->sum('vote_type');
     
         $response = array(
-            'status' => 'success',
+            'status' => $status,
             'sumVote'=> $count,
         );
         return response()->json($response); 
@@ -62,13 +66,14 @@ class VoteController extends Controller
      public function downvote(Request $request){
         if($request->t<0 || $request->t>2)
             return null;
+        $status =0;
         //KQYR NESE KA VOTU NAJ HER
         $v = Vote::where('content_id','=',$request->id)
             ->where('content_type','=',$request->t)
             ->where('user_id','=',auth()->user()->id)
             ->get()
             ->first();
-        
+            
         $count= count($v);
         
         
@@ -81,7 +86,7 @@ class VoteController extends Controller
             $new_v->user_id = auth()->user()->id;
 
             $new_v ->save();
-
+            $status =-1;
             
         }
         //UPDATE VOTE FROM -1 TO 0 !
@@ -89,18 +94,20 @@ class VoteController extends Controller
             $vote = $v;
             $vote->vote_type =0;
             $vote->save();
+            $status =0;
         }
         //UPDATE VOTE FROM 1 TO -1 !
         else{
             $vote =$v;
             $vote->vote_type=-1;
             $vote->save();
+            $status =-1;
         }
         $count = Vote::where('content_id','=',$request->id)
             ->where('content_type','=',$request->t)->sum('vote_type');
     
         $response = array(
-            'status' => 'success',
+            'status' => $status,
             'sumVote'=> $count,
         );
         return response()->json($response); 

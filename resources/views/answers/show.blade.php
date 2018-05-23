@@ -1,13 +1,25 @@
-
+<?php use App\Vote; ?>
 <div class="row p-2 border-bottom border-top mt-5 transform1">
     <div class="col-md-12">
         <h5 class="mb-0 text-muted">{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
     </div>
 </div>
 <!--answer BOX-->
-<?php $c=0;?>
+<?php $c=0;
+
+?>
 @foreach($answers as $ans)
-<?php  $c++;?>        
+<?php  $c++;
+
+//GETS THE USERS VOTE FOR THE ANSWER TO SHOW ON THE ARROWS
+if(!Auth::guest()){
+    $av= Vote::where('content_id','=',$ans->answer_id)
+    ->where('content_type','=',1)
+    ->where('user_id','=',Auth::user()->id)
+    ->get()
+    ->first();
+    
+}?>        
 <div class="row p-2  border-bottom">
     @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
         @if($ans->correct_id)
@@ -29,10 +41,24 @@
     @endif
     <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
 
-          <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+        @if(Auth::guest() || count($av)==0)
+            <a id="{{'upvote'.$c}}" href="#"  class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
-         <a href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-         <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" ></p>
+            <a id="{{'downvote'.$c}}" href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        @else
+            @if($av ->vote_type==1)
+                <a href="#" id="{{'upvote'.$c}}" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}} correct-color" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+
+                <a href="#" id="{{'downvote'.$c}}" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            @elseif ($av->vote_type==-1)
+                <a href="#" id="{{'upvote'.$c}}" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+
+                <a href="#" id="{{'downvote'.$c}}" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}} correct-color" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            @endif
+        @endif
+      
+      
+        <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" ></p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
         <img src="/storage/image/photo.jpg" class="rounded m-auto">
@@ -78,8 +104,10 @@
 
 <script>                 
     var a_total = "#a_total<?php echo $c?>";
-    var a_vote =".a_vote<?php echo $c?>";   
-    voteAjax({!! json_encode($ans->answer_id) !!},{!! json_encode(Auth::check()) !!},1,a_total,a_vote);
+    var a_vote =".a_vote<?php echo $c?>";
+    var a_up = "#upvote<?php echo $c?>";
+    var a_down = "#downvote<?php echo $c?>"; 
+    voteAjax({!! json_encode($ans->answer_id) !!},{!! json_encode(Auth::check()) !!},1,a_total,a_vote,a_up,a_down);
 </script>
 <script>
     $(document).ready(function(){

@@ -88,7 +88,7 @@ body{
 	float:left;
 	font-size:26px !important;
 	height:26px;
-	color:black !important;
+	color:black ;
 	margin-bottom:5px !important;
 	margin-top:-5px !important;
 }
@@ -241,9 +241,7 @@ background:rgb(245,245,245);
 	margin-top:-67px;
 
 }
-.correct-color{
-	color:green !important;
-}
+
 .stat-ul2{
 	float:right;
 	right:0px;
@@ -448,3 +446,6 @@ background:rgb(245,245,245);
   
 
 }
+.correct-color{
+	color:green !important;
+}	

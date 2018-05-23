@@ -1,4 +1,4 @@
-function voteAjax(id,check,type,show,btn) {
+function voteAjax(id,check,type,show,btn,upvote,downvote) {
 	
 	load_data(id);
     function load_data(id){
@@ -46,6 +46,23 @@ function voteAjax(id,check,type,show,btn) {
                         // alert(data['sumVote']);
                             $(show).html(data['sumVote']);
                             
+                            
+                            if(data['status']== -1){
+                                
+                                $(upvote).removeClass("correct-color"); 
+                                $(downvote).addClass("correct-color"); 
+                            }
+                            else if (data['status']==1){
+                                
+                                $(upvote).addClass("correct-color"); 
+                                $(downvote).removeClass("correct-color"); 
+                            }
+                            else{
+                                
+                                $(upvote).removeClass("correct-color"); 
+                                $(downvote).removeClass("correct-color"); 
+                            }
+                            
                         },
                         erro: function(){
                             alert(0);
@@ -63,7 +80,24 @@ function voteAjax(id,check,type,show,btn) {
                         success: function (data) {
                             // alert(data['sumVote']);
                             $(show).html(data['sumVote']);
+                            
+                            if(data['status']== -1){
+                                
+                                $(upvote).removeClass("correct-color"); 
+                                $(downvote).addClass("correct-color"); 
+                            }
+                            else if (data['status']==1){
+                               
+                                $(upvote).addClass("correct-color"); 
+                                $(downvote).removeClass("correct-color"); 
 
+                               
+                            }
+                            else{
+                                
+                                $(upvote).removeClass("correct-color"); 
+                                $(downvote).removeClass("correct-color"); 
+                            }
                         },
                         erro: function(){
                             alert(0);

@@ -1,11 +1,22 @@
 <?php 
     use App\Answer;
+    use App\Vote;
     use App\CorrectAnswer;
     $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
             ->where('answer_active',0)
             ->where('question_id',$question->question_id)
             ->get(['answers.answer_id','answer_desc','user_id','correct_id']);
     $sum = $answers->count();
+//GETS THE USERS VOTE FOR THE QUESTION TO SHOW ON THE ARROWS
+    if(!Auth::guest()){
+        $v= Vote::where('content_id','=',$question->question_id)
+        ->where('content_type','=',0)
+        ->where('user_id','=',Auth::user()->id)
+        ->get()
+        ->first();
+     
+    }
+   
 ?>
 
 @extends('layouts.app')
@@ -32,9 +43,25 @@
             
                 <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
                     
-                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+
+                    @if(Auth::guest() || count($v)==0)
+                    <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                 
+                    <a id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
                     
-                    <a href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    @else
+                        @if($v->vote_type == 1)
+                             
+                            <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote  correct-color" name="up"><i  class="fa fa-caret-up " aria-hidden="true"></i></a>
+                            <a  id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i  class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        @elseif ($v->vote_type==-1)
+                            <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i  class="fa fa-caret-up" aria-hidden="true"></i></a>
+                            
+                            <a id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote correct-color"  name ="down"><i  class="fa fa-caret-down " aria-hidden="true"></i></a>
+                        @endif
+                    @endif   
+                    
+                    
                     <p class="w-100 text-center m-auto float-left"id="q_total"></p>
                 </div>
                 <div class="stats stats-full-post bg-light p-1 w-10 mr-2">
@@ -144,6 +171,6 @@ $("#form").validate({
 </script>
 <script src="{{asset ('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
 <script>                 
-    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!},0,"#q_total",".q_vote");
+    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!},0,"#q_total",".q_vote","#upvote","#downvote");
 </script>
 @endsection
