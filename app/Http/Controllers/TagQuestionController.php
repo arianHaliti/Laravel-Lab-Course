@@ -45,8 +45,9 @@ class TagQuestionController extends Controller
                 ->join('tag_questions', 'question.question_id', '=', 'tag_questions.question_id')
                 ->join('tags','tags.tag_id','=','tag_questions.tag_id')
                 ->leftjoin('votes', 'votes.content_id', '=', 'question.question_id')
-                ->select('question.*', DB::raw('SUM(votes.vote_type) as total_votes'),'tags.tag_name')
+                ->select('question.*', DB::raw('SUM(CASE WHEN votes.content_type = 0 THEN  votes.vote_type ELSE 0 END) as total_votes'),'tags.tag_name')
                 ->where('tag_name','like',$tag)
+                ->where('votes.content_type','=',0)
                 ->where('question.question_active',0)
                 ->groupBy('tag_questions.question_id')
                 ->orderBy('total_votes','desc')->paginate($pp);

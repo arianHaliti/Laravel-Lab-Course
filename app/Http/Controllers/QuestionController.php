@@ -42,7 +42,7 @@ class QuestionController extends Controller
             else if ($_GET['sort']=='votes'){
                 $questions = DB::table('question')
                 ->leftjoin('votes', 'votes.content_id', '=', 'question.question_id')
-                ->select('question.*', DB::raw('SUM(votes.vote_type) as total_votes'))
+                ->select('question.*', DB::raw('SUM(CASE WHEN votes.content_type = 0 THEN  votes.vote_type ELSE 0 END) as total_votes'))
                 ->where('question.question_active',0)
                 ->groupBy('question.question_id')
                 ->orderBy('total_votes','desc')->paginate($pp);
