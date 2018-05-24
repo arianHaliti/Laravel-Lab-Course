@@ -32,4 +32,8 @@ class PagesController extends Controller
     public function tag(){
         return view('pages.tag');
     }
+
+    public function user(){
+        return view('pages.user');
+    }
 }

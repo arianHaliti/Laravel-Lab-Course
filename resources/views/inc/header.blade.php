@@ -76,7 +76,7 @@
           <a class="nav-link px-5" href="/courses"><i class="fas fa-graduation-cap"></i> Tutorials</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-5" href="#"><i class="fas fa-user"></i> Users</a>
+          <a class="nav-link px-5" href="/user"><i class="fas fa-user"></i> Users</a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-5" href="/tag"><i class="fas fa-tag"></i> Tags</a>

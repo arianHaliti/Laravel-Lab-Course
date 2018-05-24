@@ -29,6 +29,7 @@ Route::get('/users/{id}/{name}', function ($id,$name) {
 Route::get('/full-post','PagesController@fullPost');
 
 Route::get('/about','PagesController@about');
+Route::get('/user','PagesController@user');
 
 Route::resource('questions','QuestionController');
 Route::resource('courses','CourseController');
