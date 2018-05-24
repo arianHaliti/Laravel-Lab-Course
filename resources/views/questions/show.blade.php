@@ -169,8 +169,8 @@ $("#form").validate({
     }
 });
 </script>
-<script src="{{asset ('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
-<script>                 
-    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!},0,"#q_total",".q_vote","#upvote","#downvote");
+<script src="{{ URL::asset('js/vote.js')}}" type="text/javascript" charset="utf-8"></script>
+<script>
+    voteAjax({!! json_encode($question->question_id) !!},{!! json_encode(Auth::check()) !!},0,"#q_total",".q_vote","#upvote","#downvote");    
 </script>
 @endsection
