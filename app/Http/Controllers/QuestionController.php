@@ -162,7 +162,15 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
+        
+        if(!is_numeric($id))
+            abort(404);
+            
        $question =  Question::find($id);
+       
+       if(count($question)==0)
+            abort(404);
+       
         return view('questions.show')->with('question',$question);
       //  return view('questions.show');
     }

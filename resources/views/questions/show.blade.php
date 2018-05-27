@@ -44,7 +44,7 @@
                 <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
                     
 
-                    @if(Auth::guest() || count($v)==0)
+                    @if(Auth::guest() || count($v)==0 || $v->vote_type==0)
                     <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
                  
                     <a id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
