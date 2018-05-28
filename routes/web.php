@@ -10,6 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/contact', [
+    'uses' => 'contactMessageController@create'
+]);
+
+Route::post('/contact', [
+    'uses' => 'contactMessageController@store',
+    'as' => 'contact.store'
+]);
+
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     // Ignores notices and reports all other kinds... and warnings
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
