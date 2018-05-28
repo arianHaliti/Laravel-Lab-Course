@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<?php use App\User;
+  //$myTime = Carbon\Carbon::now();
+
+  $users = User::all();
+
+
+  
+
+?>
+
 <div class="container p-0">
         <div class="row mt-0">
             
@@ -44,9 +54,10 @@
                     </div>
                     
                     <div class="row p-0 border-bottom courses">
-                    @include('inc.user-box')    
-                       
-                        </div>
+                      @foreach($users as $u) 
+                        @include('inc.user-box')    
+                      @endforeach
+                    </div>
                 
                        
                
@@ -54,8 +65,8 @@
                 
                 
             </div>
-            
-                @include('inc.question.right')
+               
+                  @include('inc.question.right')
         </div>
       </div>
         </div>
