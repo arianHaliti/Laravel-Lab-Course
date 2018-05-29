@@ -28,7 +28,11 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/profile','PagesController@profile'); 
+
+//Route For Profile
+
+Route::get('/profile/{id}','PagesController@profile');
+
 
 
 Route::get('/tag','PagesController@tag');
