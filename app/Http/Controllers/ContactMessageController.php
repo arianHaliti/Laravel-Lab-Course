@@ -17,12 +17,13 @@ class ContactMessageController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             'message' => 'required'
         ]);
 
         Mail::send('emails.contact-message', [
-            'msg' => $request->message
+            'msg' => $request->message,
+            'mail' => $request->email,
         ], function($mail) use($request){
             $mail-> from($request->email, $request->name);
 
