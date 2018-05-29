@@ -1,21 +1,13 @@
-    
-<!DOCTYPE html>
-<html labg"en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-eqiuv="X-UA-Compatibile" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
-    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <style>
-        .ivalid-feedback{
-            display: block;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
+@extends('layouts.app')
+
+@section('content')
+    <div class="container p-0">
+    <div class="row mt-0">
+            
+            <div class="col-md-9 p-0">
+                <div class="col-md-12  mt-5">
+                
+
         <h1>Contact Us</h1>
         <div class="row">
             <div class="col-md-6">
@@ -58,5 +50,4 @@
         </div>
         
         
-</body>
-</html>    
+@endsection

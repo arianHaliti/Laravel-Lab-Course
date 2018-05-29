@@ -3,4 +3,4 @@
 
 {{ $msg, $mail }}
 </div>
-<p>Sent via {{$mail}}</p>
+<p>Sent by {{$mail}}</p>
