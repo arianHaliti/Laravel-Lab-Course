@@ -32,6 +32,32 @@ Teach a man to program, frustrate him for a lifetime.” </p>
                         </div>
 
                         <div class="form-group row mb-2">
+                        
+                            <div class="col-md-12">
+                                <input id="surname" type="text" placeholder="Surname" class="py-2 f-14 form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('surname') }}" required autofocus>
+
+                                @if ($errors->has('surname'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('surname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2">
+                        
+                            <div class="col-md-12">
+                                <input id="username" type="text" placeholder="Username" class="py-2 f-14 form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+    
+                        <div class="form-group row mb-2">
                             
 
                             <div class="col-md-12">
@@ -82,7 +108,7 @@ Teach a man to program, frustrate him for a lifetime.” </p>
             <div class="row p-3 mt-0">
                     <div class="col-md-12 border p-3 px-5 text-center">
                         <span class="py-0">Have an account?</span>
-                            <a class="btn btn-link border-0 py-0 px-0" href="#">
+                            <a class="btn btn-link border-0 py-0 px-0" href="/login">
                                     {{ __('Log In') }}
                                 </a>
                             </div>
