@@ -27,9 +27,7 @@
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             
          </ul>
-
      <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
-
      
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
