@@ -10,11 +10,34 @@
 
     <title>{{ config('app.name', 'Lab 2') }}</title>
 
+<!-- MetisMenu CSS -->
+<link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+
+<!-- Morris Charts CSS -->
+<link href="{{ asset('css/morris.css') }}" rel="stylesheet">
+
+
     <!-- Scripts -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/app.js') }}" ></script>
     
+    
+	
+	 <!-- Metis Menu Plugin JavaScript -->
+     <script src="{{ asset('js/metisMenu.min.js') }}"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="{{ asset('js/raphael.min.js') }}"></script>
+<script src="{{ asset('js/morris.min.js') }}"></script>
+<script src="{{ asset('js/morris-data.js') }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('js/sb-admin-2.js')}}"></script>
+
     <script  src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jquery.min.js') }}" ></script>
     <script src ="{{asset('js/jquery.validate.min.js')}}"></script>

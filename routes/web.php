@@ -64,6 +64,7 @@ Route::post('/downvote','VoteController@downvote')->middleware('auth');
 Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
 
+Route::get('/admin','PagesController@admin');
 
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');

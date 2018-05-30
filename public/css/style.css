@@ -19,9 +19,11 @@ body{
 	font-size:15px;
 }
 .navbar-nav1 a{
-	padding:30px 10px;
+	float:left;
+	padding:30px 20px !important;
 	font-size:15px;
 	height:82px;
+	color:rgb(120,120,120) !important;
 }
 .login-btn{
 	background:rgb(235,235,235);
@@ -39,6 +41,7 @@ body{
 }
 .navbar-nav1 a:hover{
 	border-bottom:2px solid #3897F0;
+	background:rgb(245,245,245) !important;
 }
 .navbar{
 	
@@ -183,6 +186,10 @@ background:rgb(245,245,245);
 	padding:0px 15px !important;
 	
 }
+.sort-nav li a:hover{
+	border-bottom:1px solid #3897F0;
+	background:rgb(245,245,245) !important;
+}
 .boxes{
 	border-radius:2px;
 }
@@ -262,6 +269,7 @@ background:rgb(245,245,245);
 	padding:3px 25px 3px 10px;
 	
 	border-left:1px solid rgb(210,210,210);
+	border-top:1px solid rgb(210,210,210);
 }
 .myPagination ul li{
 	margin-left:20px;
@@ -292,10 +300,13 @@ background:rgb(245,245,245);
 .stat-ul2 li:first-child{
 	padding:3px 10px 3px 25px;
 	border-radius:0px;
+	border-top:1px solid rgb(210,210,210);
 }
 .stat-ul2 li:nth-child(2){
 	padding:3px 10px;
 	border-top-right-radius:5px;
+	border-bottom:1px solid rgb(210,210,210);
+	border-top:0px;
 }
 .stat-ul li p{
 	font-size:12px;
@@ -405,10 +416,9 @@ background:rgb(245,245,245);
  }
  .trophies-ul li{
 	 padding:10px 10px !important;
-	 border-radius:0px;
+	 border-radius:0px !important ;
 	  box-shadow:0px 0px 0px 0px;
-	  border-bottom-left-radius:5px;
-	  border-top-right-radius:0px !important;
+	 
  }
 
   .trophies-ul li i{
@@ -438,6 +448,10 @@ background:rgb(245,245,245);
 	 height:45px;
  }
 
+ .ic-title{
+	 font-size:100px !important;
+ }
+
 @media (max-width: 768px) {
 	.navbar2{
 	  display:block;
@@ -454,3 +468,4 @@ background:rgb(245,245,245);
 .correct-color{
 	color:green !important;
 }	
+
