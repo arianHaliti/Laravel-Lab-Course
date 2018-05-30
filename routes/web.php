@@ -13,12 +13,12 @@
 
 Route::get('/contact', [
     'uses' => 'contactMessageController@create'
-]);
+])->middleware('auth');
 
 Route::post('/contact', [
     'uses' => 'contactMessageController@store',
     'as' => 'contact.store'
-]);
+])->middleware('auth');
 
 if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
     // Ignores notices and reports all other kinds... and warnings
@@ -28,7 +28,11 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/profile','PagesController@profile'); 
+
+//Route For Profile
+
+Route::get('/profile/{id}','PagesController@profile');
+
 
 
 Route::get('/tag','PagesController@tag');

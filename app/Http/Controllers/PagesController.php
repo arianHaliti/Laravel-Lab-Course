@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class PagesController extends Controller
 {  
     public function index () {
@@ -17,9 +17,12 @@ class PagesController extends Controller
         );
         return view('pages.about')->with($data);
     }
-    public function profile () {
+    public function profile ($id) {
         
-        return view('pages.profile');
+        $user = User::find($id);
+        if($user->user_active!=0 || count($user)==0)
+            abort(404);
+        return view('pages.profile')->with('user',$user);
     }
 
     public function fullPost(){

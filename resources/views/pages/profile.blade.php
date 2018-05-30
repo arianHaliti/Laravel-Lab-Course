@@ -27,7 +27,9 @@
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             
          </ul>
-     <h5 class="text-center mt-4 mb-2 transform1">Yllzon Sejdiu</h5>
+
+     <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
+
      
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
@@ -75,7 +77,7 @@
         
             <div class="row p-2 transform1 border-top border-bottom mb-0">
                 <div class="col-md-6 p-0">
-                    <h5 class="mb-0 mt text-muted">Questions By Yllzon</h5>
+                    <h5 class="mb-0 mt text-muted">Questions By {{$user->username}}</h5>
                 </div>
                 <div class="col-md-6">
                     
@@ -106,7 +108,7 @@
           </a>
         </li>
          <li class="nav-item active pl-0">
-          <a class="nav-link px-5 text-muted" href="#">Unanswered
+          <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=unanswered">Unanswered
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -122,9 +124,12 @@
             
             </div>
         
-            <?php   $question = Question::all();
+            <?php   
+              $question = Question::where('user_id', $user->id)->get();
+              
             //$question = Question:where('users_id',GEtUSERID);
             ?>
+          
         @if(count($question))
           @foreach($question as $q)     
             @include('inc.question.question-box')

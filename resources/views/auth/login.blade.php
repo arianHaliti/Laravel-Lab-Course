@@ -84,7 +84,7 @@ Teach a man to program, frustrate him for a lifetime.” </p>
         <div class="row p-3 mt-0">
                     <div class="col-md-12 border p-3 px-5 text-center">
                         <span class="py-0">Don't have an account?</span>
-                            <a class="btn btn-link border-0 py-0 px-0" href="#">
+                            <a class="btn btn-link border-0 py-0 px-0" href="/register">
                                     {{ __('Sign Up') }}
                                 </a>
                             </div>

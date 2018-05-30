@@ -1,9 +1,11 @@
 <!--question BOX-->
 <?php 
+use App\User;
 use App\Answer;
 use App\Tag;
 use App\Vote;
 
+$username = User::where('id',$q->user_id)->first(['users.username']);
 $answers = Answer::where('answer_active',0)
             ->where('question_id',$q->question_id);
 $sum = $answers->count();
@@ -29,7 +31,8 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
         <p class="w-100 text-center m-auto">{{$q->question_views}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
-        <a href="/profile"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
+        <a href="/profile/{{$q->user_id}}"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
+        <p>{{$username->username}}
     </div>
     <div class="q-content ml-2 p-2 border2 rounded">
      <h6 class="mb-2"><a href="/questions/{{$q->question_id}}">
