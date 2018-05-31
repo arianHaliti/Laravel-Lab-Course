@@ -45,5 +45,8 @@ class PagesController extends Controller
     public function adminUser(){
         return view('pages.admin-user');
     }
+    public function team(){
+        return view('about.team');
+    }
 
 }

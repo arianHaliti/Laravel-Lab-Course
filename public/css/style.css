@@ -469,3 +469,23 @@ background:rgb(245,245,245);
 	color:green !important;
 }	
 
+.about-image{
+	width:150px;
+	height:150px;		
+}
+.dotte{
+	border-right:1px dotted black !important;
+	border-bottom:1px dotted black !important;padding: 20px;
+}
+.dote1{
+	border-bottom:1px dotted black !important;padding:20px 100px;
+}
+.dote2{
+	border-bottom:1px solid rgb(220, 220, 220) !important;padding:5px;
+
+}
+.dote3{
+	border-bottom:1px dotted black !important;
+}
+
+

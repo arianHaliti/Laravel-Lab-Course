@@ -73,3 +73,6 @@ Route::get('/adminuser','PagesController@adminuser');
 
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
+
+//ROUTE FOR TEAM
+Route::get('/team','PagesController@team');
