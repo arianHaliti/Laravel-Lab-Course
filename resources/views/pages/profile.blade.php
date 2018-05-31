@@ -184,10 +184,14 @@ use App\Followers;
                 
                   
                    if(data['status']=='removed'){
+                    alert(0);
                   
-                    $('#follow').html('Following'); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                    $('#follow').html('Follow'); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }else{
-                    $('#follow').html('Follow');
+                    alert(1);
+                  
+                    $('#follow').html('Following');
+                  
                     //$(correct).addClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }
                     
