@@ -10,11 +10,16 @@
 
     <title>{{ config('app.name', 'Lab 2') }}</title>
 
+
     <!-- Scripts -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/app.js') }}" ></script>
     
+    
+	
+	
+
     <script  src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script src="{{ asset('js/jquery.min.js') }}" ></script>
     <script src ="{{asset('js/jquery.validate.min.js')}}"></script>
