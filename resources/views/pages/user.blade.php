@@ -4,7 +4,7 @@
 <?php use App\User;
   //$myTime = Carbon\Carbon::now();
 
-  //$users = User::all();
+  $users = User::all();
 
   
 
