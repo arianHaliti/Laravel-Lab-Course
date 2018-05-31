@@ -40,10 +40,21 @@ class PagesController extends Controller
         return view('pages.user');
     }
     public function admin(){
-        return view('pages.admin');
+        return view('admin.admin');
     }
     public function adminUser(){
-        return view('pages.admin-user');
+        return view('admin.admin-user');
     }
 
+    public function adminQuestion(){
+        return view('admin.admin-question');
+    }
+
+    public function adminAnswer(){
+        return view('admin.admin-answers');
+    }
+    
+    public function adminReport(){
+        return view('admin.admin-report');
+    }
 }

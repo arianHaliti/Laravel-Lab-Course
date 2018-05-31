@@ -69,7 +69,10 @@ Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
 
 Route::get('/admin','PagesController@admin');
-Route::get('/adminuser','PagesController@adminuser');
+Route::get('/admin/user','PagesController@adminuser');
+Route::get('/admin/question','PagesController@adminquestion');
+Route::get('/admin/answer','PagesController@adminanswer');
+Route::get('/admin/report','PagesController@adminreport');
 
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
