@@ -4,7 +4,7 @@
 <?php use App\User;
   //$myTime = Carbon\Carbon::now();
 
-  //$users = User::all();
+  $users = User::all();
 
   
 
@@ -40,12 +40,12 @@ jQuery.fn.extend({
 
 
 <div class="row">
-
+    Search
     <div class="col-md-2">
         <div class="icon"></div>
     </div>
     <div class="col-md-10">
-        <input type="text" id="search" autocomplete="off" class="form-control text-light px-3 bg-secondary border-0" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" id="searchuser" autocomplete="off" class="form-control text-light px-3 bg-secondary border-0" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
     </div>
   	<ul id="results"></ul>                       
 
@@ -60,35 +60,45 @@ jQuery.fn.extend({
 $(document).ready(function() {  
 	// Icon Click Focus
 	$('div.icon').click(function(){
-		$('input#search').focus();
+		$('#searchuser').focus();
 	});
 	// Live Search
 	// On Search Submit and Get Results
 	function search() {
-		var query_value = $('input#search').val();
- 		$('b#search-string').text(query_value);
+		var query_value = $('#searchuser').val();
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+   
+ 		//$('b#search-string').text(query_value);
+     //alert( $('#searchuser').val());
 		if(query_value !== ''){
 			$.ajax({
 				type: "POST",
-				url: "/search/",
-				data: { query: query_value}, //this can be more complex if needed
-				cache: false,
+				url: "/searchUsers",
+				data: { _token: CSRF_TOKEN,query_value: query_value}, //this can be more complex if needed
+				
 				success: function(data){
+          alert(data.count);
+          if(data.status=='nothing'){
+            alert("nothing"); 
+          }
+          else{
+            alert(data.id)
+          }
 					//at each request - every written letter is request, firstly we delete old results, and fetch new ones.
-                    $('#results').empty();
+                   /* $('#results').empty();
                     $.each(data.result, function(index, item) {
                         //now you can access properties using dot notation
                         //  console.log(data.result[index].first_name);
                         // Here I am fetching users names from users table, and echoing ther profile url
-                          $('#results').append("<li><a href='" + data.result[index].permalink + "'>" + data.result[index].first_name + "</a></li>");
-                    });
+                          $('#results').append("<li><a href='" +data.id+ "'>" + data.username+ "</a></li>");
+                    });*/
 				}
 			});
 		}return false;    
 	}
-	$("input#search").live("keyup", function(e) {
+	$("#searchuser").live("keyup", function(e) {
 		// Set Timeout
-    alert($(this).val())
+   // alert($(this).val())
 		clearTimeout($.data(this, 'timer'));
 		// Set Search String
 		var search_string = $(this).val();

@@ -24,6 +24,27 @@ class PagesController extends Controller
             abort(404);
         return view('pages.profile')->with('user',$user);
     }
+    public function searchUsers(Request $request){ 
+        
+        //$q = $request->query
+        $user = User::where('users.username','like',$request->query_value.'%')->get();
+        
+        if(count($user)==0){
+            $response = array(
+                'status' => 'nothing'
+            );
+            return response()->json($response);
+
+        }
+        $response = array(
+            'status' => 'success',
+            'id' => $user->id,
+            'username' => $user->username, 
+        );
+        return response()->json($response);
+        
+
+    }
 
     public function fullPost(){
         return view('pages.full-post');
@@ -39,11 +60,4 @@ class PagesController extends Controller
     public function user(){
         return view('pages.user');
     }
-    public function admin(){
-        return view('pages.admin');
-    }
-    public function adminUser(){
-        return view('pages.admin-user');
-    }
-
 }

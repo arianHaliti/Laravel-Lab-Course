@@ -32,7 +32,7 @@ Route::get('/', 'PagesController@index');
 //Route For Profile
 
 Route::get('/profile/{id}','PagesController@profile');
-
+Route::post('/searchUsers','PagesController@searchUsers');
 
 
 Route::get('/tag','PagesController@tag');
@@ -68,8 +68,6 @@ Route::post('/downvote','VoteController@downvote')->middleware('auth');
 Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
 
-Route::get('/admin','PagesController@admin');
-Route::get('/adminuser','PagesController@adminuser');
 
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
