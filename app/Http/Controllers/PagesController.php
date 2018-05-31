@@ -29,7 +29,7 @@ class PagesController extends Controller
     public function searchUsers(Request $request){ 
         
         //$q = $request->query
-        $user = User::where('users.username','like',$request->query_value.'%')->get();
+        $user = User::where('users.username','like',$request->query_value.'%')->limit(4)->get();
         
         if(count($user)==0){
             $response = array(
@@ -39,11 +39,16 @@ class PagesController extends Controller
 
         }
         $users = [];
+
         foreach($user as $u){
             $us = [];
-            $us.array_push($us,$u->id,$u->username);
-            $users.array_push($users,$u->id,$u->username);
+
+            $us = array("id"=> $u->id,"username"=> $u->username);
+
+            array_push($users,$us);
+
         }
+        
         $response = array(
             'status' => 'success',
             'user' => $users,
@@ -54,6 +59,8 @@ class PagesController extends Controller
     }
 
     public function follow(Request $request){
+        if(auth()->user()->id ==null)
+            abort(404);
         $f = Followers::where('follower_id','=',$request->follower_id)
                 ->where('user_id','=',auth()->user()->id)       
         ->get()
