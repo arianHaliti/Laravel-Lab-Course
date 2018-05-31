@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Followers;
+
 class PagesController extends Controller
 {  
     public function index () {
@@ -24,6 +26,57 @@ class PagesController extends Controller
             abort(404);
         return view('pages.profile')->with('user',$user);
     }
+    public function searchUsers(Request $request){ 
+        
+        //$q = $request->query
+        $user = User::where('users.username','like',$request->query_value.'%')->get();
+        
+        if(count($user)==0){
+            $response = array(
+                'status' => 'nothing'
+            );
+            return response()->json($response);
+
+        }
+        $users = [];
+        foreach($user as $u){
+            $us = [];
+            $us.array_push($us,$u->id,$u->username);
+            $users.array_push($users,$u->id,$u->username);
+        }
+        $response = array(
+            'status' => 'success',
+            'user' => $users,
+        );
+        return response()->json($response);
+        
+
+    }
+
+    public function follow(Request $request){
+        $f = Followers::where('follower_id','=',$request->follower_id)
+                ->where('user_id','=',auth()->user()->id)       
+        ->get()
+        ->first();
+
+        if(count($f) !=0){
+            $f->delete();
+            $response = array (
+                'status' => 'removed',
+            );
+            return response()->json($response);
+        }
+        $new_f = new Followers;
+        $new_f->user_id=auth()->user()->id;
+        $new_f->follower_id = $request->follower_id;
+        $new_f ->save();
+
+        $response = array(
+            'status' => 'success',
+        );
+        return response()->json($response);
+           
+    }
 
     public function fullPost(){
         return view('pages.full-post');
@@ -39,6 +92,7 @@ class PagesController extends Controller
     public function user(){
         return view('pages.user');
     }
+
     public function admin(){
         return view('pages.admin');
     }
