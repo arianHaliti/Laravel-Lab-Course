@@ -82,7 +82,7 @@ $(document).ready(function() {
             alert("nothing"); 
           }
           else{
-            alert(data.id)
+            alert(data.user)
           }
 					//at each request - every written letter is request, firstly we delete old results, and fetch new ones.
                    /* $('#results').empty();

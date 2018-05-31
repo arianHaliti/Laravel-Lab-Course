@@ -36,10 +36,15 @@ class PagesController extends Controller
             return response()->json($response);
 
         }
+        $users = [];
+        foreach($user as $u){
+            $us = [];
+            $us.array_push($us,$u->id,$u->username);
+            $users.array_push($users,$u->id,$u->username);
+        }
         $response = array(
             'status' => 'success',
-            'id' => $user->id,
-            'username' => $user->username, 
+            'user' => $users,
         );
         return response()->json($response);
         
