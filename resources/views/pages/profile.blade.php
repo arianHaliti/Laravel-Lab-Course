@@ -21,14 +21,18 @@
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             
          </ul>
+
+         
       <img src="storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
       <ul class="stat-ul stat-ul2">
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             
          </ul>
+
      <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
-     
+     <button type="button" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
       <nav class="navbar border-bottom-0 navbar-expand-lg navbar-white p-0">
