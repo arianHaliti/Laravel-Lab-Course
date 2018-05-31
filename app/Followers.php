@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Followers extends Model
 {
-    //
+    protected $primaryKey = 'follow_id';
 }

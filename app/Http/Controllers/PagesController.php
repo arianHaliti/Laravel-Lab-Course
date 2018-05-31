@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Followers;
+
 class PagesController extends Controller
 {  
     public function index () {
@@ -44,6 +46,31 @@ class PagesController extends Controller
         return response()->json($response);
         
 
+    }
+
+    public function follow(Request $request){
+        $f = Followers::where('follower_id','=',$request->follower_id)
+                ->where('user_id','=',auth()->user()->id)       
+        ->get()
+        ->first();
+
+        if(count($f) !=0){
+            $f->delete();
+            $response = array (
+                'status' => 'removed',
+            );
+            return response()->json($response);
+        }
+        $new_f = new Followers;
+        $new_f->user_id=auth()->user()->id;
+        $new_f->follower_id = $request->follower_id;
+        $new_f ->save();
+
+        $response = array(
+            'status' => 'success',
+        );
+        return response()->json($response);
+           
     }
 
     public function fullPost(){

@@ -32,6 +32,7 @@ Route::get('/', 'PagesController@index');
 //Route For Profile
 
 Route::get('/profile/{id}','PagesController@profile');
+Route::post('/follow','PagesController@follow');
 Route::post('/searchUsers','PagesController@searchUsers');
 
 
