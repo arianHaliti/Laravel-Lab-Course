@@ -38,7 +38,7 @@ use App\Followers;
          </ul>
 
          
-      <img src="storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
+      <img src="/storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
       <ul class="stat-ul stat-ul2">
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
@@ -50,10 +50,12 @@ use App\Followers;
     @guest
       <button type="button" onclick="location.href='/login'" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
     @else 
-      @if(count($follow)==0)   
-      <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+      @if(auth()->user()->id==$user->id)
+        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Edit Profile</button>
+      @elseif(count($follow)==0)   
+       <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
       @else
-      <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
+        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
       @endif
     @endguest
       </div>
