@@ -1,8 +1,20 @@
 
-<?php use App\Question; ?>
+<?php 
+
+use App\Question; 
+use App\Followers;
+?>
 @extends('layouts.app')
 
 @section('content')
+<?php 
+  $follow = Followers::where('follower_id','=',$user->id)
+    ->where('user_id','=',auth()->user()->id)
+    ->get()
+    ->first();
+
+  
+?>
 
 <div class="container mt-5 pt-3 border-bottom">
     <div class="row px-0">
@@ -31,7 +43,12 @@
          </ul>
 
      <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
-     <button type="button" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+    
+    @if(count($follow)==0)   
+     <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+    @else
+     <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
+    @endif
 
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
@@ -143,7 +160,46 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        
+        
+        //alert(correct);
+        //alert(correct); 
+        $("#follow").click(function() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           
+            
+            var follower_id = {!! json_encode($user->id) !!};
+           //alert(follower_id);
+           // alert(1);
+            $.ajax({
 
+                url: '/follow',
+                type: 'POST',
+                data: {_token: CSRF_TOKEN,vote:$('#follow').text(),follower_id:follower_id},
+                dataType: 'JSON',
+
+                success: function (data) {
+                
+                  
+                   if(data['status']=='removed'){
+                  
+                    $('#follow').html('Following'); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                   }else{
+                    $('#follow').html('Follow');
+                    //$(correct).addClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                   }
+                    
+                },
+                erro: function(){
+                    alert(0);
+                }
+            });         
+        });
+    
+    });
+</script>
 
 
 
