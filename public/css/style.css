@@ -59,9 +59,7 @@ color:rgb(100,100,100) !important;
 	border-bottom:2px solid #3897F0;
 	background:rgb(245,245,245) !important;
 }
-.navbar{
-	
-}
+
 .z{
 	z-index:1000;
 }
@@ -159,9 +157,7 @@ color:rgb(100,100,100) !important;
 	transition:all 0.2s ease-in;
 	
 }
-.btn-outline-primary.focus, .btn-outline-primary:active{
-	
-}
+
 .form-control:focus{
 	outline:0px;
 	box-shadow:0px 0px 0px 0px;
@@ -279,7 +275,7 @@ background:rgb(245,245,245);
 }
 .stat-ul li{
 	display:inline;
-	float:left;
+	
 	background:rgba(255,255,255,0.8);
 	padding:3px 10px;
 	
@@ -314,9 +310,7 @@ background:rgb(245,245,245);
 	border:1px solid rgba(0, 123, 254,0.3);
 }
 
-.tags ul a{
-	
-	}
+
 .stat-ul li:first-child{
 	border-top-left-radius:5px;
 }
