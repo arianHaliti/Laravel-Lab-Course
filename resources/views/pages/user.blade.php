@@ -12,17 +12,24 @@
     <div class="col-md-9 p-0">
       <div class="col-md-12  mt-5">     
         <div class="row p-2 transform1 border-top border-bottom mb-0">
-          <div class="col-md-6">
-            <div class="row">Search
-              <div class="col-md-2">
-                <div class="icon"></div>
-              </div>
-              <div class="col-md-10">
-                <input type="text" id="searchuser" autocomplete="off" class="form-control text-light px-3 bg-secondary border-0" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-              </div>
-              <ul id="results"></ul>                       
-            </div>
-           <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white float-right p-0">
+		<div class="col-md-4">
+			<h5 class="mb-0 mt ml-0 text-muted">Users</h5>
+		</div>
+		<div class="col-md-3">
+		
+             <div class="input-group input-group-sm mySearch mySearch1 mr-4 border-0 w-100 rounded float-left">
+
+<input type="text" placeholder="Search..." id="search1" class="form-control text-light px-2 bg-light border  search1" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+<div class="input-group-append">
+<button class="btn btn-light border px-3" type="button"><i class="fas fa-search"></i></button>
+</div>
+</div>
+              <ul id="results" style="z-index:10000 !important;" class="position-absolute bg-light border px-2"></ul>                       
+           
+		</div>
+          <div class="col-md-5">
+            
+           <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white float-right p-0 mt-1">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active pl-0">
                   <a class="nav-link px-5 text-muted" href="#">Name
@@ -37,6 +44,7 @@
               </ul>
             </nav>
           </div>
+		  
         </div>
         <div class="row p-0 border-bottom courses">
           @foreach($users as $u) 
@@ -69,11 +77,11 @@ jQuery.fn.extend({
 $(document).ready(function() {  
   // Icon Click Focus
   $('div.icon').click(function(){
-    $('#searchuser').focus();
+    $('#search1').focus();
   });
 
   function search() {
-  var query_value = $('#searchuser').val();
+  var query_value = $('#search1').val();
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
   //$('b#search-string').text(query_value);
@@ -97,14 +105,14 @@ $(document).ready(function() {
           $('#results').empty();
           $.each(data.user, function(index) {
             //Iterate through the results of the query dhe perdor index si key per ti qasur te dhenave [index].id [index].username
-            $('#results').append("<li><a href='profile/" +data.user[index].id+ "'>" + data.user[index].username+ "</a></li>");
+            $('#results').append("<li class='py-1'><a href='profile/" +data.user[index].id+ "'>" + data.user[index].username+ "</a></li>");
           });
         }
       }
     });
   }return false;    
 }
-  $("#searchuser").live("keyup", function(e) {
+  $("#search1").live("keyup", function(e) {
     // Set Timeout
     // alert($(this).val())
     clearTimeout($.data(this, 'timer'));

@@ -19,45 +19,59 @@ use App\Followers;
   
 ?>
 
-<div class="container mt-5 pt-3 border-bottom">
-    <div class="row px-0">
-        <div class="col-md-12">
-            <ul class="stat-ul trophies-ul black ml-4 mt-5">
-            <li class="border"><i class="fas fa-trophy" style="font-size:18px; color:red"></i></li>
-         </ul>
-        </div>
+<div class="container mt-0 pt-1 px-0 mt-5">
     
-    </div>
-    <div class="row px-0 mt-5">
-    <div class="col-md-12 border-top mt-5 rounded-bottom p-0">
-      <div class="col-md-5 p-0 mr-auto float-left">
-         <ul class="stat-ul black ml-4">
-            <li class=""><p>Earned</p><span>1000</span><p>Points</p></li>
-            <li><p>Earned</p><span>1000</span><p>Points</p></li>
+    <div class="row px-0 mt-0 border-bottom border-top">
+    <div class="col-md-12  border-bottom mt-0  p-0">
+	 <div class="row px-0 mt-3">
+		<div class="col-md-7">
+		  <div class="row">
+			<div class="col-md-4 p-0">
+		<ul class="stat-ul black ml-0 float-right mt-5 mb-0">
+            <li class="float-left"><p>Asked</p><span>1000</span><p>Questions</p></li>
+            <li class="float-left"><p>Answered</p><span>1000</span><p>Questions</p></li>
             
          </ul>
+		 </div>
 
+		 <div class="col-md-2 p-0">
          
-      <img src="/storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
-      <ul class="stat-ul stat-ul2">
-            <li><p>Earned</p><span>1000</span><p>Points</p></li>
-            <li><p>Earned</p><span>1000</span><p>Points</p></li>
+      <img src="/storage/image/cover.jpg" class="rounded-circle p-1 black-shadow profile-img">
+	  
+		</div>
+		
+		<div class="col-md-4 p-0 z-indexnegative">
+      <ul class="stat-ul stat-ul2 ml-0 pl-0 float-left mt-5 mb-0">
+            <li class="float-left"><p>Made</p><span>10001</span><p>Tuts</p></li>
+            <li class="float-left"><p>Earned</p><span>1120</span><p>Points</p></li>
             
          </ul>
+		 </div>
+		</div>
+		</div>
+		<div class="col-md-5">
+		@guest
+      <button type="button" onclick="location.href='/login'" class="btn transform1 btn-sm mr-3  btn-outline-primary w-50 cr-button bg-light follow-btn float-right text-light">Follow</button>
+    @else 
+      @if(auth()->user()->id==$user->id)
+        <button type="button" id="follow" class="btn transform1 btn-sm btn-outline-primary mr-3  w-50 cr-button bg-light follow-btn float-right text-light">Edit Profile</button>
+      @elseif(count($follow)==0)   
+       <button type="button" id="follow" class="btn transform1 btn-sm  btn-outline-primary mr-3  w-50 cr-button bg-light follow-btn float-right text-light">Follow</button>
+      @else
+        <button type="button" id="follow" class="btn transform1 btn-sm  btn-outline-primary mr-3 w-50 cr-button bg-light  text-light follow-btn float-right">Following</button>
+      @endif
+    @endguest
+		
+		</div>
+	 </div>
+	 </div>
+	 <div class="col-md-12 bg-light border-left border-right">
+      <div class="col-md-5 p-0 mr-auto float-left">
+         
 
      <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
     
-    @guest
-      <button type="button" onclick="location.href='/login'" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
-    @else 
-      @if(auth()->user()->id==$user->id)
-        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Edit Profile</button>
-      @elseif(count($follow)==0)   
-       <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
-      @else
-        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
-      @endif
-    @endguest
+    
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
       <nav class="navbar border-bottom-0 navbar-expand-lg navbar-white p-0">

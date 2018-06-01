@@ -20,16 +20,16 @@
         <div class="row px-2 mt-4">
         <div class="col-md-12 px-2 py-2 mt-2 transform1">
             
-        <a href="/questions/create"><button type="button" class="btn mt-1 btn-outline-primary w-100 cr-button bg-light  text-dark" >Create a question</button></a>
+        <a href="/questions/create"><button type="button" class="btn mt-1 btn-outline-primary w-100 cr-button bg-light  text-dark" >Ask a question</button></a>
         </div>
        
             <div class="col-md-12 px-2 mt-3">
                 <h5 class="border-bottom border-top mb-0 p-2 transform1 text-muted">Overall stats</h5>
             <ul class="all-stats-ul pl-0">
-                    <li class="p-2 border-bottom"> {{$question}} Questions asked</li>
-                    <li class="p-2 border-bottom"> {{$answers}} Answeres given </li>
-                    <li class="p-2 border-bottom"> {{$soleved}} Questions solved </li>
-                    <li class="p-2 border-bottom"> {{$users}} Active Users </li>
+                    <li class="p-2 "> {{$question}} Questions asked</li>
+                    <li class="p-2"> {{$answers}} Answeres given </li>
+                    <li class="p-2"> {{$soleved}} Questions solved </li>
+                    <li class="p-2"> {{$users}} Active Users </li>
                
             </ul>
             </div>

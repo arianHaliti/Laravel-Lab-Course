@@ -22,13 +22,13 @@
                 ]);
 
 ?>
-<div class="col-md-4 p-0 p-2 mt-2 mb-2 user-box ">
-    <div class="row px-2">
-   <div class="col-md-2 p-0">
+<div class="col-md-4 p-2 px-3 mt-2 mb-2 user-box">
+    <div class="row px-2 ">
+   <div class="col-md-2 p-0" >
     <a href="profile/{{$u->id}}"><img src="/storage/image/photo.jpg" class="w-10 rounded-circle"></a>
     </div>
     <div class="col-md-10 px-2 border-right">
-        <h6 class="w-100">{{$u->username}}</h6>
+        <h6 class="w-100 mb-0">{{$u->username}}</h6>
         <p class="mb-0"><small>{{$u->name}} {{$u->surname}}</small></p>
         <p class="mb-0">Points : {{$sumVotes}}</p>
         <ul class="pagination tags pagination-sm mb-0">

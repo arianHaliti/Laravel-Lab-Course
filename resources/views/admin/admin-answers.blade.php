@@ -2,12 +2,8 @@
 
 @section('content')
 
-<div class="container p-0">
-<ul class="links1 pl-0">
-                    <li><a href="/admin" class="text-muted">Dashboard</a></li>
-                    <li><a href="#" class="text-muted">Answers</a></li>
-                    
-                </ul>
+<div class="container p-0 mt-3">
+         
         <div class="row mt-0">
             
             <div class="col-md-2 border-right p-0 bg-light">
@@ -26,7 +22,15 @@
 
         </div>
 
-        <div class="col-md-10 mt-3 ">
+        <div class="col-md-10 ">
+
+             <ul class="links1 pl-0">
+                    <li><a href="/admin" class="text-muted">Dashboard</a></li>
+                    <li>/</li>
+                    <li><a href="#" class="text-muted">Answers</a></li>
+                    
+                </ul>
+
             <div class="container">
             
 <div class="row border px-0 py-0 mt-0">

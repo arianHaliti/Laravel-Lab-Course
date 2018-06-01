@@ -25,6 +25,7 @@
         <div class="col-md-10">
         <ul class="links1 pl-0">
                     <li><a href="/admin" class="text-muted">Dashboard</a></li>
+                    <li>/</li>
                     <li><a href="#" class="text-muted">Users</a></li>
                     
                 </ul>

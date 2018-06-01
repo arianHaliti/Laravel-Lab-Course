@@ -1,13 +1,41 @@
 <?php use App\Vote; ?>
-<div class="row p-2 border-bottom border-top mt-5 transform1">
-    <div class="col-md-12">
-        <h5 class="mb-0 text-muted">{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
-        <ul>
-            <li><a href="{{Request::url()}}?sort=votes">Votes</a></li>
-            <li><a href="{{Request::url()}}?sort=recent">Recent</a></li>
-        </ul>
-    </div>
-</div>
+
+    <div class="row p-2 transform1 border-top border-bottom mb-0 mt-5">
+                        <div class="col-md-6 p-0">
+                            <h5 class="mb-0 mt text-muted">{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
+                        </div>
+                        <div class="col-md-6">
+                            
+         
+            
+    
+            
+           <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white p-0 float-right">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active pl-0">
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=votes">Votes
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                 <li class="nav-item active pl-0">
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=recent">Recent
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+               
+               
+              </ul>
+              </nav>
+             
+           
+            
+        
+        
+                        </div>
+                    
+                     </div>
+       
+ 
 <!--answer BOX-->
 <?php $c=0;
 
@@ -21,12 +49,16 @@ if(!Auth::guest()){
     
 }?>        
 <div class="row p-2  border-bottom">
+<div class="stats  stats-full-post border-0 ml-2 p-1 w-10 mr-2 ml-auto" >
+               
+            </div>
     @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
         @if($ans->correct_id)
             <!-- ADD A CLASS PER MIA NDRRU NGJYREN  QE ME TREGU QE E KA SELEKTU QITA -->
-            <a href="#" id="{{'correct'.$c}}" class="correct-color"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
-                <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
+            <a href="#" id="{{'correct'.$c}}" class="correct-color1" style="color:red !important;"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
+                <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100" style="color:red !important;"></i></p>
             </div></a>
+            
         @else
 
             <a href="#"  id="{{'correct'.$c}}"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
@@ -35,7 +67,7 @@ if(!Auth::guest()){
         @endif
     @elseif($ans->correct_id)
         <!-- NESE OSHT ANSWER E SAKT EDHE NUK ESHTE AUTHORI I PYTJES ME QIT TIKUN (QITJA EDHE KSAJ 1 KLAS)  shko edhe te 105 ngjitja 1 klas me JQUERY -->
-        <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" id="{{'correct'.$c}}">
+        <div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto " id="{{'correct'.$c}}">
         <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
         </div>
     @endif
@@ -133,10 +165,10 @@ if(!Auth::guest()){
                    
                    if(data['status']=='removed'){
                   
-                    $(correct).removeClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                    $(correct).removeClass("correct-color1"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }else{
                     
-                    $(correct).addClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                    $(correct).addClass("correct-color1"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }
                     
                 },
