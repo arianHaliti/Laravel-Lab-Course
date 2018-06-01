@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Course;
 
 class CourseController extends Controller
 {
@@ -45,7 +46,16 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        if(!is_numeric($id))
+        abort(404);
+        
+   $course =  Course::find($id);
+   
+   if(count($course)==0)
+        abort(404);
+   
+    return view('courses.showC')->with('courses',$course);
+
     }
 
     /**

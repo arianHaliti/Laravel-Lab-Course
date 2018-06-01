@@ -76,6 +76,10 @@ Route::get('/admin/question','PagesController@adminquestion');
 Route::get('/admin/answer','PagesController@adminanswer');
 Route::get('/admin/report','PagesController@adminreport');
 
+
+Route::get('/course/{id}','CourseController@show');
+
+
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
 

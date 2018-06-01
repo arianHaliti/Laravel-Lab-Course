@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+<?php 
+use App\Course;
+
+
+ $courses= Course::orderBy('created_at')->paginate(10);
+
+
+?>
+
 <div class="container p-0 mt-3">
         <div class="row mt-0">
             
@@ -19,7 +29,7 @@
 
         <div class="col-md-10 mt-0 ">
         <ul class="links1 pl-0">
-                    <li><a href="#" class="text-muted">Dashboard</a></li>
+                    <li><a href="#" class="text-muted">{{$courses->course_title}}</a></li>
                     
                 </ul>
             <div class="container">
