@@ -8,10 +8,13 @@ use App\Followers;
 
 @section('content')
 <?php 
-  $follow = Followers::where('follower_id','=',$user->id)
-    ->where('user_id','=',auth()->user()->id)
-    ->get()
-    ->first();
+
+  if(!Auth::guest()){
+    $follow = Followers::where('follower_id','=',$user->id)
+      ->where('user_id','=',auth()->user()->id)
+      ->get()
+      ->first();
+  }
 
   
 ?>
@@ -35,7 +38,7 @@ use App\Followers;
          </ul>
 
          
-      <img src="storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
+      <img src="/storage/image/cover.jpg" class="rounded-circle p-1 black-shadow position-absolute profile-img">
       <ul class="stat-ul stat-ul2">
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
             <li><p>Earned</p><span>1000</span><p>Points</p></li>
@@ -44,12 +47,17 @@ use App\Followers;
 
      <h5 class="text-center mt-4 mb-2 transform1">{{$user->username}}</h5>
     
-    @if(count($follow)==0)   
-     <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
-    @else
-     <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
-    @endif
-
+    @guest
+      <button type="button" onclick="location.href='/login'" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+    @else 
+      @if(auth()->user()->id==$user->id)
+        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Edit Profile</button>
+      @elseif(count($follow)==0)   
+       <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Follow</button>
+      @else
+        <button type="button" id="follow" class="btn mt-1 btn-outline-primary w-50 cr-button bg-light  text-light">Following</button>
+      @endif
+    @endguest
       </div>
       <div class="col-md-7 ml-auto float-right p-0 transform1">
       <nav class="navbar border-bottom-0 navbar-expand-lg navbar-white p-0">
@@ -144,7 +152,7 @@ use App\Followers;
             </div>
         
             <?php   
-              $question = Question::where('user_id', $user->id)->get();
+              $question = Question::where('user_id', $user->id)->where('question_active','=',0)->get();
               
             //$question = Question:where('users_id',GEtUSERID);
             ?>
@@ -184,12 +192,9 @@ use App\Followers;
                 
                   
                    if(data['status']=='removed'){
-                    alert(0);
-                  
+
                     $('#follow').html('Follow'); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }else{
-                    alert(1);
-                  
                     $('#follow').html('Following');
                   
                     //$(correct).addClass("correct-color"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use DB; 
 use Illuminate\Support\Facades\Input;
 class AnswerController extends Controller
 {
@@ -14,7 +15,7 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -61,9 +62,38 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($question_id)
     {
-        //
+        // $pp = answers for a page !
+        $pp = 5;
+        if(isset($_GET['sort'])){
+            if($_GET['sort']=='votes'){
+                $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
+                ->leftjoin('votes','votes.content_id','=','answers.answer_id')
+                ->select ('answers.*', DB::raw('SUM(CASE WHEN votes.content_type = 1 THEN  votes.vote_type ELSE 0 END) as total_votes'))
+                ->where('answer_active',0)
+                ->groupBy('answers.answer_id')
+                ->where('question_id',$question_id)
+                ->orderBy('total_votes','desc')
+                ->paginate($pp);
+                $answers->appends(['sort' => 'votes'])->links();
+            }else 
+            {
+                $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
+                ->where('answer_active',0)
+                ->select ('answers.*')
+                ->where('question_id',$question_id)
+                ->paginate($pp);
+            }
+        }else{
+            $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
+            ->where('answer_active',0)
+            ->select ('answers.*')
+            ->where('question_id',$question_id)
+            ->paginate($pp);
+            
+        }
+        return $answers;
     }
 
     /**

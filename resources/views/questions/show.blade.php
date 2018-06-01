@@ -2,10 +2,8 @@
     use App\Answer;
     use App\Vote;
     use App\CorrectAnswer;
-    $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
-            ->where('answer_active',0)
-            ->where('question_id',$question->question_id)
-            ->get(['answers.answer_id','answer_desc','user_id','correct_id']);
+    $answers =app('App\Http\Controllers\AnswerController')->show($question->question_id);
+    
     $sum = $answers->count();
 //GETS THE USERS VOTE FOR THE QUESTION TO SHOW ON THE ARROWS
     if(!Auth::guest()){
@@ -113,7 +111,7 @@
         <!--/.answer BOX-->
   
         </div>
-
+        {{$answers->links()}}     
     <div class="row p-2 transform1 border-top border-bottom mb-0 mt-5">
         <div class="col-md-6 p-0">
             <h5 class="mb-0 mt text-muted">Add An Answer</h5>

@@ -31,16 +31,13 @@ Route::get('/', 'PagesController@index');
 
 //Route For Profile
 
-Route::get('/profile/{id}','PagesController@profile');
-Route::post('/follow','PagesController@follow');
-Route::post('/searchUsers','PagesController@searchUsers');
+Route::get('/profile/{id}','ProfileController@profile');
+Route::post('/follow','ProfileController@follow')->middleware('auth');
+Route::post('/searchUsers','ProfileController@searchUsers');
 
 
 Route::get('/tag','PagesController@tag');
-Route::get('/users/{id}/{name}', function ($id,$name) {
-    return "this user id is :".$id." hes name is ".$name;
-    
-});
+
 Route::get('/full-post','PagesController@fullPost');
 
 Route::get('/about','PagesController@about');
