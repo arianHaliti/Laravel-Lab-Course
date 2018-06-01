@@ -2,6 +2,10 @@
 <div class="row p-2 border-bottom border-top mt-5 transform1">
     <div class="col-md-12">
         <h5 class="mb-0 text-muted">{{$sum}} {{$sum == 1 ? 'ANSWER' : 'ANSWERS'}}</h5>
+        <ul>
+            <li><a href="{{Request::url()}}?sort=votes">Votes</a></li>
+            <li><a href="{{Request::url()}}?sort=recent">Recent</a></li>
+        </ul>
     </div>
 </div>
 <!--answer BOX-->
@@ -13,11 +17,7 @@
 
 //GETS THE USERS VOTE FOR THE ANSWER TO SHOW ON THE ARROWS
 if(!Auth::guest()){
-    $av= Vote::where('content_id','=',$ans->answer_id)
-    ->where('content_type','=',1)
-    ->where('user_id','=',Auth::user()->id)
-    ->get()
-    ->first();
+    $av= $ans->votes($ans->answer_id,Auth::user()->id);
     
 }?>        
 <div class="row p-2  border-bottom">
@@ -41,7 +41,7 @@ if(!Auth::guest()){
     @endif
     <div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2">
 
-        @if(Auth::guest() || count($av)==0)
+        @if(Auth::guest() || count($av)==0 || $av->vote_type ==0)
             <a id="{{'upvote'.$c}}" href="#"  class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
 
             <a id="{{'downvote'.$c}}" href="#" class="float-left w-100 m-auto text-center up-do-arr {{'a_vote'.$c}}" name ="down" ><i class="fa fa-caret-down" aria-hidden="true"></i></a>
