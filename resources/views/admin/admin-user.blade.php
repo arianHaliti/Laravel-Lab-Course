@@ -89,7 +89,7 @@ use App\User;
 
  $users= User::orderBy('created_at')->paginate(5);
 
-
+$c=0;
 ?>
 
                
@@ -109,24 +109,28 @@ use App\User;
 </tr>
 
 @foreach($users as $u)
+ <?php
+    $c++;
+ ?>
 @if($u->user_active=='0')
   <tr class="">
   @else
   <tr class="bg-light">
   @endif
 
-       <td>{{$u->id}}</td>
+       <td class="u-id">{{$u->id}}</td>
        <td>{{$u->name}}</td>
        <td>{{$u->surname}}</td>
        <td>{{$u->username}}</td>
        <td>{{$u->email}}</td>
        <td>{{$u->created_at}}</td>
-       <td><button class="btn btn-sm btn-outline-secondary">edit</button></td>
+      <td><a href="user/{{$u->id}}/edit"><button class="btn btn-sm btn-outline-secondary">edit</button></a></td>
        @if($u->user_active=='0')
-       <td>{{$u->user_active}} <button class="btn btn-sm btn-success"></button><button class="btn btn-sm ml-2 btn-outline-danger">deactivate</button></td>
+  <td><span id="act{{$c}}">{{$u->user_active}} </span><button class="btn btn-sm btn-success" id="btn{{$c}}"></button><button id="deact{{$c}}" onclick="callajax('{{$u->id}}',this.id,btn'{{$c}}',act{{$c}})" class="btn btn-sm ml-2 btn-outline-danger " >deactivate</button></td>
        @else
-       <td>{{$u->user_active}} <button class="btn btn-sm btn-danger"></button><button class="btn btn-sm ml-2 btn-outline-success">activate</button></td>
+  <td><span id="act{{$c}}">{{$u->user_active}}</span> <button class="btn btn-sm btn-danger" id="btn{{$c}}"></button><button  onclick="callajax('{{$u->id}}',this.id,btn'{{$c}}',act{{$c}})" class="btn btn-sm ml-2 btn-outline-success" id="deact{{$c}}">activate</button></td>
        @endif
+      
 </tr>
 @endforeach
 
@@ -147,4 +151,56 @@ use App\User;
 </div>
 </div>
 
+<script>
+
+  
+
+   function callajax(id,eid,btn,act){
+        
+       
+          
+          
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           /*
+            var id = {!! json_encode($user->id) !!};
+            var q_id = {!! json_encode($question->question_id) !!};
+   // alert(1);*/
+   alert(eid);
+   alert(act);
+   alert(btn);
+   
+            $.ajax({
+  
+                url: '/deactivate',
+                type: 'POST',
+                data: {_token: CSRF_TOKEN,vote:$("#deact").text(),id : id},
+                dataType: 'JSON',
+  
+                success: function (data) {
+                
+                   
+                   if(data['status']=='Deactivated'){
+                    $("#"+eid).removeClass("btn-danger");
+                    $("#"+eid).addClass("btn-success");
+                    $("#"+eid).html("Activate");
+                    $("#"+btn).removeClass('btn-danger');
+                    $("#"+btn).addClass('btn-success');
+                    $("#"+act).html(0);  
+                   }else{
+                    $("#"+eid).removeClass("btn-success");
+                    $("#"+eid).addClass("btn-danger");
+                    $("#"+eid).html("Deactivate");
+                   }
+                    
+                },
+                erro: function(){
+                    alert(0);
+                }
+            });       
+
+    
+    }
+  </script>
+
 @endsection()
+

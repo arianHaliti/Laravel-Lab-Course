@@ -51,7 +51,7 @@
                         @if($v->vote_type == 1)
                              
                             <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote  correct-color" name="up"><i  class="fa fa-caret-up " aria-hidden="true"></i></a>
-                            <a  id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i  class="fa fa-caret-down" aria-hidden="true"></i></a>
+                            <a  id = "downvote" href="#" data-toggle="tooltip" title="Disabled tooltip" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i  class="fa fa-caret-down" aria-hidden="true"></i></a>
                         @elseif ($v->vote_type==-1)
                             <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i  class="fa fa-caret-up" aria-hidden="true"></i></a>
                             
@@ -59,7 +59,7 @@
                         @endif
                     @endif   
                     
-                    
+                    <script>$('#downvote').tooltip('show')</script>
                     <p class="w-100 text-center m-auto float-left"id="q_total"></p>
                 </div>
                 <div class="stats stats-full-post bg-light p-1 w-10 mr-2">

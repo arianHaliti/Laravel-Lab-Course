@@ -30,7 +30,7 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
         <p class="w-100 m-auto text-center"><i class="fas fa-eye"></i></p>
         <p class="w-100 text-center m-auto">{{$q->question_views}}</p>
     </div>
-    <div class="stats bg-light p-1 w-10 rounded-circle">
+    <div class="stats  p-1 bg-light rounded-circle w-10 rounded">
         <a href="/profile/{{$q->user_id}}"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
         <p>{{$username->username}}
     </div>

@@ -71,13 +71,15 @@ Route::post('/downvote','VoteController@downvote')->middleware('auth');
 Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
 
-
+//ADMIN ROUTES
 Route::get('/admin','PagesController@admin');
 Route::get('/admin/user','PagesController@adminuser');
 Route::get('/admin/question','PagesController@adminquestion');
 Route::get('/admin/answer','PagesController@adminanswer');
 Route::get('/admin/report','PagesController@adminreport');
-
+Route::get('/admin/user/{id}/edit','AdminController@userEdit');
+Route::put('/admin/user/{id}','AdminController@userUpdate');
+Route::post('/deactivate','AdminController@deactivateUser')->middleware('auth');
 
 Route::get('/course/{id}','CourseController@show');
 
@@ -87,3 +89,6 @@ Route::post('/correct','VoteController@correct')->middleware('auth');
 
 //ROUTE FOR TEAM
 Route::get('/team','PagesController@team');
+
+
+//
