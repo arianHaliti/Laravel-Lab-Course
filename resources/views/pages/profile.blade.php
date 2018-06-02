@@ -21,9 +21,9 @@ use App\Followers;
 
 <div class="container mt-0 pt-1 px-0 mt-5">
     
-    <div class="row px-0 mt-0 border-bottom border-top">
+    <div class="row px-0 mt-0 border-bottom">
     <div class="col-md-12  border-bottom mt-0  p-0">
-	 <div class="row px-0 mt-3">
+	 <div class="row px-0 mt-0">
 		<div class="col-md-7">
 		  <div class="row">
 			<div class="col-md-4 p-0">

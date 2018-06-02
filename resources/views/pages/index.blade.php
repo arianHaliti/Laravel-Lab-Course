@@ -16,10 +16,10 @@ use App\Question;
                 <div class="col-md-12  mt-5">
                 
                     <div class="row p-2 transform1 border-top border-bottom mb-0">
-                        <div class="col-md-6 p-0">
+                        <div class="col-md-4 p-0">
                           <h5 class="mb-0 mt text-muted"> {{$data['all']}}</h5>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             
          
             
@@ -39,7 +39,7 @@ use App\Question;
                     </a>
   
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="nav-link text-dark border-bottom" href="/questions/category/general">General
+                        <a class="nav-link border-bottom" style="color:black !important;" href="/questions/category/general">General
                           <span class="sr-only">(current)</span>
                         </a>
                         <a class="nav-link text-dark border-bottom" href="/questions/category/food">Food
