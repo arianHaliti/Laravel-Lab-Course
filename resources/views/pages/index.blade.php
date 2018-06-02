@@ -32,7 +32,22 @@ use App\Question;
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
-                 <li class="nav-item active pl-0">
+                <li class="nav-item dropdown">
+                  
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Category <span class="caret"></span>
+                    </a>
+  
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-dark border-bottom" href="/questions/category/general">General
+                          <span class="sr-only">(current)</span>
+                        </a>
+                        <a class="nav-link text-dark border-bottom" href="/questions/category/food">Food
+                          <span class="sr-only">(current)</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item active pl-0">
                   <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=votes">Votes
                     <span class="sr-only">(current)</span>
                   </a>

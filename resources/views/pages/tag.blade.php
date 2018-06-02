@@ -42,7 +42,7 @@
                         <a class="nav-link text-dark border-bottom" href="/tag/category/general">General
                             <span class="sr-only">(current)</span>
                         </a>
-                        <a class="nav-link text-dark border-bottom" href="/tag/category/general">Food
+                        <a class="nav-link text-dark border-bottom" href="/tag/category/food">Food
                             <span class="sr-only">(current)</span>
                         </a>
                          

@@ -112,7 +112,8 @@ if(!Auth::guest()){
         {!!$ans->answer_desc!!}
         
 </div>
-    <!--COMMENTS-->
+<div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
+    <!--COMMENTS
     <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">
     <p class="p-0 mb-0">
@@ -128,7 +129,8 @@ if(!Auth::guest()){
     <p class="p-0 mb-0">
         You are rights.</p>
         </div>
-    <!--/.COMMENTS-->
+    .COMMENTS-->
+</div>
 
 
 </div>

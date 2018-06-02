@@ -81,12 +81,6 @@
         <li class="nav-item">
           <a class="nav-link px-5" href="/tag"><i class="fas fa-tag"></i> Tags</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link px-5" href="/questions/category/general"><i class="fas fa-tag"></i> General</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link px-5" href="/questions/category/food"><i class="fas fa-tag"></i> Food</a>
-        </li>
       </ul>
  
     </div>
