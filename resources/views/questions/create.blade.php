@@ -1,4 +1,4 @@
-
+<?php use App\Category;?>
 
 @extends('layouts.app')
 
@@ -67,22 +67,29 @@
                     <a href="#" class="f-14">For more visit the help center ></a>
              </div>
         </div>
+        <?php 
+            $categories = Category::all()->pluck('category_name', 'category_id');
+        ?>
         <div class="col-md-9 px-2">
-    {!! Form::open(['id'=>'form','action' => 'QuestionController@store' , 'method'=> 'POST']) !!}
-        <div class ="form-group">
-            
-            {{Form::text('title','',['class' => 'form-control q-title-input','placeholder' => 'Title'])}}
-        </div>
-        <div class="form-group">
-           
-            {{Form::textarea('body','',['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
-        </div>
-        <div>   
-            {{Form::label('tags','Tags (3 - 5)')}}
-            {{Form::text('tags','',['class'=>'form-control','id'=>'mySingleFieldTags','placeholder' => 'Tags'])}}               
-        </div>
-        {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
-    {!! Form::close() !!}   
+        {!! Form::open(['id'=>'form','action' => 'QuestionController@store' , 'method'=> 'POST']) !!}
+            <div class ="form-group">
+                
+                {{Form::text('title','',['class' => 'form-control q-title-input','placeholder' => 'Title'])}}
+            </div>
+            <div class="form-group">
+                {{Form::textarea('body','',['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
+            </div>
+            <div class="form-group">
+                 
+                    {{Form::select('category',$categories)}}
+                
+            </div>
+            <div>   
+                {{Form::label('tags','Tags (3 - 5)')}}
+                {{Form::text('tags','',['class'=>'form-control','id'=>'mySingleFieldTags','placeholder' => 'Tags'])}}               
+            </div>
+            {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
+        {!! Form::close() !!}   
 
 </div>
     </div>

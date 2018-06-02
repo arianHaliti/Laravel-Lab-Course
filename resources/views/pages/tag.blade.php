@@ -1,3 +1,4 @@
+<?php $tags = $data['tags']; ?>
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +12,7 @@
                 
                     <div class="row p-2 transform1 border-top border-bottom mb-0">
                         <div class="col-md-6 p-0">
-                            <h5 class="mb-0 mt text-muted">All Tags</h5>
+                            <h5 class="mb-0 mt text-muted"> {{$data['all']}}</h5>
                         </div>
                         <div class="col-md-6">
                             
@@ -31,7 +32,22 @@
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
-                
+                <li class="nav-item dropdown">
+                                
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"  v-pre>
+                        Category <span class="caret"></span>
+                    </a>
+    
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link text-dark border-bottom" href="/tag/category/general">General
+                            <span class="sr-only">(current)</span>
+                        </a>
+                        <a class="nav-link text-dark border-bottom" href="/tag/category/general">Food
+                            <span class="sr-only">(current)</span>
+                        </a>
+                         
+                    </div>
+                </li>
                
               </ul>
               </nav>
@@ -43,25 +59,16 @@
                         </div>
                     
                     </div>
-                    <?php use App\Tag;
-                        $myTime = Carbon\Carbon::now();
-                        
-                        $tags = Tag::join('tag_questions','tag_questions.tag_id','=','tags.tag_id')
-                        ->join('question','question.question_id','=','tag_questions.question_id')
-                        ->orderBy('tag_count','desc')
-                        ->groupBy('tag_id','tag_name')
-                        ->get(['tags.tag_id','tags.tag_name',
-                        DB::raw('count(tag_questions.question_id) as tag_count'),
-                        DB::raw('SUM(if(question.created_at > '.'\''.$myTime->subDays(1).'\''.', 1, 0)) AS daily'),
-                        DB::raw('SUM(if(question.created_at > '.'\''.$myTime->subDays(30).'\''.', 1, 0)) AS monthly')
-                        ]);
-                    ?>
-
+              
                     <div class="row p-2 border-bottom tags">
                         @foreach($tags as $t)
                         <div class="col-md-3 p-0 pr-3 mt-2 mb-2">
+                            @if($data['cate']==1)
+                            <a href="/questions/category/{{$t->category_name}}/tag/{{urlencode($t->tag_name)}}" class="px-2 py-1 rounded border float-left">{{$t->tag_name}}</a><p class="float-left f-12 mt-1 px-2">x {{$t->tag_count}}</p>
+                        @else
                             <a href="questions/tag/{{urlencode($t->tag_name)}}" class="px-2 py-1 rounded border float-left">{{$t->tag_name}}</a><p class="float-left f-12 mt-1 px-2">x {{$t->tag_count}}</p>
-                            <p class="f-12 float-left border-left mt-1 pl-2 w-100">{{$t->daily}} today,{{$t->monthly}} this month.</p>
+                        @endif
+                        <p class="f-12 float-left border-left mt-1 pl-2 w-100">{{$t->daily}} today,{{$t->monthly}} this month.</p>
                         </div>
                         @endforeach
                             

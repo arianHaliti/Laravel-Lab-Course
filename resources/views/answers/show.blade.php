@@ -55,13 +55,13 @@ if(!Auth::guest()){
     @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
         @if($ans->correct_id)
             <!-- ADD A CLASS PER MIA NDRRU NGJYREN  QE ME TREGU QE E KA SELEKTU QITA -->
-            <a href="#" id="{{'correct'.$c}}" class="correct-color1" style="color:red !important;"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
-                <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100" style="color:red !important;"></i></p>
+            <a href="#" id="{{'correct'.$c}}" ><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
+                <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100" ></i></p>
             </div></a>
             
         @else
 
-            <a href="#"  id="{{'correct'.$c}}"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
+            <a href="#"  id="{{'correct'.$c}}"class="correct-color1"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
             <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
             </div></a>
         @endif
@@ -164,11 +164,12 @@ if(!Auth::guest()){
                 
                    
                    if(data['status']=='removed'){
-                  
-                    $(correct).removeClass("correct-color1"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
-                   }else{
+                    
                     
                     $(correct).addClass("correct-color1"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
+                   }else{
+                    
+                    $(correct).removeClass("correct-color1"); //Shtoja 1 klas me ba ma ndryshe ngjyren ! se spo di !
                    }
                     
                 },

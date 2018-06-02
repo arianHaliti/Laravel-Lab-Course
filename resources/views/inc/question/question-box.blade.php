@@ -51,7 +51,11 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
         
      ?>
     @foreach($tags as $t)
-    <li class="page-item"><a class="page-link" href ="{{asset('questions/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
+    @if($data['cate']==0)
+        <li class="page-item"><a class="page-link" href ="{{asset('questions/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
+    @else
+        <li class="page-item"><a class="page-link" href ="{{asset('questions/category/'.urlencode($q->category_name).'/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
+    @endif
     @endforeach
 </ul>
 </nav>

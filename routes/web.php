@@ -36,14 +36,17 @@ Route::post('/follow','ProfileController@follow')->middleware('auth');
 Route::post('/searchUsers','ProfileController@searchUsers');
 
 
-Route::get('/tag','PagesController@tag');
+Route::get('/tag','TagQuestionController@tags');
 
 Route::get('/full-post','PagesController@fullPost');
 
 Route::get('/about','PagesController@about');
 Route::get('/user','PagesController@user');
 
-Route::resource('questions','QuestionController');
+Route::resource('questions','QuestionController', [
+    'only' => ['index','update','edit','destroy','show', 'create', 'store']
+]);
+Route::get('questions/category/{name}','QuestionController@indexCat');
 Route::resource('courses','CourseController');
 
 Auth::routes();
@@ -60,6 +63,8 @@ Route::delete('/answers/{id}','AnswerController@destroy')->middleware('auth');
 // ROUTE FOR QUESTION TAGS 
 // EX : questions/tag/javascript 
 Route::get('questions/tag/{tag}','TagQuestionController@tag');
+Route::get('questions/category/{name}/tag/{tag}','TagQuestionController@tagCategory');
+Route::get('/tag/category/{name}','TagQuestionController@tagCat');
 
 //ROUTES FOR VOTE
 Route::post('/downvote','VoteController@downvote')->middleware('auth');

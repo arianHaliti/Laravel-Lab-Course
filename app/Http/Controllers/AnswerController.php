@@ -70,7 +70,7 @@ class AnswerController extends Controller
             if($_GET['sort']=='votes'){
                 $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
                 ->leftjoin('votes','votes.content_id','=','answers.answer_id')
-                ->select ('answers.*', DB::raw('SUM(CASE WHEN votes.content_type = 1 THEN  votes.vote_type ELSE 0 END) as total_votes'))
+                ->select ('answers.*','answer_desc','correct_id', DB::raw('SUM(CASE WHEN votes.content_type = 1 THEN  votes.vote_type ELSE 0 END) as total_votes'))
                 ->where('answer_active',0)
                 ->groupBy('answers.answer_id')
                 ->where('question_id',$question_id)
@@ -81,16 +81,18 @@ class AnswerController extends Controller
             {
                 $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
                 ->where('answer_active',0)
-                ->select ('answers.*')
+                ->select('answers.answer_id','answer_desc','user_id','correct_id')
                 ->where('question_id',$question_id)
                 ->paginate($pp);
             }
         }else{
             $answers = Answer::leftjoin('correct_answers','correct_answers.answer_id', '=', 'answers.answer_id')
             ->where('answer_active',0)
-            ->select ('answers.*')
+            ->select('answers.answer_id','answer_desc','user_id','correct_id')
             ->where('question_id',$question_id)
             ->paginate($pp);
+           
+     
             
         }
         return $answers;

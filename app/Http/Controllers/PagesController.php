@@ -16,9 +16,7 @@ class PagesController extends Controller
         return view('pages.course');
     }
 
-    public function tag(){
-        return view('pages.tag');
-    }
+
 
     public function user(){
         return view('pages.user');
