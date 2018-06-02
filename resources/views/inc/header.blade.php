@@ -15,6 +15,26 @@
     </button>
     <div class="navbar-collapse navbar1">
       <ul class="navbar-nav bd-navbar-nav flex-row ml-auto mr-4">
+
+
+
+
+                <li class="nav-item dropdown">
+                  
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  <i class="fas fa-question-circle"></i> <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
+                        <span class="sr-only">(current)</span>
+                      </a>
+                      <a class="nav-link text-dark border-bottom" href="/about">About us
+                        <span class="sr-only">(current)</span>
+                      </a>
+                  </div>
+              </li>
+
         
           @guest
               <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
