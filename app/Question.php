@@ -16,4 +16,10 @@ class Question extends Model
     public function tags(){
         return $this->belongsToMany("App\Tag",'tag_questions','question_id','tag_id');
     }
+
+    public function getTags($id_q){
+        return Question::join('tag_questions','tag_questions.question_id','=','question.question_id')
+        ->join('tags','tags.tag_id','=','tag_questions.tag_id')
+        ->where('question.question_id',$id_q)->get();
+    }
 }

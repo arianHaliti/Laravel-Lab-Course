@@ -96,20 +96,22 @@
 <script>
 
 jQuery.validator.addMethod("tagC", function(value, element) {
-  return  $("#mySingleFieldTags").val().split(",").length >=1;
+    if($("#mySingleFieldTags").val().trim()=="")
+        return  false;
+    return  $("#mySingleFieldTags").val().split(",").length <6;
 
 }, "Please enter at least 1 - 5 tags");
 
 
 jQuery.validator.addMethod("lengthTag", function(value, element) {
     var bool =true;
-  $("#mySingleFieldTags").val().split(",").forEach(function(element) {
-      if(element.length >15){
-          bool = false;
-      }
-  });
-  
-  return bool;
+    $("#mySingleFieldTags").val().split(",").forEach(function(element) {
+        if(element.length >15){
+            bool = false;
+        }
+    });
+
+    return bool;
  
 
 }, "Tags should have not more than 15 letters");
