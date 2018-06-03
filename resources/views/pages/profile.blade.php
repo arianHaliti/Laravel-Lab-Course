@@ -15,8 +15,17 @@ use App\Followers;
       ->get()
       ->first();
   }
+  $answerd = $user->answerd($user->id);
+  $answers_count = count($answerd);
+  $asked = $user->asked($user->id);
+  $asked_count = count($asked);
 
-  
+  $sumA =$user->answerVotes($user->id);
+    //Referes at User Model function votes 
+  $sumQ =$user->votes($user->id);
+
+  $sumVotes = $sumA[0]->summ +$sumQ[0]->summ;
+
 ?>
 
 <div class="container mt-0 pt-1 px-0 mt-5">
@@ -28,8 +37,8 @@ use App\Followers;
 		  <div class="row">
 			<div class="col-md-4 p-0">
 		<ul class="stat-ul black ml-0 float-right mt-5 mb-0">
-            <li class="float-left"><p>Asked</p><span>1000</span><p>Questions</p></li>
-            <li class="float-left"><p>Answered</p><span>1000</span><p>Questions</p></li>
+            <li class="float-left"><p>Asked</p><span>{{$asked_count}}</span><p>Questions</p></li>
+            <li class="float-left"><p>Answered</p><span>{{$answers_count}}</span><p>Questions</p></li>
             
          </ul>
 		 </div>
@@ -43,7 +52,7 @@ use App\Followers;
 		<div class="col-md-4 p-0 z-indexnegative">
       <ul class="stat-ul stat-ul2 ml-0 pl-0 float-left mt-5 mb-0">
             <li class="float-left"><p>Made</p><span>10001</span><p>Tuts</p></li>
-            <li class="float-left"><p>Earned</p><span>1120</span><p>Points</p></li>
+            <li class="float-left"><p>Earned</p><span>{{$sumVotes}}</span><p>Points</p></li>
             
          </ul>
 		 </div>
@@ -95,7 +104,7 @@ use App\Followers;
           <a class="nav-link " href="#">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="/contact">Contact</a>
         </li>
       </ul>
      

@@ -249,7 +249,7 @@ class QuestionController extends Controller
                 
                 $new_tag = new Tag;
                 $new_tag->tag_name = $t;
-
+                $new_tag->createdBy = auth()->user()->id;
                 $new_tag->save();
                 $last_tag_id =$new_tag->tag_id;
             }else{

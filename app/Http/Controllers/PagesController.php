@@ -18,10 +18,7 @@ class PagesController extends Controller
 
 
 
-    public function user(){
-        $users = User::all();
-        return view('pages.user')->with('users',$users);
-    }
+    
 
     public function admin(){
         return view('admin.admin');

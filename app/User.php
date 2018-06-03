@@ -50,5 +50,15 @@ class User extends Authenticatable
                 DB::raw('IFNULL(SUM(votes.vote_type),0) AS summ')
             ]);
     }
+    //how many answers does the user have?
+    public function answerd($id){
+        return Answer::join('users','users.id','=','answers.user_id')
+                ->where('users.id',$id)->get();
+    }
+    //how many questions does the user have /
+    public function asked($id){
+        return Question::join('users','users.id','=','question.user_id')
+                ->where('users.id',$id)->get();
+    }
 }
 

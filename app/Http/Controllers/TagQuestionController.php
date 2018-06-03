@@ -11,7 +11,7 @@ class TagQuestionController extends Controller
 {
     public function tag($tag){
         // pp tregon numrin e  pytjeve per faqe 
-        $pp =1;
+        $pp =5;
 
         // QUERY FOR LATEST QUESTIONS
         $t = Tag::where('tag_name','=',$tag)->get();
@@ -85,7 +85,7 @@ class TagQuestionController extends Controller
     }
     public function tagCategory($cat,$tag){
         // pp tregon numrin e  pytjeve per faqe 
-        $pp =1;
+        $pp =5;
 
         // QUERY FOR LATEST QUESTIONS
         $t = Tag::where('tag_name','=',$tag)->get();

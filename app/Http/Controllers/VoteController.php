@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vote;
 use App\CorrectAnswer;
+use App\Question;
 class VoteController extends Controller
 {
     public function __construct()
@@ -128,7 +129,9 @@ class VoteController extends Controller
         ->get()
         ->first();
         
-       
+        $question = Question::find($request->q_id);
+        if( auth()->user()->id != $question->user_id)
+            return null;
         
 
         if(count($c) !=0){

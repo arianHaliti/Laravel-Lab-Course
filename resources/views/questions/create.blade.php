@@ -81,11 +81,11 @@
             </div>
             <div class="form-group">
                  
-                    {{Form::select('category',$categories)}}
+                    Category : {{Form::select('category',$categories)}}
                 
             </div>
             <div>   
-                {{Form::label('tags','Tags (3 - 5)')}}
+                {{Form::label('tags','Tags (1 - 5)')}}
                 {{Form::text('tags','',['class'=>'form-control','id'=>'mySingleFieldTags','placeholder' => 'Tags'])}}               
             </div>
             {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
@@ -96,11 +96,23 @@
 <script>
 
 jQuery.validator.addMethod("tagC", function(value, element) {
-  return  $("#mySingleFieldTags").val().split(",").length >=3;
+  return  $("#mySingleFieldTags").val().split(",").length >=1;
 
-}, "Please enter at least 3 - 5 tags");
+}, "Please enter at least 1 - 5 tags");
 
 
+jQuery.validator.addMethod("lengthTag", function(value, element) {
+    var bool =true;
+  $("#mySingleFieldTags").val().split(",").forEach(function(element) {
+      if(element.length >15){
+          bool = false;
+      }
+  });
+  
+  return bool;
+ 
+
+}, "Tags should have not more than 15 letters");
 
 jQuery.validator.addMethod("bodyC", function(value, element) {
     var html=CKEDITOR.instances['article-ckeditor'].getSnapshot();
@@ -127,7 +139,8 @@ $("#form").validate({
             minlength: 5
         }, 
         tags:{
-            tagC: true
+            tagC: true,
+            lengthTag :true 
         },
         body:{
             bodyC:true

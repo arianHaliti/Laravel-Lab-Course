@@ -55,13 +55,13 @@ if(!Auth::guest()){
     @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
         @if($ans->correct_id)
             <!-- ADD A CLASS PER MIA NDRRU NGJYREN  QE ME TREGU QE E KA SELEKTU QITA -->
-            <a href="#" id="{{'correct'.$c}}" ><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
+            <a href="#" id="{{'correct'.$c}}" onclick='correct("{{"#correct".$c}}",{{$ans->answer_id}})' ><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto" >
                 <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100" ></i></p>
             </div></a>
             
         @else
 
-            <a href="#"  id="{{'correct'.$c}}"class="correct-color1"><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
+            <a href="#"  id="{{'correct'.$c}}"class="correct-color1" onclick='correct("{{"#correct".$c}}",{{$ans->answer_id}})'><div class="stats  stats-full-post bg-light ml-2 p-1 w-10 mr-2 ml-auto">
             <p class="w-100 m-auto text-center h-100"><i class="fas fa-check m-auto text-center h-100"></i></p>
             </div></a>
         @endif
@@ -143,16 +143,18 @@ if(!Auth::guest()){
     var a_down = "#downvote<?php echo $c?>"; 
     voteAjax({!! json_encode($ans->answer_id) !!},{!! json_encode(Auth::check()) !!},1,a_total,a_vote,a_up,a_down);
 </script>
+@endforeach
 <script>
-    $(document).ready(function(){
-        
-        var correct = "#correct<?php echo $c?>";
+    function correct(correct,ans_id){
+        alert(correct);
+        //var correct = "#correct<?php echo $c?>";
         //alert(correct);
         //alert(correct); 
-        $(correct).click(function() {
+       
+            
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
            
-            var id = {!! json_encode($ans->answer_id) !!};
+            var id = ans_id
             var q_id = {!! json_encode($question->question_id) !!};
            // alert(1);
             $.ajax({
@@ -179,8 +181,7 @@ if(!Auth::guest()){
                     alert(0);
                 }
             });         
-        });
+       
     
-    });
+    }
 </script>
-@endforeach
