@@ -30,18 +30,18 @@ Route::get('/', 'HomeController@index');
 
 
 //Route For Profile
-
+            
 Route::get('/profile/{id}','ProfileController@profile');
 Route::post('/follow','ProfileController@follow')->middleware('auth');
 Route::post('/searchUsers','ProfileController@searchUsers');
-
+Route::post('/specificUsers','ProfileController@specificUsers');
 
 Route::get('/tag','TagQuestionController@tags');
 
 Route::get('/full-post','PagesController@fullPost');
 
 Route::get('/about','PagesController@about');
-Route::get('/user','PagesController@user');
+Route::get('/user','ProfileController@index');
 
 Route::resource('questions','QuestionController', [
     'only' => ['index','update','edit','destroy','show', 'create', 'store']

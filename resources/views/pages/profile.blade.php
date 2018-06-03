@@ -167,7 +167,7 @@ use App\Followers;
         
             <?php   
               $question = Question::where('user_id', $user->id)->where('question_active','=',0)->get();
-              
+              $data['cate']=0;
             //$question = Question:where('users_id',GEtUSERID);
             ?>
           
