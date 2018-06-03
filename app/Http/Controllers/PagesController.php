@@ -44,4 +44,7 @@ class PagesController extends Controller
     public function adminReport(){
         return view('admin.admin-report');
     }
+    public function about(){
+        return view('pages.about');
+    }
 }
