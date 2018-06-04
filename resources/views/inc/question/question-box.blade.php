@@ -32,13 +32,15 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
     </div>
     <div class="stats  p-1 bg-light rounded-circle w-10 rounded">
         <a href="/profile/{{$q->user_id}}"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
-        <p>{{$username->username}}
+        <p>{{$username->username}} 
     </div>
     <div class="q-content ml-2 p-2 border2 rounded">
+           
      <h6 class="mb-2"><a href="/questions/{{$q->question_id}}">
         {{$q->question_title}}</a></h6>
-        <p class="mb-2">{{$q->question_desc}}</p>
+        <p class="mb-2">{{substring($q->question_desc,80)}}</p>
         <nav aria-label="..." class=" myPagination">
+            
 <ul class="pagination tags pagination-sm mb-0">
 
 
@@ -57,7 +59,9 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
         <li class="page-item"><a class="page-link" href ="{{asset('questions/category/'.urlencode($q->category_name).'/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
     @endif
     @endforeach
+    
 </ul>
+    Created {{time_since(time()-strtotime($q->created_at)).' ago'}} , Edited {{time_since(time()-strtotime($q->updated_at)).' ago'}}
 </nav>
     </div>
     

@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<?php use App\User;
-  $users = User::all();
-?>
 
       
 
@@ -19,9 +16,14 @@
 		
              <div class="input-group input-group-sm mySearch mySearch1 mr-4 border-0 w-100 rounded float-left">
 
-<input type="text" placeholder="Search..." id="search1" class="form-control text-light px-2 bg-light border  search1" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+
+{!! Form::open(['id'=>'form','action' => 'ProfileController@specificUsers', 'method'=> 'POST','style'=>'display:inherit']) !!}
+{{Form::text('input','',['id'=>"search1",'class' => 'form-control text-light px-2 bg-light border  search1','aria-label'=>"Small", 'aria-describedby'=>"inputGroup-sizing-sm",'placeholder' => 'Search...'])}}
 <div class="input-group-append">
-<button class="btn btn-light border px-3" type="button"><i class="fas fa-search"></i></button>
+
+{{Form::button('<i class="fas fa-search"></i>',['type' => 'submit', 'class'=>'btn btn-light border px-3'])}}
+
+{!! Form::close() !!} 
 </div>
 </div>
               <ul id="results" style="z-index:10000 !important;" class="position-absolute bg-light border px-2"></ul>                       
@@ -32,12 +34,12 @@
            <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white float-right p-0 mt-1">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Name
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=name">Name
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                  <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Popular
+                  <a class="nav-link px-5 text-muted" href="{{Request::url()}}?sort=popular">Popular
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
@@ -51,6 +53,7 @@
             @include('inc.user-box')    
           @endforeach
         </div>
+        {{$users->links()}}
       </div>
     </div>
     @include('inc.question.right')

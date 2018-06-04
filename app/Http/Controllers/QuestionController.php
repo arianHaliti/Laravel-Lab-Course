@@ -219,7 +219,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' =>'required',
+            'title' =>'required|max:255',
             'body' => 'required',
             'tags' => 'required',
             'category'=> 'required'
@@ -243,13 +243,13 @@ class QuestionController extends Controller
 
         $new_tag =1;
 		foreach($tags as $t){
-            $search_t = Tag::where('tag_name','=',$t);
+            $search_t = Tag::where('tag_name','=',strtolower($t));
         
             if($search_t->first()==null){
                 
                 $new_tag = new Tag;
-                $new_tag->tag_name = $t;
-
+                $new_tag->tag_name = strtolower($t);
+                $new_tag->createdBy = auth()->user()->id;
                 $new_tag->save();
                 $last_tag_id =$new_tag->tag_id;
             }else{
@@ -318,8 +318,9 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' =>'required',
-            'body' => 'required'
+            'title' =>'required|max:255',
+            'body' => 'required',
+            'tags' => 'required'
         ]);
 
         //KRIJIMI I PYTJES
@@ -331,6 +332,41 @@ class QuestionController extends Controller
 
         //MERR ID E PYTJES TE KRIJUAR
         $last_id = $quest->question_id;
+        
+        $tags = $request->input('tags');
+        $tags = explode(",",$tags);
+        
+        $new_tag =1;
+                
+       
+       
+            
+        TagQuestion::where('question_id','=', $last_id)
+        ->delete();
+    
+		foreach($tags as $t){
+            $search_t = Tag::where('tag_name','=',strtolower($t));
+        
+            if($search_t->first()==null){
+                $new_tag = new Tag;
+                $new_tag->tag_name = strtolower($t);
+                $new_tag->createdBy = auth()->user()->id;
+                $new_tag->save();
+                $last_tag_id =$new_tag->tag_id;
+            }else{
+                $last_tag_id = $search_t->first()->tag_id;
+            }
+            $link = TagQuestion::where('question_id', '=', $last_id)
+                            ->where('tag_id', '=', $last_tag_id);
+            if($link->doesntExist()){
+
+                $conn = new TagQuestion;
+                $conn->question_id = $last_id;
+                $conn->tag_id = $last_tag_id; 
+                $conn->save();
+            }
+            
+        }
         
         return redirect('/questions/'.$last_id)->with('success','Question Updated');
     }

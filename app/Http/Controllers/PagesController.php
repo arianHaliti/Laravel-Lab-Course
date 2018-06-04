@@ -18,9 +18,7 @@ class PagesController extends Controller
 
 
 
-    public function user(){
-        return view('pages.user');
-    }
+    
 
     public function admin(){
         return view('admin.admin');
