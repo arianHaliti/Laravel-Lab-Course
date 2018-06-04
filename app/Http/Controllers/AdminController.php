@@ -28,13 +28,18 @@ class AdminController extends Controller
         $this->validate($request, [
             
             'username' => 'required|string|max:255|unique:users,username,'.$user->id,
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            
+            'name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255'.$user->id,
+            'surname' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255'.$user->id
         ]);
 
         //KRIJIMI I PYTJES
 
         $user->username = $request->input('username');
         $user->email = $request->input('email');
+        $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
         $user->save();
 
         //MERR ID E PYTJES TE KRIJUAR

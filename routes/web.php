@@ -90,5 +90,6 @@ Route::post('/correct','VoteController@correct')->middleware('auth');
 //ROUTE FOR TEAM
 Route::get('/team','PagesController@team');
 
+//ROUTE FOR ABOUT US
+Route::get('/about','PagesController@about');
 
-//

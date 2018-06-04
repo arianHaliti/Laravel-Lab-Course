@@ -36,7 +36,7 @@ use App\Followers;
 
 		 <div class="col-md-2 p-0">
          
-      <img src="/storage/image/cover.jpg" class="rounded-circle p-1 black-shadow profile-img">
+      <img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img border border-primary">
 	  
 		</div>
 		

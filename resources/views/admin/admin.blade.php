@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
+                    <a href="admin/user" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
                 </div>
                 </div>
                 <div class="col-md-3 border border-left-0 p-2">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
+                    <a href="admin/question" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
                 </div>
                 </div>
                 <div class="col-md-3 border border-left-0 p-2">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
+                    <a href="admin/answer" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
                 </div>
                 </div>
                 <div class="col-md-3 border border-left-0 p-2">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
+                    <a href="admin/course" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
                 </div>
                 </div>
             </div>

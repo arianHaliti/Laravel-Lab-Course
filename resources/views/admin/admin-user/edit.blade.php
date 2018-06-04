@@ -41,8 +41,13 @@
              </div>
         </div>
         <div class="col-md-9 px-2">
+         
     {!! Form::open(['id'=>'form','action' => ['AdminController@userUpdate' , $user->id] ,'method'=> 'POST']) !!}
-        
+    <div class="form-group">
+           
+            {{Form::text('id',$user->id,['class'=>'form-control','placeholder'=>'UsersID','readonly'=>'true'])}}
+        </div>
+
     <div class="form-group">
            
            {{Form::text('username',$user->username,['class'=>'form-control','placeholder'=>'Enter Username'])}}
@@ -51,6 +56,15 @@
            
            {{Form::email('email',$user->email,['class'=>'form-control','placeholder'=>'Enter email'])}}
        </div>
+       <div class="form-group">
+           
+        {{Form::text('name',$user->name,['class'=>'form-control','placeholder'=>'Enter Name'])}}
+    </div>
+
+    <div class="form-group">
+           
+        {{Form::text('surname',$user->surname,['class'=>'form-control','placeholder'=>'Enter Your Last Name'])}}
+    </div>
 
        
 

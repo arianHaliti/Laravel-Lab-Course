@@ -107,6 +107,7 @@ color:rgb(100,100,100) !important;
 
 .stats{
 	border:1px solid rgb(245,245,245);
+
 }
 .stats .up-do-arr{
 	float:left;
@@ -433,6 +434,16 @@ background:rgb(245,245,245);
 	height:120px;
 	background:white;
 	z-index:10000;
+	border-left:1px solid rgb(255,255,255) !important;
+	border-right:1px solid rgb(255,255,255) !important;
+}
+#navbarDropdown{
+	color:#6c757d !important;
+}
+.dropdown-toggle::after{
+	float:right !important;
+	margin-top:0px !important;
+	margin-bottom:0px !important;
 }
 .small-navbar {
 	display:none !important;
