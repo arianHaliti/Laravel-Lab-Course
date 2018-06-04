@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\checkAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,14 +72,14 @@ Route::post('/vote','VoteController@vote')->middleware('auth');
 Route::post('/showvote','VoteController@showvote');
 
 //ADMIN ROUTES
-Route::get('/admin','PagesController@admin');
-Route::get('/admin/user','PagesController@adminuser');
-Route::get('/admin/question','PagesController@adminquestion');
-Route::get('/admin/answer','PagesController@adminanswer');
-Route::get('/admin/report','PagesController@adminreport');
-Route::get('/admin/user/{id}/edit','AdminController@userEdit');
-Route::put('/admin/user/{id}','AdminController@userUpdate');
-Route::post('/deactivate','AdminController@deactivateUser')->middleware('auth');
+Route::get('/admin','PagesController@admin')->middleware(CheckAdmin::class);
+Route::get('/admin/user','PagesController@adminuser')->middleware(CheckAdmin::class);;
+Route::get('/admin/question','PagesController@adminquestion')->middleware(CheckAdmin::class);;
+Route::get('/admin/answer','PagesController@adminanswer')->middleware(CheckAdmin::class);;
+Route::get('/admin/report','PagesController@adminreport')->middleware(CheckAdmin::class);;
+Route::get('/admin/user/{id}/edit','AdminController@userEdit')->middleware(CheckAdmin::class);;
+Route::put('/admin/user/{id}','AdminController@userUpdate')->middleware(CheckAdmin::class);;
+Route::post('/deactivate','AdminController@deactivateUser')->middleware(CheckAdmin::class);
 
 Route::get('/course/{id}','CourseController@show');
 
