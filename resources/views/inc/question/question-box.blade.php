@@ -63,8 +63,9 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
     @endforeach
     
 </ul>
-    Created {{time_since(time()-strtotime($q->created_at)).' ago'}} , Edited {{time_since(time()-strtotime($q->updated_at)).' ago'}}
+    
 </nav>
+    <div class="col-md-12 myBorderT mt-2"><p class="float-right f-14 mb-0">Created {{time_since(time()-strtotime($q->created_at)).' ago'}} , Edited {{time_since(time()-strtotime($q->updated_at)).' ago'}}</p></div>
     </div>
     
 
