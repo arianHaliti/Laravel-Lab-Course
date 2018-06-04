@@ -227,6 +227,12 @@ background:rgb(245,245,245);
 	border-left:2px solid rgb(150,150,150);
 	
 }
+.l-content{
+	width:52.6%;
+}
+.lesons-links{
+width:20%;
+}
 .q-content h6 a{
 	color:rgb(120,120,120);
 	text-decoration:underline;
@@ -436,6 +442,14 @@ background:rgb(245,245,245);
 	z-index:10000;
 	border-left:1px solid rgb(255,255,255) !important;
 	border-right:1px solid rgb(255,255,255) !important;
+}
+.p-img3{
+	width:80px;
+	margin-left:0px !important;
+	height:80px;
+}
+.les-vid-ul li{
+	list-style:none;
 }
 #navbarDropdown{
 	color:#6c757d !important;

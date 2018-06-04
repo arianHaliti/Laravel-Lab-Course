@@ -11,15 +11,39 @@ use App\Course;
 
 ?>
 
-<div class="container p-0 mt-3">
+<div class="container p-0 mt-0">
+  <div class="row mt-0">
+	<div class="col-md-1 mt-5">
+		 <img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img p-img3 border border-primary">
+	</div>
+	<div class="col-md-11 mt-5">
+		<h5 class="mb-0">Yllzon Sejdiu <button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">follow</button></h5>
+		<p class="mb-0">Great programmer</p>
+		<p class="mb-0">Created at 12/11/2017</p>
+	</div>
+  </div>
+  <div class="row mt-0 border-top border-bottom mt-5">
+	<div class="col-md-6 py-1  transform1 ">
+	<h4>Learn Html</h4>
+	</div>
+	<div class="col-md-6 py-1 transform1 ">
+	<ul class="float-right mt-1 mb-0 les-vid-ul">
+	<li class="float-left mr-2">100 Lessons</li>
+	<li class="float-left mr-2">/</li>
+	<li class="float-left">10 Videos</li>
+	
+	</ul>
+	</div>
+  </div>
         <div class="row mt-0">
             
-            <div class="col-md-2 border-right p-0 bg-light">
+            <div class="lesons-links mt-5 border p-0 px-2 bg-light">
+			<h5 class="border-bottom transform1 py-2">Lessons</h5>
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Dashboard</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Dashboard</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Dashboard</a></li>  
+            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">What is Html</a></li>  
+            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Html Intro</a></li>  
+            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Html tags</a></li>  
+            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Html class</a></li>  
                     
                    
 
@@ -27,139 +51,24 @@ use App\Course;
 
         </div>
 
-        <div class="col-md-10 mt-0 ">
-        <ul class="links1 pl-0">
-                    <li><a href="#" class="text-muted">{{$courses->course_title}}</a></li>
-                    
-                </ul>
-            <div class="container">
-                
-            <div class="row p-0 bg-light">
-                <div class="col-md-3 border p-2">
-                    <div class="row p-2 pr-3">
-                    <div class="col-md-5">
-                    <h1 class="mt-2 text-center text-muted"><i class="fas fa-users"></i></h1>
-                    </div>
-                    <div class="col-md-7">
-                    <h2 class="text-right">10000</h2>
-                    <p class="text-right mb-0">Users</p>
-                    </div>
-
-                </div>
-                <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
-                </div>
-                </div>
-                <div class="col-md-3 border border-left-0 p-2">
-                    <div class="row p-2 pr-3">
-                    <div class="col-md-5">
-                    <h1 class="mt-2 text-center text-muted"><i class="fas fa-question-circle"></i></h1>
-                    </div>
-                    <div class="col-md-7">
-                    <h2 class="text-right">2612</h2>
-                    <p class="text-right mb-0">Questions</p>
-                    </div>
-                </div>
-                <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
-                </div>
-                </div>
-                <div class="col-md-3 border border-left-0 p-2">
-                    <div class="row p-2 pr-3">
-                    <div class="col-md-5">
-                    <h1 class="mt-2 text-center text-muted"><i class="fas fa-reply-all"></i></h1>
-                    </div>
-                    <div class="col-md-7">
-                    <h2 class="text-right">26</h2>
-                    <p class="text-right mb-0">Answers</p>
-                    </div>
-                </div>
-                <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
-                </div>
-                </div>
-                <div class="col-md-3 border border-left-0 p-2">
-                    <div class="row p-2 pr-3">
-                    <div class="col-md-5">
-                    <h1 class="mt-2 text-center text-muted"><i class="fab fa-leanpub"></i></h1>
-                    </div>
-                    <div class="col-md-7">
-                    <h2 class="text-right">26</h2>
-                    <p class="text-right mb-0">Tutorials</p>
-                    </div>
-                </div>
-                <div class="col-md-12 border-top border-bottom py-0 px-0 float-left">
-                    <a href="#" class="f-14 p-2 w-100 float-left">View All <i class="fas fa-arrow-circle-right float-right mt-1"></i></a>
-                </div>
-                </div>
-            </div>
-<div class="row border px-0 py-0 mt-4">
-    <div class="col-md-12 p-2  border-top border-bottom mb-0 mt-2">
-                <div class="row ">
-                        <div class="col-md-5 p-0">
-                            <h5 class="mb-0 mt ml-3 text-muted">Messages</h5>
-                        </div>
-                        <div class="col-md-2 p-0">
-                        <div class="input-group input-group-sm mySearch mySearch1 mr-4 border-0 w-100 rounded float-left">
-
-<input type="text" placeholder="Search..." id="search1" class="form-control text-light px-2 bg-light border  search1" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-<div class="input-group-append">
-<button class="btn btn-light border px-3" type="button"><i class="fas fa-search"></i></button>
-</div>
-</div>
-                        </div>
-                        <div class="col-md-5">
-                            
+        <div class="p-2 q-content l-content mt-5 ml-3 mr-1">
+       
+				<h4 class="transform1 border-bottom pb-2">HTML Introduction</h4>
          
-            
-    
-            
-           <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white float-right p-0 mt-1">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Recent
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Non replied
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                
-               
-              </ul>
-              </nav>
-</div>
-</div>
-</div>
-
-<table class="table mt-2">
-   <tr>
-       <th>Name</th>
-       <th>Message</th>
-       <th>Name</th>
-</tr>
-<tr>
-       <td>Yllzon Sejdiu</td>
-       <td>Nice Page</td>
-       <td>Name</td>
-</tr>
-<tr>
-       <td>Yllzon Sejdiu</td>
-       <td>asdasd asdasd</td>
-       <td>Name</td>
-</tr>
-  </table>
-</div>
-            </div>
-                    
-            
-           
-                            
+                            <p>The 'DOCTYPE html' declaration defines this document to be HTML5
+The 'html' element is the root element of an HTML page
+The 'head' element contains meta information about the document
+The 'title' element specifies a title for the document
+The 'body' element contains the visible page content
+The 'h1>'element defines a large heading
+The 'p' element defines a paragraph
+</p>
         
                         
                         </div>
+						
+		
+		@include('inc.question.right')
                     
 
         </div>
