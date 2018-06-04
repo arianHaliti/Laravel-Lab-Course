@@ -8,7 +8,7 @@ use App\Question;
 @extends('layouts.app')
 
 @section('content')
-@include('inc.functions')
+
 <div class="container p-0">
         <div class="row mt-0">
             
@@ -106,9 +106,11 @@ use App\Question;
 
                
 
-            
+
                 @if(count($quest))
-                  @foreach($quest as $q)   
+                  @foreach($quest as $q)
+                  @include('inc.functions')
+
                     @include('inc.question.question-box')
                   @endforeach
                   {{$quest->links()}}

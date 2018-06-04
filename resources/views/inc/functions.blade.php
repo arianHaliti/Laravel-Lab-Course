@@ -1,7 +1,7 @@
 <?php
 
 
-
+if (!function_exists('time_since')) {
 function time_since($since) {
     $chunks = array(
         array(60 * 60 * 24 * 365 , 'year'),
@@ -24,7 +24,8 @@ function time_since($since) {
     $print = ($count == 1) ? '1 '.$name : "$count {$name}s";
     return $print;
 }
-
+}
+if (!function_exists('substring')) {
 function substring($data,$number){
 	$result="";
 	if(strlen($data) > $number){
@@ -36,7 +37,8 @@ function substring($data,$number){
 	return $result;
 }
 
-
+}
+if (!function_exists('number_transform')) {
 function number_transform($number){
 	if($number >= 100000000){
 		
@@ -89,5 +91,6 @@ function number_transform($number){
 		$shortnumber = $number;
 	}
 	return $shortnumber;
+}
 }
 ?>

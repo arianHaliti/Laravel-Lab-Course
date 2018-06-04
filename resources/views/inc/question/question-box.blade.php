@@ -1,4 +1,6 @@
 <!--question BOX-->
+@include('inc.functions')
+
 <?php 
 use App\User;
 use App\Answer;
