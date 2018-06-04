@@ -337,6 +337,13 @@ class QuestionController extends Controller
         $tags = explode(",",$tags);
         
         $new_tag =1;
+                
+       
+       
+            
+        TagQuestion::where('question_id','=', $last_id)
+        ->delete();
+    
 		foreach($tags as $t){
             $search_t = Tag::where('tag_name','=',strtolower($t));
         
@@ -350,8 +357,8 @@ class QuestionController extends Controller
                 $last_tag_id = $search_t->first()->tag_id;
             }
             $link = TagQuestion::where('question_id', '=', $last_id)
-                            ->where('tag_id', '=', $last_tag_id)->doesntExist();
-            if($link){
+                            ->where('tag_id', '=', $last_tag_id);
+            if($link->doesntExist()){
 
                 $conn = new TagQuestion;
                 $conn->question_id = $last_id;
@@ -360,6 +367,7 @@ class QuestionController extends Controller
             }
             
         }
+        
         return redirect('/questions/'.$last_id)->with('success','Question Updated');
     }
 
