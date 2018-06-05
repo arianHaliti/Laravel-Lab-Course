@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('inc.functions')
      <!--CONTAINER-->
   <div class="container p-0">
         <div class="row mt-0">
@@ -67,9 +68,9 @@
                 
             </div>
             
-                @include('inc.question.right')
+                @include('courses.right')
         </div>
       </div>
-        </div>
+        
      
 @endsection()

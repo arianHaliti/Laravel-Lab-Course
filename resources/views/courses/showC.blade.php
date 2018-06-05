@@ -23,8 +23,8 @@ use App\Course;
 	</div>
 	<div class="col-md-11 mt-5">
 		<h5 class="mb-0">{{$user->username}} <button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">follow</button></h5>
-		<p class="mb-0">Da fuk ?</p>
-		<p class="mb-0">Created at {{$course->created_at}}</p>
+		
+		<p class="mb-0">Created at {{$course->created_at->format('m/d/Y')}}</p>
 	</div>
   </div>
   <div class="row mt-0 border-top border-bottom mt-5">
@@ -52,9 +52,10 @@ use App\Course;
 			@endforeach
 			@else
 			<h6>No Lessons for this Course</h6>
-			@endif	
-                    
-                   
+			@endif
+			@if(!Auth::guest() && Auth::user()->id ==$course->user_id)
+				<li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Add another Lesson !</a></li>    
+            @endif
 
                 </ul>
 
@@ -66,7 +67,7 @@ use App\Course;
         </div>
 						
 		
-		@include('inc.question.right')
+		@include('courses.right')
                     
 
         </div>

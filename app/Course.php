@@ -20,5 +20,9 @@ class Course extends Model
         return Course::join('lessons','lessons.course_id','=','courses.course_id')
         ->where('courses.course_id',$id)->get(['lessons.lesson_title','lessons.lesson_id'])->first();
     }
- 
+    public function tags($id){
+        return Course::join('tag_courses','tag_courses.course_id','=','courses.course_id')
+        ->join('tags','tags.tag_id','=','tag_courses.tag_id')
+        ->where('courses.course_id',$id);
+    } 
 }

@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\Lesson;
+use App\Tag;
+use App\TagCourse;
+use App\CourseCategory;
 
 class CourseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=> ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +33,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('courses.create');
     }
 
     /**
@@ -36,7 +44,57 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' =>'required|max:255',
+            'body' => 'required',
+            'tags' => 'required',
+            'category'=> 'required'
+        ]);
+
+        //KRIJIMI I PYTJES
+        $cours = new Course;
+
+        $cours->course_title = $request->input('title');
+        $cours->course_description = $request->input('body');
+        $cours->course_active = 0;
+        $cours->user_id = auth()->user()->id;
+        $cours->save();
+
+        //MERR ID E PYTJES TE KRIJUAR
+        $last_id = $cours->course_id;
+        
+        $tags = $request->input('tags');
+        $tags = explode(",",$tags);
+
+        $new_tag =1;
+		foreach($tags as $t){
+            $search_t = Tag::where('tag_name','=',strtolower($t));
+        
+            if($search_t->first()==null){
+                
+                $new_tag = new Tag;
+                $new_tag->tag_name = strtolower($t);
+                $new_tag->createdBy = auth()->user()->id;
+                $new_tag->save();
+                $last_tag_id =$new_tag->tag_id;
+            }else{
+                $last_tag_id = $search_t->first()->tag_id;
+            }
+            $conn = new TagCourse;
+            $conn->course_id = $last_id;
+            $conn->tag_id = $last_tag_id; 
+            $conn->save();
+            
+            
+        }
+        $category = $request->input('category');
+            
+            $newLink = new CourseCategory;
+            $newLink->course_id = $last_id;
+            $newLink->category_id = $category;
+            $newLink->save(); 
+        return redirect('/courses')->with('success','Course Created');
+        
     }
 
     /**
