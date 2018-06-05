@@ -81,7 +81,7 @@ Route::get('/admin/user/{id}/edit','AdminController@userEdit')->middleware(Check
 Route::put('/admin/user/{id}','AdminController@userUpdate')->middleware(CheckAdmin::class);;
 Route::post('/deactivate','AdminController@deactivateUser')->middleware(CheckAdmin::class);
 
-Route::get('/course/{id}','CourseController@show');
+Route::get('/course/{id}/{name}/{lesson}','CourseController@show');
 
 
 //ROUTE FOR CORRECT ANSWER

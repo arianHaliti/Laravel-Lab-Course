@@ -1,10 +1,12 @@
-
+<?php $lesson = $c->firstLesson($c->course_id)?>
+@if(count($lesson)!=0)
 <div class="col-md-4 p-0 p-2 mt-2 mb-2 ">
     <a href="#" class="p-0 border bg-light position-absolute mt-1 ml-1 f-14 rounded px-2 rgba-white">html</a>
-    <a href="#"><img src="/storage/image/photo.jpg" class="w-100"></a>
+    <a href="/course/{{$c->course_id}}/{{$c->course_title}}/{{$lesson->lesson_title}}"><img src="/storage/image/photo.jpg" class="w-100"></a>
 
     <div class="col-md-12 border-left mt-2 float-left border-top-0 px-2 mb-0">
-        <a href="#" class="px-0 py-0 float-left">{{$c->course_title}}</a>
+        
+        <a href="/course/{{$c->course_id}}/{{$c->course_title}}/{{$lesson->lesson_title}}" class="px-0 py-0 float-left">{{$c->course_title}}</a>
 
         <p class="f-14 float-left mt-1 mb-2 c-desc"><?php echo substr($c['course_description'],0,250) ?></p>
 
@@ -16,3 +18,4 @@
     <div class="col-md-12 float-left p-0"><img src="/storage/image/photo.jpg" class="user-pic float-left rounded-circle mr-1"><p class="f-12 float-left mt-1 mb-1">Yllzon Sejdiu, 12mar 2018</p></div>
 </div>
 </div>
+@endif
