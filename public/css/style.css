@@ -557,3 +557,22 @@ width:20%;
 .all-stats-ul li{
   list-style:none !important;
 }
+.footer img{
+width:50px;
+height:50px;
+}
+
+.list-style-none{
+	list-style:none;
+}
+
+.socials{
+	display:inline;
+}
+.socials li{
+	display:inline;
+	
+}
+.socials li i{
+	font-size:40px !important;
+}
