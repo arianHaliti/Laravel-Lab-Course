@@ -11,7 +11,7 @@
                 
                     <div class="row p-2 transform1 border-top border-bottom mb-0">
                         <div class="col-md-6 p-0">
-                            <h5 class="mb-0 mt text-muted">All Tags</h5>
+                            <h5 class="mb-0 mt text-muted">All Tutorials</h5>
                         </div>
                         <div class="col-md-6">
                             
@@ -22,7 +22,7 @@
            <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white float-right p-0">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted" href="#">Name
+                  <a class="nav-link px-5 text-muted" href="#">Recent
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>

@@ -18,7 +18,7 @@
         
         <a href="/course/{{$lesson->lesson_id}}/{{$c->course_title}}/{{$lesson->lesson_title}}" class="px-0 py-0 float-left">{{$c->course_title}}</a>
 
-        <p class="f-14 float-left mt-1 mb-2 c-desc">{{substring($c->course_description,30)}}</p>
+        <p class="f-14 float-left mt-1 mb-2 c-desc">{{substring($c->course_description,350)}}</p>
 
 
     <div class="col-md-12 border-top border-bottom p-0 float-left mb-2">

@@ -3,10 +3,10 @@
        <div class="row p-0">
           
               <div class="col-md-1">
-                <img src="/storage/image/logo.png">
+                <img src="/storage/image/logo2.png">
               </div>
                 <div class="col-md-2">
-                    <h5 class="transform1 mb-3 text-muted">LAB 2</h5>
+                    <h5 class="transform1 mb-3 text-muted">DCircle</h5>
                     <ul class="pl-0 list-style-none">
                         <li><a href="#" class="text-muted">Questions</a></li>
                         <li><a href="#" class="text-muted">Tutorials</a></li>

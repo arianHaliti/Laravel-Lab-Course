@@ -1,6 +1,6 @@
 <nav class="navbar main-nav navbar-expand-lg bg-dark fixed-top py-0">
   <div class="container">
-    <a class="navbar-brand" href="/questions">LAB 2</a>
+    <a class="navbar-brand" href="/questions"><img src="/storage/image/logo1.png" id="logo"></a>
 
 <div class="input-group input-group-sm mySearch border-0 rounded">
 

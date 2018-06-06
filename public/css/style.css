@@ -2,6 +2,10 @@
 body{
 	background-color:rgb(255, 255, 255);
 }
+#logo{
+	width:40px;
+	height:40px;
+}
 #search::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   	color:rgb(240,240,240);
 }
