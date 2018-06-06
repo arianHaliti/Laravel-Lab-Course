@@ -1,6 +1,12 @@
 
-body{
+.main-container{
+	
+	
+}
+	
+html,body{
 	background-color:rgb(255, 255, 255);
+	
 }
 #logo{
 	width:40px;
@@ -62,6 +68,15 @@ color:rgb(100,100,100) !important;
 .navbar-nav1 a:hover{
 	border-bottom:2px solid #3897F0;
 	background:rgb(245,245,245) !important;
+}
+
+.activeC{
+	border-bottom:1px solid #3897F0;
+	background:rgb(245,245,245) !important;
+}
+
+.cat-nav a:hover{
+	border-bottom:0px !important;
 }
 
 .z{
@@ -458,11 +473,7 @@ width:20%;
 #navbarDropdown{
 	color:#6c757d !important;
 }
-.dropdown-toggle::after{
-	float:right !important;
-	margin-top:0px !important;
-	margin-bottom:0px !important;
-}
+
 .small-navbar {
 	display:none !important;
 }
@@ -561,7 +572,18 @@ width:20%;
 .all-stats-ul li{
   list-style:none !important;
 }
-.footer img{
+
+
+.footer{
+	padding:0px;
+	position:absolute !important;
+	float:left;
+	
+	width:100%;
+	
+}
+
+.footer1 img{
 width:50px;
 height:50px;
 }

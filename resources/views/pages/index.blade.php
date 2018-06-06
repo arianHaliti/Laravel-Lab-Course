@@ -25,7 +25,7 @@ use App\Question;
             
     
             
-           <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white p-0 float-right">
+           <nav class="navbar navbar3 cat-nav sort-nav navbar-expand-lg navbar-white p-0 float-right">
               <ul class="navbar-nav mr-auto " style="width:200px;">
                
                 <li class="nav-item dropdown border bg-light rounded p-1 w-100">
@@ -66,7 +66,7 @@ use App\Question;
            <nav class="navbar navbar3 sort-nav navbar-expand-lg navbar-white p-0 float-right ">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active pl-0">
-                  <a class="nav-link px-5 text-muted border-bottom" href="{{Request::url()}}?sort=latest">Latest
+                  <a class="nav-link px-5 text-muted activeC" href="{{Request::url()}}?sort=latest">Latest
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>

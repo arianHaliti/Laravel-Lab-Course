@@ -1,4 +1,5 @@
-<div class="footer container-fluid border-top py-4 bg-light mt-4">
+<footer class="footer">
+<div class="footer1 container-fluid border-top py-4 bg-light mt-4">
     <div class="container">
        <div class="row p-0">
           
@@ -65,3 +66,4 @@
     </div>
     </div>
  </div>
+</footer>
