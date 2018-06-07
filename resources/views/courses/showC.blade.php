@@ -31,6 +31,15 @@ use App\Course;
   <div class="row mt-0 border-top border-bottom mt-5">
 	<div class="col-md-6 py-1  transform1 ">
 	<h4> {{$course->course_title}}</h4>
+	<!-- Edit /// Delete -->
+	@if(!Auth::guest() && Auth::user()->id ==$course->user_id)
+		<a href= "/courses/{{$course->course_id}}/edit" class ="btn btn-outline-primary btn-sm edit-btn border-top-0">Edit</a>
+		{!! Form::open(['action' => ['CourseController@destroy' , $course->course_id] ,'method'=> 'POST']) !!}
+		{{Form::hidden('_method','DELETE')}}
+		{{Form::submit('Delete',['class'=>'btn btn-outline-danger btn-sm del-btn'])}}
+		{!! Form::close() !!}
+	@endif
+	<!-- Edit \\\ Delete -->
 	</div>
 	<div class="col-md-6 py-1 transform1 ">
 	<ul class="float-right mt-1 mb-0 les-vid-ul">

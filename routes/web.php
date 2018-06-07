@@ -80,10 +80,10 @@ Route::get('/admin/report','PagesController@adminreport')->middleware(CheckAdmin
 Route::get('/admin/user/{id}/edit','AdminController@userEdit')->middleware(CheckAdmin::class);;
 Route::put('/admin/user/{id}','AdminController@userUpdate')->middleware(CheckAdmin::class);;
 Route::post('/deactivate','AdminController@deactivateUser')->middleware(CheckAdmin::class);
-
+//COURSE ROUTES
 Route::get('/course/{id}/{name}','CourseController@show');
 Route::get('/course/{id}/{name}/{l_id}','CourseController@showLesson');
-# LESSON ROUTE
+// LESSON ROUTES
 Route::get('courses/lesson/create/{id}','LessonController@create')->middleware('auth');
 Route::post('courses/lesson/store','LessonController@store')->middleware('auth');
 //ROUTE FOR CORRECT ANSWER

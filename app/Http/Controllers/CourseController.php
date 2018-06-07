@@ -23,7 +23,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('pages.course');
+        $courses = Course::where('course_active',0)
+        ->orderBy('created_at')->paginate(5);
+    
+        return view('pages.course')->with('courses',$courses);
     }
 
     /**
@@ -158,7 +161,13 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::find($id);
+        if(auth()->user()->id !== $course->user_id){
+            return redirect('/course');
+        }
+     
+
+        return view('courses.create')->with('course',$course);
     }
 
     /**
@@ -170,7 +179,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -181,6 +190,15 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        if(auth()->user()->id !== $course->user_id){
+            return redirect('/questions');
+            //OR PAGE NOT FOUND
+        }
+        $course->course_active = 1;
+
+        $course->save();
+
+        return redirect('/courses')->with('success','Course Deleted');
     }
 }
