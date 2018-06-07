@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lesson;
-use \Crypt;
 use App\Course;
 class LessonController extends Controller
 {
@@ -24,7 +23,10 @@ class LessonController extends Controller
     }
     public function create($id){
         
-        $c_id = Crypt::decrypt($id);
+        $course = Course::find($id);
+        if(auth()->user()->id != $course->user_id)
+            return view('pages.course');
+        $c_id = $id;
         
         return view('lessons.create')->with('c_id',$c_id);
     }

@@ -77,47 +77,32 @@ class QuestionController extends Controller
         $pp = 5;
         if(isset($_GET['sort'])){
             if($_GET['sort']=='latest'){
-                $questions = Question::latestSort()
-                ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
-                ->where('categories.category_name','=',$cat)
-                ->select('question.*','categories.category_name')
+                $questions = Question::getByCategoryTag(Question::latestSort(),$cat)
+                ->addSelect('question.*')
                 ->paginate($pp);
                 $questions->appends(['sort' => 'latest'])->links();
             }
             else if($_GET['sort']=='featured'){
-                $questions = Question::viewSort()
-                ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
-                ->where('categories.category_name','=',$cat)
-                ->paginate($pp);
+                $questions =null;
                 $questions->appends(['sort' => 'latest'])->links();
             }
             else if($_GET['sort']=='views'){
-                $questions = Question::viewSort()
-                ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
-                ->where('categories.category_name','=',$cat)
-                ->select('question.*','categories.category_name')  
+                $questions = Question::getByCategoryTag(Question::viewSort(),$cat)
+                ->addSelect('question.*')
                 ->paginate($pp);
                 $questions->appends(['sort' => 'views'])->links();
             }
             // QUERY FOR VOTE QUESTIONS
             else if ($_GET['sort']=='votes'){
                 
-                $questions = Question::voteSort()
-                ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
-                ->where('categories.category_name','=',$cat)
-                ->select('question.*','categories.category_name', DB::raw('SUM(CASE WHEN votes.content_type = 0 THEN  votes.vote_type ELSE 0 END) as total_votes'))
+                $questions =  Question::getByCategoryTag(Question::voteSort(),$cat)                
                 ->paginate($pp);
                 $questions->appends(['sort' => 'votes'])->links();
             }
             // QUERY FOR UNASWERED QUESTIONS
             else if ($_GET['sort']=='unanswered'){
-                $questions = Question::unansweredSort()
-                ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
-                ->where('categories.category_name','=',$cat)
-                ->select('question.*','categories.category_name',
-                     DB::raw(" ( SELECT count(*) from answers a 
-                     inner join question q on a.question_id = q.question_id
-                      where a.answer_active=0 and q.question_id=question.question_id ) as c"   ));
+                $questions = Question::getByCategoryTag(Question::unansweredSort(),$cat);
+                
 
                 //Bug me havign dhe paginate got to make manual paginate
                 $questions = $this->paginate($questions,$pp,"http://lab.lab/questions/category/".$cat);
