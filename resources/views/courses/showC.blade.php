@@ -22,7 +22,8 @@ use App\Course;
 		 <img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img p-img3 border border-primary">
 	</div>
 	<div class="col-md-11 mt-5">
-		<h5 class="mb-0">{{$user->username}} <button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">follow</button></h5>
+		
+		<h5 class="mb-0">{{$user->username}}@if(!Auth::guest() && Auth::user()->id ==$course->user_id) <a href ="/courses/lesson/create/{{Crypt::encrypt($course->course_id)}}"><button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">Add Lesson</button>@endif</h5></a>
 		
 		<p class="mb-0">Created at {{$course->created_at->format('m/d/Y')}}</p>
 	</div>
@@ -48,7 +49,7 @@ use App\Course;
 			@if(count($lessons)!=0)
 			@foreach($lessons as $l)
 				
-				<li class="nav-item active pl-0 py-0 border-bottom"><a href="/course/{{$l->lesson_id}}/{{$course->course_title}}/{{$l->lesson_title}}" class="nav-link py-2">{{$l->lesson_title}}</a></li>  
+				<li class="nav-item active pl-0 py-0 border-bottom"><a href="/course/{{$course->course_id}}/{{$course->course_title}}/{{$l->lesson_id}}" class="nav-link py-2">{{$l->lesson_title}}</a></li>  
 			@endforeach
 			@else
 			<h6>No Lessons for this Course</h6>
@@ -60,12 +61,17 @@ use App\Course;
                 </ul>
 
         </div>
-
+		@if(count($lessons)!=0)
         <div class="p-2 q-content l-content mt-5 ml-3 mr-1">
 			<h4 class="transform1 border-bottom pb-2">{{$lesson->lesson_title}}</h4>
-			<p>{{$lesson->lesson_desc}}</p>
-        </div>
-						
+			<p>{!!$lesson->lesson_desc!!}</p>
+		</div>
+		@else
+		<div class="p-2 q-content l-content mt-5 ml-3 mr-1">
+			<h4 class="transform1 border-bottom pb-2"></h4>
+			<p></p>
+		</div>
+		@endif				
 		
 		@include('courses.right')
                     

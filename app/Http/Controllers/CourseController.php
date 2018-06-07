@@ -103,23 +103,49 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$name)
     {
-       
         if(!is_numeric($id))
             abort(404);
-        $lesson = Lesson::find($id);
-        $course_id = $lesson->course_id;
-        $course =  Course::find($course_id);
+        //$lesson = Lesson::find($id);
+  //      $course_id = Course::find($id);
+        $course =  Course::find($id);
 
-
+        $lesson = $course->firstLesson($id);
+       // return $lesson;
         if(count($course)==0)
           abort(404);
-
+        
         $data = [
             'lesson' => $lesson,
             'course' => $course
         ];
+
+        return view('courses.showC')->with('data',$data);
+
+    }
+    
+    public function showLesson($id,$name,$l_id)
+    {
+        if(!is_numeric($id))
+            abort(404);
+            
+        if(!is_numeric($l_id))
+          abort(404);
+        //$lesson = Lesson::find($id);
+  //      $course_id = Course::find($id);
+        $course =  Course::find($id);
+
+        $lesson = Lesson::find($l_id);
+
+        if(count($course)==0)
+          abort(404);
+        
+        $data = [
+            'lesson' => $lesson,
+            'course' => $course
+        ];
+
         return view('courses.showC')->with('data',$data);
 
     }

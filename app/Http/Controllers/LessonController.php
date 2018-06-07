@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Lesson;
+use \Crypt;
+use App\Course;
 class LessonController extends Controller
 {
     public function show($id)
@@ -18,6 +20,35 @@ class LessonController extends Controller
           abort(404);
 
         return view('courses.showC')->with('course',$course);
+
+    }
+    public function create($id){
+        
+        $c_id = Crypt::decrypt($id);
+        
+        return view('lessons.create')->with('c_id',$c_id);
+    }
+    public function store(Request $request) {
+        $this->validate($request, [
+            'title' =>'required|max:255',
+            'body' => 'required'
+        ]);
+
+        //KRIJIMI I PYTJES
+        $check = Course::find($request->c_id);
+            
+        if($check->user_id != auth()->user()->id){
+            abort(404);
+        }
+        $lesson = new Lesson;
+        
+        $lesson->lesson_title = $request->input('title');
+        $lesson->course_id = $request->c_id;
+        $lesson->lesson_desc = $request->input('body');
+        $lesson->lesson_views = 0;
+        $lesson->save();
+       
+        return redirect('/course/'.$check->course_id.'/'.$check->course_title.'/'.$lesson->lesson_id)->with('success','Answer Updated');
 
     }
 }

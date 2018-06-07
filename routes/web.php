@@ -81,9 +81,11 @@ Route::get('/admin/user/{id}/edit','AdminController@userEdit')->middleware(Check
 Route::put('/admin/user/{id}','AdminController@userUpdate')->middleware(CheckAdmin::class);;
 Route::post('/deactivate','AdminController@deactivateUser')->middleware(CheckAdmin::class);
 
-Route::get('/course/{id}/{name}/{lesson}','CourseController@show');
-
-
+Route::get('/course/{id}/{name}','CourseController@show');
+Route::get('/course/{id}/{name}/{l_id}','CourseController@showLesson');
+# LESSON ROUTE
+Route::get('courses/lesson/create/{id}','LessonController@create')->middleware('auth');
+Route::post('courses/lesson/store','LessonController@store')->middleware('auth');
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
 
