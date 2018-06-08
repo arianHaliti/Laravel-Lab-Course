@@ -24,5 +24,9 @@ class Course extends Model
         return Course::join('tag_courses','tag_courses.course_id','=','courses.course_id')
         ->join('tags','tags.tag_id','=','tag_courses.tag_id')
         ->where('courses.course_id',$id);
-    } 
+    }
+    public function category($id){
+        return Course::join('course_categories','course_categories.course_id','=','courses.course_id')
+        ->where('courses.course_id',$id);  
+    }
 }

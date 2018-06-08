@@ -58,19 +58,26 @@
                         </div>
                         <?php 
                             $categories = Category::all()->pluck('category_name', 'category_id');
-                            $title='';$desc='';$tags="";
+                            $title='';$desc='';$tags="";$url="CourseController@store";$category=0;$btn="Create";
                             if(isset($course)){
                                 $title = $course->course_title;
                                 $desc = $course->course_description;
                                 $tag = $course->tags($course->course_id)->get();
+                                $url ="CourseController@update";
                                 $tags =[];
+                                $category = $course->category($course->course_id)->get()->first()->category_id;
+                                $btn="Edit";
                                 foreach($tag as $t){
                                     array_push($tags,$t->tag_name);
                                 }
                             }
                         ?>
                         <div class="col-md-9 px-2">
-                            {!! Form::open(['id'=>'form','action' => 'CourseController@store' , 'method'=> 'POST']) !!}
+                            @if(isset($course))
+                                {!! Form::open(['id'=>'form','action' => ['CourseController@update',$course->course_id] , 'method'=> 'POST']) !!}
+                            @else
+                                {!! Form::open(['id'=>'form','action' => 'CourseController@store', 'method'=> 'POST']) !!}
+                            @endif
                             <div class ="form-group">
                                 {{Form::text('title',$title,['class' => 'form-control q-title-input','placeholder' => 'Title'])}}
                             </div>
@@ -78,13 +85,16 @@
                                 {{Form::textarea('body',$desc,['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
                             </div>
                             <div class="form-group">
-                                Category : {{Form::select('category',$categories)}}
+                                Category : {{Form::select('category',$categories,$category)}}
                             </div>
                             <div>   
                                 {{Form::label('tags','Tags (1 - 5)')}}
                                 {{Form::text('tags','',['class'=>'form-control','id'=>'mySingleFieldTags','placeholder' => 'Tags'])}}               
                             </div>
-                            {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
+                            @if(isset($course))
+                                {{Form::hidden('_method','PUT')}}
+                            @endif
+                            {{Form::submit($btn,['class'=>'btn btn-primary'])}}
                             {!! Form::close() !!}   
                         </div>
                     </div>

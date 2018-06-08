@@ -179,7 +179,59 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' =>'required|max:255',
+            'body' => 'required',
+            'tags' => 'required',
+            'category'=> 'required'
+        ]);
+
+        //KRIJIMI I PYTJES
+        $course = Course::find($id);
+        if(auth()->user()->id !== $course->user_id){
+            return redirect('/courses');
+        }
+        $course->course_title = $request->input('title');
+        $course->course_description = $request->input('body');
+        $course->save();
+
+        //MERR ID E PYTJES TE KRIJUAR
+        $last_id = $course->course_id;
         
+        $tags = $request->input('tags');
+        $tags = explode(",",$tags);
+
+        TagCourse::where('course_id','=', $last_id)
+        ->delete();
+		foreach($tags as $t){
+            $search_t = Tag::where('tag_name','=',strtolower($t));
+        
+            if($search_t->first()==null){
+                
+                $new_tag = new Tag;
+                $new_tag->tag_name = strtolower($t);
+                $new_tag->createdBy = auth()->user()->id;
+                $new_tag->save();
+                $last_tag_id =$new_tag->tag_id;
+            }else{
+                $last_tag_id = $search_t->first()->tag_id;
+            }
+            $conn = new TagCourse;
+            $conn->course_id = $last_id;
+            $conn->tag_id = $last_tag_id; 
+            $conn->save();
+            
+            
+        }
+        CourseCategory::where('course_id','=', $last_id)
+        ->delete();
+        $category = $request->input('category');
+            
+            $newLink = new CourseCategory;
+            $newLink->course_id = $last_id;
+            $newLink->category_id = $category;
+            $newLink->save(); 
+        return redirect('/courses')->with('success','Course Created');  
     }
 
     /**
