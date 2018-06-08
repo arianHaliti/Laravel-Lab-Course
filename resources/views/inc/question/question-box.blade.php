@@ -40,7 +40,7 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
            
      <h6 class="mb-2"><a href="/questions/{{$q->question_id}}">
         {{$q->question_title}}</a></h6>
-        <p class="mb-2">{{substring($q->question_desc,80)}}</p>
+        <p class="mb-2">{{substring(strip_tags($q->question_desc),80)}}</p>
         <nav aria-label="..." class=" myPagination">
             
 <ul class="pagination tags pagination-sm mb-0">

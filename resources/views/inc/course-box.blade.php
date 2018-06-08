@@ -11,13 +11,13 @@
   
     @endforeach
   
-    <a href="/course/{{$c->course_id}}/{{$c->course_title}}"><img src="/storage/image/photo.jpg" class="w-100"></a>
+    <a href="/course/{{$c->course_id}}/{{$c->course_title}}"><img src="{{asset('storage/course_covers/'.$c->image)}}" class="w-100"></a>
 
     <div class="col-md-12 border-left mt-2 float-left border-top-0 px-2 mb-0">
         
         <a href="/course/{{$c->course_id}}/{{$c->course_title}}" class="px-0 py-0 float-left">{{$c->course_title}}</a>
 
-        <p class="f-14 float-left mt-1 mb-2 c-desc">{{substring($c->course_description,350)}}</p>
+        <p class="f-14 float-left mt-1 mb-2 c-desc">{{substring(strip_tags($c->course_description),350)}}</p>
 
 
     <div class="col-md-12 border-top border-bottom p-0 float-left mb-2">

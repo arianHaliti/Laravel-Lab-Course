@@ -74,9 +74,9 @@
                         ?>
                         <div class="col-md-9 px-2">
                             @if(isset($course))
-                                {!! Form::open(['id'=>'form','action' => ['CourseController@update',$course->course_id] , 'method'=> 'POST']) !!}
+                                {!! Form::open(['id'=>'form','action' => ['CourseController@update',$course->course_id] , 'method'=> 'POST','enctype'=>'multipart/form-data']) !!}
                             @else
-                                {!! Form::open(['id'=>'form','action' => 'CourseController@store', 'method'=> 'POST']) !!}
+                                {!! Form::open(['id'=>'form','action' => 'CourseController@store', 'method'=> 'POST','enctype'=>'multipart/form-data']) !!}
                             @endif
                             <div class ="form-group">
                                 {{Form::text('title',$title,['class' => 'form-control q-title-input','placeholder' => 'Title'])}}
@@ -85,7 +85,7 @@
                                 {{Form::textarea('body',$desc,['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
                             </div>
                             <div class="form-group">
-                                Category : {{Form::select('category',$categories,$category)}}
+                                Category : {{Form::select('category',$categories,$category)}} Image : {{Form::file('image')}}
                             </div>
                             <div>   
                                 {{Form::label('tags','Tags (1 - 5)')}}

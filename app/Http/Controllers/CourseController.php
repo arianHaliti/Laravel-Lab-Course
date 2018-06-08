@@ -8,7 +8,7 @@ use App\Lesson;
 use App\Tag;
 use App\TagCourse;
 use App\CourseCategory;
-
+use Storage;
 class CourseController extends Controller
 {
 
@@ -24,7 +24,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::where('course_active',0)
-        ->orderBy('created_at')->paginate(5);
+        ->orderBy('created_at')->paginate(9);
     
         return view('pages.course')->with('courses',$courses);
     }
@@ -51,9 +51,24 @@ class CourseController extends Controller
             'title' =>'required|max:255',
             'body' => 'required',
             'tags' => 'required',
-            'category'=> 'required'
+            'category'=> 'required',
+            'image' => 'image|nullable|max:1999'
         ]);
-
+        if($request->hasFile('image')){
+            //E MERR FILENAME ME EXTENSION
+            $imageExt = $request->file('image')->getClientOriginalName();
+            // E MERR EMRIN  E FILE
+            $imageName = pathinfo($imageExt, PATHINFO_FILENAME);
+            // E MERR VETEM EXTENSION TE FILE
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // ADD TIME PER MU KAN UNIK EMRI I IMAGES
+            $imageNameStore = $imageName.'_'.time().'.'.$extension;
+            // UPLOAD IMAGE
+            $path = $request->file('image')->storeAs('public/course_covers',$imageNameStore);
+        }else{
+            // NESE SKA SELEKTU 
+            $imageNameStore = 'photo.jpg';
+        }
         //KRIJIMI I PYTJES
         $cours = new Course;
 
@@ -61,6 +76,7 @@ class CourseController extends Controller
         $cours->course_description = $request->input('body');
         $cours->course_active = 0;
         $cours->user_id = auth()->user()->id;
+        $cours->image = $imageNameStore;
         $cours->save();
 
         //MERR ID E PYTJES TE KRIJUAR
@@ -183,14 +199,36 @@ class CourseController extends Controller
             'title' =>'required|max:255',
             'body' => 'required',
             'tags' => 'required',
-            'category'=> 'required'
+            'category'=> 'required',
+            'image' => 'image|nullable|max:1999'
         ]);
-
-        //KRIJIMI I PYTJES
         $course = Course::find($id);
+
+        if($request->hasFile('image')){
+            //E MERR FILENAME ME EXTENSION
+            $imageExt = $request->file('image')->getClientOriginalName();
+            // E MERR EMRIN  E FILE
+            $imageName = pathinfo($imageExt, PATHINFO_FILENAME);
+            // E MERR VETEM EXTENSION TE FILE
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // ADD TIME PER MU KAN UNIK EMRI I IMAGES
+            $imageNameStore = $imageName.'_'.time().'.'.$extension;
+            // UPLOAD IMAGE
+            $path = $request->file('image')->storeAs('public/course_covers',$imageNameStore);
+           
+            
+            if($course->image != 'photo.jpg') {
+                Storage::delete('public/course_covers/' . $course->image);
+            }
+            $course->image = $imageNameStore;
+
+        }
+        //KRIJIMI I PYTJES
+        
         if(auth()->user()->id !== $course->user_id){
             return redirect('/courses');
         }
+
         $course->course_title = $request->input('title');
         $course->course_description = $request->input('body');
         $course->save();
