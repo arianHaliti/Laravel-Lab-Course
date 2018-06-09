@@ -21,10 +21,41 @@ use App\Course;
 	<div class="col-md-1 mt-5">
 		 <img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img p-img3 border border-primary">
 	</div>
-	<div class="col-md-11 mt-5">
+	<div class="col-md-5 mt-5">
 		<h5 class="mb-0">{{$user->username}} <button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">follow</button></h5>
 		
 		<p class="mb-0">Created at {{$course->created_at->format('m/d/Y')}}</p>
+	</div>
+	<div class="col-md-1 p-0 mt-5">
+		
+			<h1 class="c-logo"><i class="fab fa-leanpub"></i></h1>
+	
+</div>
+	<div class="col-md-5 float-right">
+		
+			<div class="stats stats-full-post bg-light p-1 w-10 h-10 mr-2 mt-5 float-right">
+                    
+
+                    @if(Auth::guest() || count($v)==0 || $v->vote_type==0)
+                    <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                 
+                    <a id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                    
+                    @else
+                        @if($v->vote_type == 1)
+                             
+                            <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote  correct-color" name="up"><i  class="fa fa-caret-up " aria-hidden="true"></i></a>
+                            <a  id = "downvote" href="#" data-toggle="tooltip" title="Disabled tooltip" class="float-left w-100 m-auto text-center up-do-arr q_vote"  name ="down"><i  class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        @elseif ($v->vote_type==-1)
+                            <a id = "upvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote" name="up"><i  class="fa fa-caret-up" aria-hidden="true"></i></a>
+                            
+                            <a id = "downvote" href="#" class="float-left w-100 m-auto text-center up-do-arr q_vote correct-color"  name ="down"><i  class="fa fa-caret-down " aria-hidden="true"></i></a>
+                        @endif
+                    @endif   
+                    
+                    <script>$('#downvote').tooltip('show')</script>
+                    <p class="w-100 text-center m-auto float-left"id="q_total"></p>
+                </div>
 	</div>
   </div>
   <div class="row mt-0 border-top border-bottom mt-5">
@@ -61,7 +92,7 @@ use App\Course;
 
         </div>
 
-        <div class="p-2 q-content l-content mt-5 ml-3 mr-1">
+        <div class="p-2 q-content l-content mt-5 ml-3 mr-1 border rounded">
 			<h4 class="transform1 border-bottom pb-2">{{$lesson->lesson_title}}</h4>
 			<p>{{$lesson->lesson_desc}}</p>
         </div>

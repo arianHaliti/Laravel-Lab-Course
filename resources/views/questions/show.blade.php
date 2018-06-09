@@ -73,7 +73,7 @@
                 <div class="stats bg-light p-1 w-10 rounded-circle">
                     <img  src='/storage/image/photo.jpg' class="rounded m-auto">
                 </div>
-                <div class="q-content ml-2 p-2 mb-4 ml-auto">   
+                <div class="q-content q2-content ml-2 p-2 mb-4 ml-auto rounded">   
                         <div class="col-md-12 edit-del float-left">
                             <div class="float-right edit-del-nav">
                         @if(!Auth::guest() && Auth::user()->id ==$question->user_id)
@@ -92,7 +92,7 @@
 
                    
                     </div>
-                <div class="q-content q-content-desc ml-2 p-2 border  ml-auto">
+                <div class="q-content q-content-desc q2-content ml-2 p-2 border  ml-auto rounded">
                  
                     {!!$question->question_desc!!}
 

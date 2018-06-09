@@ -241,10 +241,15 @@ background:rgb(245,245,245);
 }
 .q-content{
 	width:71.4%;
-	background:rgb(248,248,248);
+	
+	background:rgb(248, 248, 248);
+	
 	border:1px solid rgb(240,240,240);
 	border-left:2px solid rgb(150,150,150);
 	
+}
+.q2-content{
+	background:rgb(255, 249, 248);
 }
 .l-content{
 	width:52.6%;
@@ -258,6 +263,7 @@ width:20%;
 }
 .q-content-desc{
 	margin-top:-15px;
+	
 }
 .u-content{
 	width:78.3%;
@@ -265,8 +271,12 @@ width:20%;
 .u-content .location{
 	font-size:14px;
 }
+.a-content{
+	background:rgb(248, 255, 248);
+}
 .c-content{
 	width:65%;
+	background:rgb(255, 255, 248);
 }
 .c-content p{
 	font-size:12px;
@@ -601,4 +611,8 @@ height:50px;
 }
 .socials li i{
 	font-size:40px !important;
+}
+.c-logo{
+	font-size:60px !important;
+	color:rgb(236,236,236) !important;
 }
