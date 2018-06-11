@@ -32,6 +32,7 @@ Route::get('/', 'HomeController@index');
 //Route For Profile
             
 Route::get('/profile/{id}','ProfileController@profile');
+Route::get('/profile/{id}/edit','ProfileController@edit');
 Route::post('/follow','ProfileController@follow')->middleware('auth');
 Route::post('/searchUsers','ProfileController@searchUsers');
 Route::post('/specificUsers','ProfileController@specificUsers');

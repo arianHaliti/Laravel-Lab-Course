@@ -96,7 +96,7 @@ if(!Auth::guest()){
         <img src="/storage/image/photo.jpg" class="rounded m-auto">
     </div>
 
-    <div class="q-content ml-2 p-2 border">
+    <div class="q-content a-content ml-2 p-2 border rounded">
     <div class="col-md-12 edit-del float-left">
                             <div class="float-right edit-del-nav">
         @if(!Auth::guest() && Auth::user()->id ==$ans->user_id)
@@ -112,7 +112,7 @@ if(!Auth::guest()){
         {!!$ans->answer_desc!!}
         
 </div>
-<div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
+<div class="c-content ml-2 p-2 myBorder border border-top-0  ml-auto ">
     <!--COMMENTS
     <div class="c-content bg-light ml-2 p-2 myBorder border border-top-0  ml-auto">
     <img src="/storage/image/photo.jpg" class="rounded-circle ml-auto float-left mr-2">

@@ -17,6 +17,7 @@ use App\Course;
 ?>
 
 <div class="container p-0 mt-0">
+
 	<div class="row mt-0">
 		<div class="col-md-1 mt-5">
 			<img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img p-img3 border border-primary">
@@ -58,21 +59,19 @@ use App\Course;
 					<h6>No Lessons for this Course</h6>
 				@endif
 			</ul>
+
 			@if(!Auth::guest() && Auth::user()->id ==$course->user_id)
-				<a href ="/courses/lesson/create/{{$course->course_id}}"><button class="btn btn-sm p-0 px-2 btn-outline-primary bg-light transform1">Add More Lessons</button></a>
+				<li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Add another Lesson !</a></li>    
             @endif
+
 		</div>
 		@if(count($lessons)!=0)
         <div class="p-2 q-content l-content mt-5 ml-3 mr-1">
+
 			<h4 class="transform1 border-bottom pb-2">{{$lesson->lesson_title}}</h4>
-			<p>{!!$lesson->lesson_desc!!}</p>
-		</div>
-		@else
-		<div class="p-2 q-content l-content mt-5 ml-3 mr-1">
-			<h4 class="transform1 border-bottom pb-2"></h4>
-			<p></p>
-		</div>
-		@endif				
+			<p>{{$lesson->lesson_desc}}</p>
+        </div>
+						
 		
 		@include('courses.right')
                     

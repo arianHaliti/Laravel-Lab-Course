@@ -17,40 +17,102 @@
       <ul class="navbar-nav bd-navbar-nav flex-row ml-auto mr-4">
 
 
+       
 
-
-                <li class="nav-item dropdown">
-                  
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  <i class="fas fa-question-circle"></i> <span class="caret"></span>
-                  </a>
-
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
-                        <span class="sr-only">(current)</span>
-                      </a>
-                      <a class="nav-link text-dark border-bottom" href="/about">About us
-                        <span class="sr-only">(current)</span>
-                      </a>
-                  </div>
-              </li>
+               
 
         
           @guest
+          <li><a class="nav-link" href="#"><i class="fas fa-globe"></i> Browse</a></li>
+          <li class="nav-item dropdown">
+                  
+            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <i class="fas fa-question-circle"></i>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
+                  <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link text-dark border-bottom" href="/about">About us
+                  <span class="sr-only">(current)</span>
+                </a>
+            </div>
+        </li>
               <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
               <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+              
           @else
-              <li class="nav-item dropdown">
+          <li><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+
+          <li class="nav-item dropdown">
                   
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->name }} <span class="caret"></span>
+            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              <i class="fas fa-inbox"></i>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
+                  <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link text-dark border-bottom" href="/about">About us
+                  <span class="sr-only">(current)</span>
+                </a>
+            </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+                  
+          <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <i class="fas fa-trophy"></i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
+                <span class="sr-only">(current)</span>
+              </a>
+              <a class="nav-link text-dark border-bottom" href="/about">About us
+                <span class="sr-only">(current)</span>
+              </a>
+          </div>
+      </li>
+
+      
+       
+          
+          <li class="nav-item dropdown">
+                  
+            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <i class="fas fa-question-circle"></i>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
+                  <span class="sr-only">(current)</span>
+                </a>
+                <a class="nav-link text-dark border-bottom" href="/about">About us
+                  <span class="sr-only">(current)</span>
+                </a>
+            </div>
+        </li>
+              <li class="nav-item dropdown profile-nav-li">
+                  
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle profile-nav-li" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                   <img src="/storage/image/cover.jpg" class="profile-sm-img rounded-circle mr-1 border">   {{ Auth::user()->name }} 
                   </a>
 
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="nav-link text-dark border-bottom" href="/home">Home
+                      <a class="nav-link text-dark border-bottom" href="/home">Dashboard
+                        <span class="sr-only">(current)</span>
+                      </a>
+                      <a class="nav-link text-dark border-bottom" href="/profile">Profile
                         <span class="sr-only">(current)</span>
                       </a>
                       <a class="nav-link text-dark border-bottom" href="/questions/create">Ask a Question
+                        <span class="sr-only">(current)</span>
+                      </a>
+                      <a class="nav-link text-dark border-bottom" href="/questions/create">Change Account
                         <span class="sr-only">(current)</span>
                       </a>
                       <a class="dropdown-item text-dark border-bottom" href="{{ route('logout') }}"
@@ -64,7 +126,9 @@
                       </form>
                   </div>
               </li>
+              
           @endguest
+          
       </ul>
   
   

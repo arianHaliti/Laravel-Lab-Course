@@ -38,17 +38,18 @@
 
     
     @include('inc.navbar')
-    <div class="container">
+    <main role="main" class="container">
         @include('inc.messages')
         @yield('content')
        
-    </div>
-    
+    </main>
+    @include('inc.footer')
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script>
-    @include('inc.footer')
-       
+  
+
+
 </body>
 </html>
