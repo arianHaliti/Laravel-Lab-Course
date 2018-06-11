@@ -65,12 +65,14 @@ use App\Course;
             @endif
 
 		</div>
-		@if(count($lessons)!=0)
         <div class="p-2 q-content l-content mt-5 ml-3 mr-1">
 
+			@if(count($lessons)!=0)
 			<h4 class="transform1 border-bottom pb-2">{{$lesson->lesson_title}}</h4>
 			<p>{{$lesson->lesson_desc}}</p>
-        </div>
+		
+			@endif
+		</div>
 						
 		
 		@include('courses.right')
