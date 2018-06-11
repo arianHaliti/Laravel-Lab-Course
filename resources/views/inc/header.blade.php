@@ -30,13 +30,90 @@
             <i class="fas fa-question-circle"></i>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
-                  <span class="sr-only">(current)</span>
-                </a>
-                <a class="nav-link text-dark border-bottom" href="/about">About us
-                  <span class="sr-only">(current)</span>
-                </a>
+            <div class="dropdown-menu dropdown-menu1 dropdown-menu-right" aria-labelledby="navbarDropdown">
+               <!--NOTIFY-BOX-->
+ <a class="nav-link border-bottom py-2" style="color:black !important;" href="/about">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-building text-muted ml-2"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">About Us</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Learn more about us DCircle Company</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-users text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Our Team</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">See the team we are working with</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-map-signs text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Tour</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Start here for a quick overview about the site</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-hands-helping text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Help Center</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Detailed answers to any questions you might have</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
             </div>
         </li>
               <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -52,11 +129,139 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
-                  <span class="sr-only">(current)</span>
+                <div class="col-md-12 bg-light border-top border-bottom px-2">
+                    <p class="mb-1 mt-1 text-muted"><i class="fas fa-inbox mr-2"></i>Inbox</p>
+                </div>
+              <!--NOTIFY-BOX-->
+                <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                         <img src="/storage/image/cover.jpg" class="sm-pic rounded-circle">
+                        
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Yllzon answered your question</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
+                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      </div>
+                  </div>
+                  
+                </div>
                 </a>
-                <a class="nav-link text-dark border-bottom" href="/about">About us
-                  <span class="sr-only">(current)</span>
+
+                <!--/.NOTIFY-BOX-->
+
+
+                <!--NOTIFY-BOX-->
+                <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                         <img src="/storage/image/cover.jpg" class="sm-pic rounded-circle">
+                        
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Yllzon commented on your post</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
+                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      </div>
+                  </div>
+                  
+                </div>
+                </a>
+
+                <!--/.NOTIFY-BOX-->
+
+
+                 <!--NOTIFY-BOX-->
+                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                          <h5 class=""><i class="fas fa-caret-up ml-1 text-primary"></i></h5>
+                        
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-success font-weight-bold">+1</span> vote</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
+                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      </div>
+                  </div>
+                  
+                </div>
+                </a>
+
+                <!--/.NOTIFY-BOX-->
+
+ <!--NOTIFY-BOX-->
+                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                          <h5 class=""><i class="fas fa-caret-down ml-1 text-muted"></i></h5>
+                        
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-danger font-weight-bold">-1</span> vote</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
+                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      </div>
+                  </div>
+                  
+                </div>
+                </a>
+
+                <!--/.NOTIFY-BOX-->
+
+                 <!--NOTIFY-BOX-->
+                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                          <h5 class=""><i class="fas fa-caret-down ml-1 text-muted"></i></h5>
+                        
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-danger font-weight-bold">-1</span> vote</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
+                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      </div>
+                  </div>
+                  
+                </div>
+                </a>
+
+                <!--/.NOTIFY-BOX-->
+
+                  <!--NOTIFY-BOX-->
+                  <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                    <div class="container">
+                    <div class="row p-0">
+                        <div class="col-md-1 p-0">
+                            <h5 class=""><i class="fas fa-envelope  text-muted"></i></h5>
+                          
+                        </div>
+                        <div class="mb-0 col-md-11 p-0 notify-box">
+                        <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Yllzon sent you a message</p>
+                        <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">Hi my friend</p>
+                        <p class="mb-0 f-14 ml-1 l-h">Hi, how you doing? can I ask you something</p>
+                        <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                        </div>
+                    </div>
+                    
+                  </div>
+                  </a>
+  
+                  <!--/.NOTIFY-BOX-->
+
+                <a class="nav-link text-dark border-bottom text-center f-14 py-1 bg-light" href="/about">
+                  See more
                 </a>
             </div>
         </li>
@@ -69,12 +274,29 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
-                <span class="sr-only">(current)</span>
+              <div class="col-md-12 bg-light border-top border-bottom px-2">
+                  <p class="mb-1 mt-1 text-muted"> <i class="fas fa-trophy mr-2"></i>Trophies cabinet</p>
+              </div>
+            <!--NOTIFY-BOX-->
+              <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+                <div class="container">
+                <div class="row p-0">
+                    <div class="col-md-1 p-0">
+                        <i class="fas fa-trophy ml-1 text-warning"></i>
+                      
+                    </div>
+                    <div class="mb-0 col-md-11 p-0 notify-box">
+                    <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned a yellow trophy</p>
+                   
+                    <p class="mb-0 f-14 ml-1 l-h mt-2">Yellow trophy is earned when you have more than 10k points, so you made it.</p>
+                    <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                    </div>
+                </div>
+                
+              </div>
               </a>
-              <a class="nav-link text-dark border-bottom" href="/about">About us
-                <span class="sr-only">(current)</span>
-              </a>
+
+              <!--/.NOTIFY-BOX-->
           </div>
       </li>
 
@@ -87,13 +309,94 @@
             <i class="fas fa-question-circle"></i>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
-                  <span class="sr-only">(current)</span>
-                </a>
-                <a class="nav-link text-dark border-bottom" href="/about">About us
-                  <span class="sr-only">(current)</span>
-                </a>
+
+            <div class="dropdown-menu dropdown-menu1 dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+ <!--NOTIFY-BOX-->
+ <a class="nav-link border-bottom py-2" style="color:black !important;" href="/about">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-building text-muted ml-2"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">About Us</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Learn more about us DCircle Company</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-users text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Our Team</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">See the team we are working with</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-map-signs text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Tour</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Start here for a quick overview about the site</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+<!--NOTIFY-BOX-->
+<a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+  <div class="container">
+  <div class="row p-0">
+      <div class="col-md-2 p-0">
+          <h5 class=""><i class="fas fa-hands-helping text-muted ml-1"></i></h5>
+        
+      </div>
+      <div class="mb-0 col-md-10 p-0 notify-box">
+      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Help Center</p>
+     
+      <p class=" f-14 ml-1 l-h mb-1 mt-1">Detailed answers to any questions you might have</p>
+     
+      </div>
+  </div>
+  
+</div>
+</a>
+
+<!--/.NOTIFY-BOX-->
+
+               
             </div>
         </li>
               <li class="nav-item dropdown profile-nav-li">
@@ -102,20 +405,25 @@
                    <img src="/storage/image/cover.jpg" class="profile-sm-img rounded-circle mr-1 border">   {{ Auth::user()->name }} 
                   </a>
 
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="nav-link text-dark border-bottom" href="/home">Dashboard
+                  <div class="dropdown-menu dropdown-menu2 dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="nav-link text-dark border-bottom p-3 px-3" href="/home">
+                        <p class="mb-0">Yllzon Sejdiu</p>
+                        <p class="mb-0 f-14 text-muted">@yllzon</p>
+                      </a>
+
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/home">Dashboard
+                       
+                      </a>
+
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/profile">Profile
                         <span class="sr-only">(current)</span>
                       </a>
-                      <a class="nav-link text-dark border-bottom" href="/profile">Profile
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/questions/create">Ask a Question
                         <span class="sr-only">(current)</span>
                       </a>
-                      <a class="nav-link text-dark border-bottom" href="/questions/create">Ask a Question
-                        <span class="sr-only">(current)</span>
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/questions/create">Settings                        <span class="sr-only">(current)</span>
                       </a>
-                      <a class="nav-link text-dark border-bottom" href="/questions/create">Change Account
-                        <span class="sr-only">(current)</span>
-                      </a>
-                      <a class="dropdown-item text-dark border-bottom" href="{{ route('logout') }}"
+                      <a class="dropdown-item text-dark border-bottom p-1 px-3 f-14" href="{{ route('logout') }}"
                           onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                           {{ __('Logout') }}

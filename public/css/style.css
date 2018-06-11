@@ -45,7 +45,7 @@ color:rgb(100,100,100) !important;
 	font-size:15px;
 }
 .profile-nav-li a{
-	padding:12px 10px !important;
+	padding:12px 10px;
 }
 .navbar-nav1 a{
 	float:left;
@@ -641,6 +641,30 @@ height:50px;
 }
 
 .dropdown-menu{
-	width:350px !important;
-	
+	width:380px;
+	border-radius:0px !important;
+	overflow-y:auto !important;
+	height:380px;
+	overflow-x:hidden !important;
+	box-shadow:0px 2px 1px 1px rgb(210,210,210);
+	margin-top:-1px;
+}
+.dropdown-menu1{
+	width:260px;
+	height:320px ;
+}
+
+.dropdown-menu2{
+	width:200px !important;
+	height:auto !important;
+}
+
+
+.sm-pic{
+	width:24px;
+	height:24px;
+}
+
+.l-h{
+	line-height:15px;
 }
