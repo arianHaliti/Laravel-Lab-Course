@@ -146,7 +146,7 @@ if(!Auth::guest()){
 @endforeach
 <script>
     function correct(correct,ans_id){
-        alert(correct);
+        
         //var correct = "#correct<?php echo $c?>";
         //alert(correct);
         //alert(correct); 
