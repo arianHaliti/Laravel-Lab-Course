@@ -98,7 +98,7 @@ use App\Course;
         </div>
 						
 		
-		@include('courses.right')
+		@include('lessons.right')
                     
 
         </div>

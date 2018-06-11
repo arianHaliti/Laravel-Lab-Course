@@ -30,7 +30,7 @@
             <i class="fas fa-question-circle"></i>
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
                   <span class="sr-only">(current)</span>
                 </a>
@@ -51,7 +51,7 @@
               <i class="fas fa-inbox"></i>
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
                   <span class="sr-only">(current)</span>
                 </a>
@@ -68,7 +68,7 @@
             <i class="fas fa-trophy"></i>
           </a>
 
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
                 <span class="sr-only">(current)</span>
               </a>
@@ -87,7 +87,7 @@
             <i class="fas fa-question-circle"></i>
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="nav-link border-bottom" style="color:black !important;" href="/team">Our Team
                   <span class="sr-only">(current)</span>
                 </a>
@@ -102,7 +102,7 @@
                    <img src="/storage/image/cover.jpg" class="profile-sm-img rounded-circle mr-1 border">   {{ Auth::user()->name }} 
                   </a>
 
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="nav-link text-dark border-bottom" href="/home">Dashboard
                         <span class="sr-only">(current)</span>
                       </a>
