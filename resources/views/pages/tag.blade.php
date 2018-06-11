@@ -25,7 +25,7 @@
                                                   
                                                   <li class="nav-item dropdown  border bg-light rounded p-1 w-100">
                                                                   
-                                                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"  v-pre>
+                                                      <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"  v-pre>
                                                           Category <span class="caret"></span>
                                                       </a>
                                       

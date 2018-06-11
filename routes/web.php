@@ -32,6 +32,7 @@ Route::get('/', 'HomeController@index');
 //Route For Profile
             
 Route::get('/profile/{id}','ProfileController@profile');
+Route::get('/profile/{id}/edit','ProfileController@edit');
 Route::post('/follow','ProfileController@follow')->middleware('auth');
 Route::post('/searchUsers','ProfileController@searchUsers');
 Route::post('/specificUsers','ProfileController@specificUsers');
@@ -80,10 +81,12 @@ Route::get('/admin/report','PagesController@adminreport')->middleware(CheckAdmin
 Route::get('/admin/user/{id}/edit','AdminController@userEdit')->middleware(CheckAdmin::class);;
 Route::put('/admin/user/{id}','AdminController@userUpdate')->middleware(CheckAdmin::class);;
 Route::post('/deactivate','AdminController@deactivateUser')->middleware(CheckAdmin::class);
-
-Route::get('/course/{id}/{name}/{lesson}','CourseController@show');
-
-
+//COURSE ROUTES
+Route::get('/course/{id}/{name}','CourseController@show');
+Route::get('/course/{id}/{name}/{l_id}','CourseController@showLesson');
+// LESSON ROUTES
+Route::get('courses/lesson/create/{id}','LessonController@create')->middleware('auth');
+Route::post('courses/lesson/store','LessonController@store')->middleware('auth');
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
 

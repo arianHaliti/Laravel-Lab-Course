@@ -139,7 +139,7 @@ class AnswerController extends Controller
         //MERR ID E PYTJES TE KRIJUAR
         $last_id = $ans->question_id;
         
-        return redirect('/questions/'.$last_id)->with('success','Answer Updated');
+        return redirect('/questions/'.$last_id)->with('success','Lesson Added');
     }
 
     /**

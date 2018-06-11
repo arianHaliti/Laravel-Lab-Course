@@ -30,7 +30,7 @@ use App\Question;
                
                 <li class="nav-item dropdown border bg-light rounded p-1 w-100">
                   
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle color-dark p-2 w-100 float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark p-2 w-100 float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         Category <span class="caret w-100 float-right"></span>
                     </a>
   

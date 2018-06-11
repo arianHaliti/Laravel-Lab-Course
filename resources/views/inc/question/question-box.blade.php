@@ -21,16 +21,16 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
 				
     <div class="stats bg-light p-1 w-10 h-10 mr-2">
       
-        <p class="float-left w-100 m-auto text-center up-do-arr up-arr"><i class="fa fa-caret-up" aria-hidden="true"></i></p>
-        <p class="w-100 text-center m-auto float-left">{{$voteQuest}}</p>
+        <p class="float-left w-100 m-auto text-center up-do-arr up-arr"><i class="fa fa-caret-up text-muted" aria-hidden="true"></i></p>
+        <p class="w-100 text-center m-auto float-left text-muted">{{$voteQuest}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 mr-2">
-        <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt"></i></p>
-        <p class="w-100 text-center m-auto">{{$sum}}</p>
+        <p class="w-100 m-auto text-center"><i class="fas fa-comment-alt text-muted"></i></p>
+        <p class="w-100 text-center m-auto text-muted">{{$sum}}</p>
     </div>
     <div class="stats bg-light p-1 w-10 mr-2">
-        <p class="w-100 m-auto text-center"><i class="fas fa-eye"></i></p>
-        <p class="w-100 text-center m-auto">{{$q->question_views}}</p>
+        <p class="w-100 m-auto text-center"><i class="fas fa-eye text-muted"></i></p>
+        <p class="w-100 text-center m-auto text-muted">{{$q->question_views}}</p>
     </div>
     <div class="stats  p-1 bg-light rounded-circle w-10 rounded">
         <a href="/profile/{{$q->user_id}}"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
@@ -40,7 +40,7 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
            
      <h6 class="mb-2"><a href="/questions/{{$q->question_id}}">
         {{$q->question_title}}</a></h6>
-        <p class="mb-2">{{substring($q->question_desc,80)}}</p>
+        <p class="mb-2">{{substring(strip_tags($q->question_desc),80)}}</p>
         <nav aria-label="..." class=" myPagination">
             
 <ul class="pagination tags pagination-sm mb-0">
@@ -56,9 +56,9 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
      ?>
     @foreach($tags as $t)
     @if($data['cate']==0)
-        <li class="page-item"><a class="page-link" href ="{{asset('questions/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
+        <li class="page-item"><a class="page-link text-muted" href ="{{asset('questions/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
     @else
-        <li class="page-item"><a class="page-link" href ="{{asset('questions/category/'.urlencode($q->category_name).'/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
+        <li class="page-item"><a class="page-link text-muted" href ="{{asset('questions/category/'.urlencode($q->category_name).'/tag/'.urlencode($t->tag_name))}}">{{$t->tag_name}}</a></li>
     @endif
     @endforeach
     

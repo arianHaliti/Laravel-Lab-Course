@@ -28,7 +28,7 @@ use App\Course;
 	</div>
 	<div class="col-md-1 p-0 mt-5">
 		
-			<h1 class="c-logo"><i class="fab fa-leanpub"></i></h1>
+			<h1 class="text-muted c-logo"><i class="fab fa-leanpub"></i></h1>
 	
 </div>
 	<div class="col-md-5 float-right">

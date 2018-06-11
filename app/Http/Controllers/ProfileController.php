@@ -79,13 +79,25 @@ class ProfileController extends Controller
     public function specificUsers (Request $request){
         $query=  $request->input;
 
-        $users = User::where('users.username','like',$request->input.'%')->paginate(1);
+        $users = User::where('users.username','like',$request->input.'%')->paginate(5);
         
         return view('pages.user')->with('users',$users);
     }
     public function index (){
         
-        $users = User::where('user_active','=',0)->paginate(1);
+        $users = User::where('user_active','=',0)->paginate(5);
         return view('pages.user')->with('users',$users);
     }
+
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+        if(auth()->user()->id !== $user->user_id){
+            return redirect('/profile');
+        }
+
+        return view('profile.edit')->with('profile',$user);
+    }
+
 }
