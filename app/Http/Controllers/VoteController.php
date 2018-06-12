@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vote;
+use App\Notification;
 use App\CorrectAnswer;
 use App\Question;
+use App\Answer;
 class VoteController extends Controller
 {
     public function __construct()
@@ -35,7 +37,7 @@ class VoteController extends Controller
             $new_v->user_id = auth()->user()->id;
 
             $new_v ->save();
-
+            $this->createNote($request->t,$request->id,$new_v->vote_id);
             $status =1;
         }
         //UPDATE VOTE FROM 1 TO 0 !
@@ -88,6 +90,7 @@ class VoteController extends Controller
 
             $new_v ->save();
             $status =-1;
+            $this->createNote($request->t,$request->id);
             
         }
         //UPDATE VOTE FROM -1 TO 0 !
@@ -154,4 +157,20 @@ class VoteController extends Controller
         );
         return response()->json($response);
      }
+
+     private function createNote($type,$id,$v_id){
+        if($type == 0){
+            $user = Question::find($id);
+            $user = $user->user_id;
+        }else if ($type == 1){
+            $user = Answer::find($id);
+            $user =$user->user_id;
+        }
+        $note = new Notification;
+        $note->user_id = $user;
+        $note->note_type =1;
+        $note->note_id = $v_id;
+        $note->read=0;
+        $note->save();
+     } 
 }

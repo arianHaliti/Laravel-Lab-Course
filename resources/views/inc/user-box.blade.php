@@ -25,7 +25,7 @@
 <div class="col-md-4 p-2 px-3 mt-2 mb-2 user-box">
     <div class="row px-2 ">
    <div class="col-md-2 p-0" >
-    <a href="profile/{{$u->id}}"><img src="/storage/image/photo.jpg" class="w-10 rounded-circle"></a>
+    <a href="profile/{{$u->id}}"><img src="/storage/user_logos/{{$u->image}}" class="w-10 rounded-circle"></a>
     </div>
     <div class="col-md-10 px-2 border-right">
         <h6 class="w-100 mb-0">{{$u->username}}</h6>

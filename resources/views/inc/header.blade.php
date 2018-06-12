@@ -1,3 +1,11 @@
+<?php 
+use App\Notification;
+use App\Question;
+use App\Answer;
+use App\User;
+use App\Vote;
+?>
+@include('inc.functions')
 <nav class="navbar main-nav navbar-expand-lg bg-dark fixed-top py-0">
   <div class="container">
     <a class="navbar-brand" href="/questions"><img src="/storage/image/logo1.png" id="logo"></a>
@@ -121,19 +129,54 @@
               
           @else
           <li><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+          <?php
+            $notes = Notification::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
 
-          <li class="nav-item dropdown">
+            $notRead =Notification::where('user_id',Auth::user()->id)
+            ->where('read',0)->count();
+          ?>
+          <li id = 'note' class="nav-item dropdown">
                   
             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              <i class="fas fa-inbox"></i>
+              <i id="notes" class="fas fa-inbox">{{$notRead ==0 ? "" : "NOT TODAY"}}</i>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <div class="col-md-12 bg-light border-top border-bottom px-2">
                     <p class="mb-1 mt-1 text-muted"><i class="fas fa-inbox mr-2"></i>Inbox</p>
                 </div>
-              <!--NOTIFY-BOX-->
-                <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
+           
+               
+                @foreach($notes as $n)
+                    
+                <?php 
+                    if($n->note_type ==0){
+                        $answer = Answer::find($n->note_id);
+                        $user_id =$answer->user_id;
+                        $user = User::find($user_id);
+                        $question= Question::find($answer->question_id);  
+                    }else if($n->note_type==1) {
+                        $vote = Vote::find($n->note_id);
+                        if($vote->content_type ==0){
+                           $content = Question::find($vote->content_id);
+                           $content_title = $content->question_title;
+                           $content_desc = $content->question_desc;
+                           $id = $content->question_id;
+                        }
+                        else{
+                            $content = Answer::find($vote->content_id);
+                           $content_title = $content->answer_title;
+                           $content_desc = $content->answer_desc;
+                           $id = $content->question_id;
+                        }
+
+                    }
+                    else{
+
+                    }
+                ?>
+                @if($n->note_type==0)
+                <a class="nav-link border-bottom py-2" style="color:black !important;" href="/questions/{{$question->question_id}}">
                   <div class="container">
                   <div class="row p-0">
                       <div class="col-md-1 p-0">
@@ -141,20 +184,47 @@
                         
                       </div>
                       <div class="mb-0 col-md-11 p-0 notify-box">
-                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">Yllzon answered your question</p>
-                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
-                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
-                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">{{$user->username}} answered your question   {{$n->read == 0 ? '   //  //not seen': ' //  //seen'}}</p>
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">{{$question->question_title}} </p>
+                      <p class="mb-0 f-14 ml-1 l-h">{{strip_tags($answer->answer_desc)}}</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">{{time_since(time()-strtotime($n->created_at)).' ago'}}</p>
                       </div>
                   </div>
                   
                 </div>
                 </a>
+                @elseif($n->note_type==1)
+                
+              
+               
+                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/questions/{{$id}}">
+                  <div class="container">
+                  <div class="row p-0">
+                      <div class="col-md-1 p-0">
+                        @if($vote->vote_type==1)
+                          <h5 class=""><i class="fas fa-caret-up ml-1 text-primary"></i></h5>
+                        @else
+                        <h5 class=""><i class="fas fa-caret-down ml-1 text-muted"></i></h5>
+                        @endif
+                      </div>
+                      <div class="mb-0 col-md-11 p-0 notify-box">
+                    @if($vote->vote_type==1)
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-success font-weight-bold">+1</span> vote  on Your Question {{$n->read == 0 ? '   //  //not seen': ' //  //seen'}}</p>
+                    @else
+                    <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-danger font-weight-bold">-1</span> vote  on Your Answer {{$n->read == 0 ? '   //  //not seen': ' //  //seen'}}</p>
+                    @endif
 
-                <!--/.NOTIFY-BOX-->
-
-
-                <!--NOTIFY-BOX-->
+                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">{{$content_title}} </p>
+                      <p class="mb-0 f-14 ml-1 l-h">{{strip_tags($content_desc)}}</p>
+                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">{{time_since(time()-strtotime($n->created_at)).' ago'}}</p>
+                      </div>
+                  </div>
+                  
+                </div>
+                </a>
+                @endif
+                @endforeach
+  <!--
                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
                   <div class="container">
                   <div class="row p-0">
@@ -172,20 +242,17 @@
                   
                 </div>
                 </a>
-
-                <!--/.NOTIFY-BOX-->
-
-
-                 <!--NOTIFY-BOX-->
+            
+   
                  <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
                   <div class="container">
                   <div class="row p-0">
                       <div class="col-md-1 p-0">
-                          <h5 class=""><i class="fas fa-caret-up ml-1 text-primary"></i></h5>
+                          <h5 class=""><i class="fas fa-caret-down ml-1 text-muted"></i></h5>
                         
                       </div>
                       <div class="mb-0 col-md-11 p-0 notify-box">
-                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-success font-weight-bold">+1</span> vote</p>
+                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-danger font-weight-bold">-1</span> vote</p>
                       <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
                       <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
                       <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
@@ -194,10 +261,8 @@
                   
                 </div>
                 </a>
-
-                <!--/.NOTIFY-BOX-->
-
- <!--NOTIFY-BOX-->
+ 
+              
                  <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
                   <div class="container">
                   <div class="row p-0">
@@ -216,30 +281,7 @@
                 </div>
                 </a>
 
-                <!--/.NOTIFY-BOX-->
-
-                 <!--NOTIFY-BOX-->
-                 <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
-                  <div class="container">
-                  <div class="row p-0">
-                      <div class="col-md-1 p-0">
-                          <h5 class=""><i class="fas fa-caret-down ml-1 text-muted"></i></h5>
-                        
-                      </div>
-                      <div class="mb-0 col-md-11 p-0 notify-box">
-                      <p class=" mb-0 f-12 ml-1 text-muted border-bottom">You earned <span class="text-danger font-weight-bold">-1</span> vote</p>
-                      <p class="f-14 ml-1 mt-2 text-primary l-h mb-1">What is PHP? </p>
-                      <p class="mb-0 f-14 ml-1 l-h">Php is a programming language that is used to make web applications</p>
-                      <p class="mb-0 f-14 ml-1 l-h mt-1 text-muted f-12">May 25 at 23:11</p>
-                      </div>
-                  </div>
-                  
-                </div>
-                </a>
-
-                <!--/.NOTIFY-BOX-->
-
-                  <!--NOTIFY-BOX-->
+             
                   <a class="nav-link border-bottom py-2" style="color:black !important;" href="/team">
                     <div class="container">
                     <div class="row p-0">
@@ -257,8 +299,8 @@
                     
                   </div>
                   </a>
-  
-                  <!--/.NOTIFY-BOX-->
+            
+                -->
 
                 <a class="nav-link text-dark border-bottom text-center f-14 py-1 bg-light" href="/about">
                   See more
@@ -488,3 +530,26 @@ Large button
   </div>
 </nav>
 </div>
+
+<script>
+    $( "#note" ).click(function() {
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+           
+           
+           // alert(1);
+            $.ajax({
+
+                url: '/notification',
+                type: 'POST',
+                data: {_token: CSRF_TOKEN,vote:$("#note").text()},
+                dataType: 'JSON',
+
+                success: function (data) {
+                    $("#notes").attr('data-icon', "inbox");
+                },
+                erro: function(){
+                    alert(0);
+                }
+            });       
+    });
+</script>

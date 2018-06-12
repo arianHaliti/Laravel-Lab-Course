@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Profile;
 use Auth;
+use Storage;
 use App\Followers;
 
 class ProfileController extends Controller

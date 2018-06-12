@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Followers;
+use App\Notification;
 
 class PagesController extends Controller
 {  
@@ -43,5 +44,16 @@ class PagesController extends Controller
     }
     public function about(){
         return view('pages.about');
+    }
+
+    public function notification(Request $request){
+        
+        $notes = Notification::where('user_id',auth()->user()->id)
+        ->update(['read'=>1]);
+
+        $response = array (
+            'status' => 'read',
+        );
+        return response()->json($response);
     }
 }

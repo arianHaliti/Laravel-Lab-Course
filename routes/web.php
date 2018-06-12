@@ -90,6 +90,8 @@ Route::get('courses/lesson/create/{id}','LessonController@create')->middleware('
 Route::post('courses/lesson/store','LessonController@store')->middleware('auth');
 //ROUTE FOR CORRECT ANSWER
 Route::post('/correct','VoteController@correct')->middleware('auth');
+// ROUTE FOR NOTIFICATION
+Route::post('/notification','PagesController@notification')->middleware('auth');
 
 //ROUTE FOR TEAM
 Route::get('/team','PagesController@team');

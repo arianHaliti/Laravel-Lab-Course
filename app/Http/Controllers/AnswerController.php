@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use App\Notification;
+use App\Question;
 use DB; 
 use Illuminate\Support\Facades\Input;
 class AnswerController extends Controller
@@ -49,7 +51,15 @@ class AnswerController extends Controller
         $ans->user_id = auth()->user()->id;
         $ans->save();
 
-        
+        $note = new Notification;
+        $user = Question::find(Input::get('q_id'));
+        $note->user_id = $user->user_id;
+        $note->note_type =0;
+        $note->note_id = $ans->answer_id;
+        $note->read=0;
+        $note->save();
+
+
         $last_id = Input::get('q_id');
         
         return redirect('/questions/'.$last_id)->with('success','Answer created' );
