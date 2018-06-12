@@ -33,6 +33,7 @@ Route::get('/', 'HomeController@index');
             
 Route::get('/profile/{id}','ProfileController@profile');
 Route::get('/profile/{id}/edit','ProfileController@edit');
+Route::put('/profile/update/{id}','ProfileController@update')->middleware('auth');
 Route::post('/follow','ProfileController@follow')->middleware('auth');
 Route::post('/searchUsers','ProfileController@searchUsers');
 Route::post('/specificUsers','ProfileController@specificUsers');

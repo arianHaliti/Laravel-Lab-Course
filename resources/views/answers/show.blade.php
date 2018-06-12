@@ -42,12 +42,14 @@
 ?>
 @foreach($answers as $ans)
 <?php  $c++;
-
+$user_ans = $ans->createdBy($ans->answer_id)->first();
 //GETS THE USERS VOTE FOR THE ANSWER TO SHOW ON THE ARROWS
+
 if(!Auth::guest()){
     $av= $ans->votes($ans->answer_id,Auth::user()->id);
     
-}?>        
+}?>    
+
 <div class="row p-2  border-bottom">
 <div class="stats  stats-full-post border-0 ml-2 p-1 w-10 mr-2 ml-auto" >
                
@@ -93,7 +95,7 @@ if(!Auth::guest()){
         <p class="w-100 text-center m-auto float-left" id="{{'a_total'.$c}}" ></p>
     </div>
     <div class="stats bg-light p-1 w-10 rounded-circle">
-        <img src="/storage/image/photo.jpg" class="rounded m-auto">
+        <img src="/storage/user_logos/{{$user_ans->image}}" class="rounded m-auto">
     </div>
 
     <div class="q-content a-content ml-2 p-2 border rounded">

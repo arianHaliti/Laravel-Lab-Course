@@ -7,7 +7,7 @@ use App\Answer;
 use App\Tag;
 use App\Vote;
 
-$username = User::where('id',$q->user_id)->first(['users.username']);
+$username = User::where('id',$q->user_id)->first(['users.username','users.image']);
 $answers = Answer::where('answer_active',0)
             ->where('question_id',$q->question_id);
 $sum = $answers->count();
@@ -33,7 +33,7 @@ $voteQuest = Vote::where('content_id','=',$q->question_id)
         <p class="w-100 text-center m-auto text-muted">{{$q->question_views}}</p>
     </div>
     <div class="stats  p-1 bg-light rounded-circle w-10 rounded">
-        <a href="/profile/{{$q->user_id}}"><img src="/storage/image/photo.jpg" class="rounded m-auto"></a>
+        <a href="/profile/{{$q->user_id}}"><img src="/storage/user_logos/{{$username->image}}" class="rounded m-auto"></a>
         <p>{{$username->username}} 
     </div>
     <div class="q-content ml-2 p-2 border2 rounded">

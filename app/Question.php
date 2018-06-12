@@ -13,6 +13,11 @@ class Question extends Model
     public function getUser(){
         return $this->belongsTo('App\User');
     }
+    public function createdBy($q_id){
+        return Question::join('users','users.id','=','question.user_id')
+        ->where('question.question_id',$q_id)
+        ->get(['users.username','users.image']);
+    }
     public function tags(){
         return $this->belongsToMany("App\Tag",'tag_questions','question_id','tag_id');
     }

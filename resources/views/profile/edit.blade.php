@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<?php 
-    $tag = $question->getTags($question->question_id);
-    $tags =[];
-    foreach($tag as $t){
-        array_push($tags,$t->tag_name);
-    }
-    
-?>
+
 	
 <script>
 (function($) {
@@ -29,7 +22,7 @@
             <div class="col-md-12  mt-5">
                 <div class="row p-2 transform1 border-top border-bottom mb-0">
                     <div class="col-md-6 p-0">
-                        <h5 class="mb-0 mt text-muted">Edit this questions</h5>
+                        <h5 class="mb-0 mt text-muted">Edit Your Profile</h5>
                     </div>
                     <div class="col-md-6">
                     </div>
@@ -37,7 +30,7 @@
                 <div class="row mt-4">
                     <div class="col-md-3 pr-2 pl-0">
                         <div class="col-md-12 border bg-light pb-2">
-                            <h6 class="border-bottom py-2">How to Edit</h6>
+                            <h6 class="border-bottom py-2">How to Profile</h6>
                             <p class="f-16 ">Edit Instruction</p>
                             <p class="f-14">We prefer questions that can be answered, not just discussed.</p>
                             <p class="f-14">Quisque ac bibendum velit, a dapibus arcu. Etiam maximus, leo quis feugiat pulvinar, 
@@ -47,21 +40,52 @@
                         </div>
                     </div>
                     <div class="col-md-9 px-2">
-                    {!! Form::open([ 'id'=>'form','action' => ['QuestionController@update' , $question->question_id] ,'method'=> 'POST']) !!}
+                    <?php 
+                        $female = 0 ; $male = 0;
+                        if(count($profile)==0){
+                            $desc = "";$gender=0;
+                        }else
+                        {
+                            $profile =$profile->first();
+                            $desc=$profile->user_desc;$gender= $profile->gender;
+                            if($gender ==0)
+                                $male= 1;
+                            else if($gender==1)
+                                $female = 1;
+                        }
+                        
+                    ?>
+                    {!! Form::open([ 'id'=>'form','action' => ['ProfileController@update',Auth::user()->id] ,'method'=> 'POST','enctype'=>'multipart/form-data']) !!}
                         <div class ="form-group">
-                            {{Form::text('title',$question->question_title,['class' => 'form-control','placeholder' => 'Title'])}}
+                            {{Form::label('username', 'Username')}}
+                            {{Form::text('username',Auth::user()->username,['class' => 'form-control','placeholder' => 'Username'])}}
+                        </div>
+                        <div class ="form-group">
+                            {{Form::label('name', 'Your First Name')}}
+                            {{Form::text('name',Auth::user()->name,['class' => 'form-control','placeholder' => 'FirstName'])}}
+                        </div>
+                        <div class ="form-group">
+                            {{Form::label('lastname', 'Your Last Name')}}
+                            {{Form::text('surname',Auth::user()->surname,['class' => 'form-control','placeholder' => 'LastName'])}}
+                        </div>
+                        <div class ="form-group">
+                            {{Form::label('email', 'Your Email')}}
+                            {{Form::text('email',Auth::user()->email,['class' => 'form-control','placeholder' => 'Email'])}}
                         </div>
                         <div class="form-group">
-                        
-                            {{Form::textarea('body',$question->question_desc,['id' => 'article-ckeditor','class'=>'form-control','placeholder'=>'Enter the body'])}}
+                            {{Form::label('desc', 'A short Story about yourself')}}
+                            {{Form::textarea('desc',$desc,['class'=>'form-control','placeholder'=>'Life Description'])}}
                         </div>
-                        <div>   
-                            {{Form::label('tags','Tags (1 - 5)')}}
-                            {{Form::text('tags','',['class'=>'form-control','id'=>'mySingleFieldTags','placeholder' => 'Tags'])}}               
+                        <div class="form-group">
+                        Your Logo : {{Form::file('image')}}
+                        <br>
+                        {{ Form::radio('sex', 0,$male)}}Male  
+                        <br> 
+                        {{ Form::radio('sex', 1,$female) }}Female
                         </div>
                         {{Form::hidden('_method','PUT')}}
                         
-                        {{Form::submit('Ask',['class'=>'btn btn-primary'])}}
+                        {{Form::submit('Update',['class'=>'btn btn-primary'])}}
                     {!! Form::close() !!}   
                     </div>
                 </div>
@@ -139,20 +163,6 @@ $("#form").validate({
 });
 
 
-$(document).ready(function () {
-    
-    $("#mySingleFieldTags").tagit({});
-    $("#mySingleFieldTags").tagit({
-        tagLimit: 5 
-    });
-});
-$( document ).ready(function() {
-    var tags ={!! json_encode($tags) !!};
-    tags.forEach(function(element){
-        $("#mySingleFieldTags").tagit("createTag", element);
-    });
-    
-});
 </script>
  <style>
         input.error {

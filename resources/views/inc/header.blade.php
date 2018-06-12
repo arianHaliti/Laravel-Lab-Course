@@ -137,7 +137,7 @@
                   <div class="container">
                   <div class="row p-0">
                       <div class="col-md-1 p-0">
-                         <img src="/storage/image/cover.jpg" class="sm-pic rounded-circle">
+                         <img src="/storage/user_logos/cover.jpg" class="sm-pic rounded-circle">
                         
                       </div>
                       <div class="mb-0 col-md-11 p-0 notify-box">
@@ -402,26 +402,26 @@
               <li class="nav-item dropdown profile-nav-li">
                   
                   <a id="navbarDropdown" class="nav-link dropdown-toggle profile-nav-li" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                   <img src="/storage/image/cover.jpg" class="profile-sm-img rounded-circle mr-1 border">   {{ Auth::user()->name }} 
+                   <img src="/storage/user_logos/{{Auth::user()->image}}" class="profile-sm-img rounded-circle mr-1 border">   {{ Auth::user()->name }} 
                   </a>
 
                   <div class="dropdown-menu dropdown-menu2 dropdown-menu-right" aria-labelledby="navbarDropdown">
                       <a class="nav-link text-dark border-bottom p-3 px-3" href="/home">
-                        <p class="mb-0">Yllzon Sejdiu</p>
-                        <p class="mb-0 f-14 text-muted">@yllzon</p>
+                        <p class="mb-0">{{Auth::user()->name.' '.Auth::user()->surname}}</p>
+                        <p class="mb-0 f-14 text-muted">{{'@'.Auth::user()->username}}</p>
                       </a>
 
                       <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/home">Dashboard
                        
                       </a>
 
-                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/profile">Profile
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/profile/{{Auth::user()->id}}">Profile
                         <span class="sr-only">(current)</span>
                       </a>
                       <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/questions/create">Ask a Question
                         <span class="sr-only">(current)</span>
                       </a>
-                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/questions/create">Settings                        <span class="sr-only">(current)</span>
+                      <a class="nav-link text-dark border-bottom p-1 px-3 f-14" href="/profile/{{Auth::user()->id}}/edit">Settings                        <span class="sr-only">(current)</span>
                       </a>
                       <a class="dropdown-item text-dark border-bottom p-1 px-3 f-14" href="{{ route('logout') }}"
                           onclick="event.preventDefault();

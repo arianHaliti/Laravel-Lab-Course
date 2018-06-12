@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Profile;
+use Auth;
 use App\Followers;
 
 class ProfileController extends Controller
@@ -93,11 +95,88 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        if(auth()->user()->id !== $user->user_id){
-            return redirect('/profile');
+        $profile = $user->hasProfile($user->id);
+        if(auth()->user()->id !== $user->id){
+            return redirect('/home');
         }
 
-        return view('profile.edit')->with('profile',$user);
+        return view('profile.edit')->with('profile',$profile);
     }
+    public function update(Request $request,$id){
+        $this->validate($request, [
+            'username' => 'required|string|max:255|unique:users,username,'.Auth::user()->id,
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'surname' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->id,
+            'image' => 'image|nullable|max:1999',
+            'desc' => 'nullable|max:1000',
+            'sex' => 'required'
+        ]);
+        
+        
+        $user = User::find($id);
+        $profile = $user->hasProfile($user->id);
+        
+     
 
+
+        if(count($profile)==0){
+            //CHECK IF HE FILLED THE FORM
+            if($request->hasFile('image') || $request->desc != "" || $request->sex !=""){
+                
+                //CREATE PROFILE
+                $profile  = new Profile;
+                $profile->user_id = Auth::user()->id;
+                $profile->gender = $request->sex;
+                $profile->user_desc = $request->desc;
+                $profile->save();
+            }
+        }
+        //EDIT PROFILE
+        else{
+            $profile= Profile::find($user->id);
+            $profile->gender = $request->sex;
+            $profile->user_desc = $request->desc;
+            $profile->save();
+        }
+
+        if($request->hasFile('image')){
+            
+            //E MERR FILENAME ME EXTENSION
+            $imageExt = $request->file('image')->getClientOriginalName();
+            // E MERR EMRIN  E FILE
+            $imageName = pathinfo($imageExt, PATHINFO_FILENAME);
+            // E MERR VETEM EXTENSION TE FILE
+            $extension = $request->file('image')->getClientOriginalExtension();
+            // ADD TIME PER MU KAN UNIK EMRI I IMAGES
+            $imageNameStore = $imageName.'_'.time().'.'.$extension;
+            // UPLOAD IMAGE
+            $path = $request->file('image')->storeAs('public/user_logos',$imageNameStore);
+           
+            
+            if($user->image != 'cover.jpg') {
+                Storage::delete('public/user_logos/' . $user->image);
+            }
+            $user->image = $imageNameStore;
+
+        }
+        
+        
+        //KRIJIMI I PYTJES
+        
+        
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->save();
+
+        
+
+        //MERR ID E PYTJES TE KRIJUAR
+        
+        
+       
+        return redirect('/profile/'.Auth::user()->id)->with('success','Profile Updated');  
+    }
 }

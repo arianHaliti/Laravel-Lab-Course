@@ -45,7 +45,7 @@ use App\Followers;
 
 		 <div class="col-md-2 p-0">
          
-      <img src="/storage/image/cover.jpg" class="rounded-circle p-2 profile-img border border-primary">
+      <img src="/storage/user_logos/{{$user->image}}" class="rounded-circle p-2 profile-img border border-primary">
 	  
 		</div>
 		
@@ -63,7 +63,7 @@ use App\Followers;
       <button type="button" onclick="location.href='/login'" class="btn transform1 btn-sm mr-3  btn-outline-primary w-50 cr-button bg-light follow-btn float-right text-light">Follow</button>
     @else 
       @if(auth()->user()->id==$user->id)
-        <button type="button" id="follow" class="btn transform1 btn-sm btn-outline-primary mr-3  w-50 cr-button bg-light follow-btn float-right text-light">Edit Profile</button>
+        <a href="{{Auth::user()->id}}/edit"><button type="button" id="follow" class="btn transform1 btn-sm btn-outline-primary mr-3  w-50 cr-button bg-light follow-btn float-right text-light">Edit Profile</button></a>
       @elseif(count($follow)==0)   
        <button type="button" id="follow" class="btn transform1 btn-sm  btn-outline-primary mr-3  w-50 cr-button bg-light follow-btn float-right text-light">Follow</button>
       @else

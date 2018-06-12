@@ -14,7 +14,7 @@ class Course extends Model
     }
     public function createdBy($id){
         return Course::join('users','users.id','=','courses.user_id')
-        ->where('courses.course_id',$id)->get(['users.username'])->first();
+        ->where('courses.course_id',$id)->get(['users.username','users.image'])->first();
     }
     public function firstLesson($id){
         return Course::join('lessons','lessons.course_id','=','courses.course_id')

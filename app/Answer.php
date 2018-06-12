@@ -16,5 +16,9 @@ class Answer extends Model
         ->first();
         
     }
-    
+    public function createdBy($id){
+        return Answer::join('users','users.id','=','answers.user_id')
+        ->where('answers.answer_id',$id)
+        ->get(['users.username','users.image']);
+    }
 }

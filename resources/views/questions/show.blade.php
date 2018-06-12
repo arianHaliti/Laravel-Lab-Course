@@ -3,7 +3,7 @@
     use App\Vote;
     use App\CorrectAnswer;
     $answers =app('App\Http\Controllers\AnswerController')->show($question->question_id);
-    
+    $user = $question->createdBy($question->question_id)->first();
     $sum = $answers->count();
 //GETS THE USERS VOTE FOR THE QUESTION TO SHOW ON THE ARROWS
     if(!Auth::guest()){
@@ -20,6 +20,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <style>
         input.error {
             border: 1px solid red;
@@ -71,7 +72,8 @@
                     <p class="w-100 text-center m-auto">{{$question->question_views}}</p>
                 </div>
                 <div class="stats bg-light p-1 w-10 rounded-circle">
-                    <img  src='/storage/image/photo.jpg' class="rounded m-auto">
+                   
+                    <img  src='/storage/user_logos/{{$user->image}}' class="rounded m-auto">
                 </div>
                 <div class="q-content q2-content ml-2 p-2 mb-4 ml-auto rounded">   
                         <div class="col-md-12 edit-del float-left">

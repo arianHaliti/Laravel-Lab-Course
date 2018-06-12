@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','surname','username', 'email', 'password',
+        'name','surname','username', 'email', 'password','image',
     ];
 
     /**
@@ -59,6 +59,10 @@ class User extends Authenticatable
     public function asked($id){
         return Question::join('users','users.id','=','question.user_id')
                 ->where('users.id',$id)->get();
+    }
+    public function hasProfile($id){
+        return User::join('profiles','users.id','=','profiles.user_id')
+        ->where('users.id',$id)->get();
     }
 }
 
