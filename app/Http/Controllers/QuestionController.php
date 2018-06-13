@@ -255,7 +255,7 @@ class QuestionController extends Controller
 
         //KRIJIMI I PYTJES
         $quest = Question::find($id);
-        if(auth()->user()->id !== $question->user_id){
+        if(auth()->user()->id !== $quest->user_id){
             return redirect('/questions');
         }
         $quest->question_title = $request->input('title');

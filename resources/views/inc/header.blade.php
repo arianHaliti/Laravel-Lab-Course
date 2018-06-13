@@ -138,7 +138,8 @@ use App\Vote;
           <li id = 'note' class="nav-item dropdown">
                   
             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              <i id="notes" class="fas fa-inbox">{{$notRead ==0 ? "" : "NOT TODAY"}}</i>
+              <i id="notes" class="fas fa-inbox"></i>
+              <span id="note_count" class="f-12">{{$notRead==0 ?"":$notRead}}</span> 
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -545,7 +546,7 @@ Large button
                 dataType: 'JSON',
 
                 success: function (data) {
-                    $("#notes").attr('data-icon', "inbox");
+                    $("#note_count").html("");
                 },
                 erro: function(){
                     alert(0);
