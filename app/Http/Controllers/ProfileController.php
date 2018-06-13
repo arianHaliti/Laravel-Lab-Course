@@ -155,7 +155,7 @@ class ProfileController extends Controller
             $path = $request->file('image')->storeAs('public/user_logos',$imageNameStore);
            
             
-            if($user->image != 'cover.jpg') {
+            if($user->image != 'user.png') {
                 Storage::delete('public/user_logos/' . $user->image);
             }
             $user->image = $imageNameStore;
