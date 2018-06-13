@@ -27,4 +27,7 @@ class HomeController extends Controller
         $user = User::find($user_id);
         return view('home')->with('questions',$user->getQuestions->where('question_active',0));
     }
+    public function home(){
+        return view('pages.home');
+    }
 }
