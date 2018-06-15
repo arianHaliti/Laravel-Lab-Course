@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use \DB;
+use App\Vote;
 class Question extends Model
 {
     protected $table = 'question';
@@ -101,6 +102,10 @@ class Question extends Model
         ->join('question_categories','question_categories.question_id','=','question.question_id')->join('categories','categories.category_id','=','question_categories.category_id')
         ->where('categories.category_name','=',$cat)
         ->addSelect('categories.category_name');
+    }
+    public function getPoints($id){
+       return Vote::where('content_id','=',$id)
+        ->where('content_type','=',0)->sum('vote_type');
     }
 
 }

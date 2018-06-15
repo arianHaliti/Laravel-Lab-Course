@@ -21,4 +21,9 @@ class Answer extends Model
         ->where('answers.answer_id',$id)
         ->get(['users.username','users.image']);
     }
+
+    public function getPoints($id){
+        return Vote::where('content_id','=',$id)
+        ->where('content_type','=',1)->sum('vote_type');
+    }
 }

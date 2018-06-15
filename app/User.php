@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DB;
 use App\Question;
+use App\Followers;
 use App\Answer;
 class User extends Authenticatable
 {
@@ -63,6 +64,13 @@ class User extends Authenticatable
     public function hasProfile($id){
         return User::join('profiles','users.id','=','profiles.user_id')
         ->where('users.id',$id)->get();
+    }
+    public function followers($id){
+        return Followers::where('followers.follower_id',$id)->get();
+        
+    }
+    public function following($id){
+        return Followers::where('followers.user_id',$id)->get();
     }
 }
 
