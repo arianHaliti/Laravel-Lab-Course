@@ -13,7 +13,8 @@
 <div class="container p-0 mt-0">
 	
 	<div class="row mt-0">
-		<div class="lesons-links mt-5 border p-0 px-2 bg-light rounded">
+		<div class="lesons-links mt-5">
+			<div class="w-100 border p-0 px-2 bg-light rounded">
 			<div class="col-md-12">
 				<div class="container col-md-9 mt-4">
 				<img src="/storage/user_logos/{{$user->image}}" class="rounded-circle bg-light p-2 profile-img2 border border-primary">
@@ -49,6 +50,7 @@
 
 					</ul>
 		</div>
+	</div>
 		
         <div class="p-2 q-content l-content f-content mt-5 ml-3 mr-1 rounded">
 				<h4 class="transform1 border-bottom pb-2">People you follow</h4>
@@ -92,7 +94,7 @@
 						<div class="row border-bottom p-0 px-2 ">
 							<div class="col-md-9 p-0">
 								<img src="/storage/user_logos/{{$creator->image}}" class="profile-pic2 rounded-circle float-left mr-1 mb-2">
-								<p class="mb-1 mt-1"><span class="font-weight-bold">{{$creator->username}}</span><span class="transform1"> <span class="{{$class}}">{{$headText}}</span>{{$text}}</span></p>
+								<p class="mb-1 mt-1"><span class="font-weight-bold">{{$creator->username}}</span><span class="transform1"> <a href="{{$href}}"><span class="{{$class}}">{{$headText}}</span></a>{{$text}}</span></p>
 							</div>
 							<div class="col-md-3 p-0">
 								<p class="mb-1 float-right mt-1">about {{time_since(time()-strtotime($d->ca))}} ago</p>
