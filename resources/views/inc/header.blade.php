@@ -8,7 +8,7 @@ use App\Vote;
 @include('inc.functions')
 <nav class="navbar main-nav navbar-expand-lg bg-dark fixed-top py-0">
   <div class="container">
-    <a class="navbar-brand" href="/questions"><img src="/storage/image/logo1.png" id="logo"></a>
+    <a class="navbar-brand" href="/"><img src="/storage/image/logo1.png" id="logo"></a>
 
 <div class="input-group input-group-sm mySearch border-0 rounded">
 
@@ -31,7 +31,7 @@ use App\Vote;
 
         
           @guest
-          <li><a class="nav-link" href="#"><i class="fas fa-globe"></i> Browse</a></li>
+          <li><a class="nav-link" href="/questions"><i class="fas fa-globe"></i> Browse</a></li>
           <li class="nav-item dropdown">
                   
             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -128,7 +128,7 @@ use App\Vote;
               <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
               
           @else
-          <li><a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a></li>
           <?php
             $notes = Notification::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
 
@@ -449,7 +449,7 @@ use App\Vote;
                   </a>
 
                   <div class="dropdown-menu dropdown-menu2 dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="nav-link text-dark border-bottom p-3 px-3" href="/home">
+                      <a class="nav-link text-dark border-bottom p-3 px-3" href="/profile/{{Auth::user()->id}}">
                         <p class="mb-0">{{Auth::user()->name.' '.Auth::user()->surname}}</p>
                         <p class="mb-0 f-14 text-muted">{{'@'.Auth::user()->username}}</p>
                       </a>

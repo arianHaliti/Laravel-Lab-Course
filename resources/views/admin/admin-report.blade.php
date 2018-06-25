@@ -5,21 +5,7 @@
 <div class="container p-0 mt-3">
         <div class="row mt-0">
             
-            <div class="col-md-2 border-right p-0 bg-light">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Users</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Questions</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Answers</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Reports</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Roles and Permissions</a></li>  
-            <li class="nav-item active pl-0 py-0 border-bottom"><a href="#" class="nav-link py-2">Settings</a></li>  
-                    
-                   
-
-                </ul>
-
-        </div>
+          @include('admin.left')
 
         <div class="col-md-10 ">
         <ul class="links1 pl-0">

@@ -35,7 +35,13 @@
 		
     <div class="col-md-9 p-0">
         <div class="col-md-12 border-bottom-0 ">
-        
+
+            <div class="row p-2 border-top border-bottom mb-0">
+                <div class="col-md-4 p-0 transform1">
+                  <h5 class="mb-0 mt-1 text-muted"> All Questions</h5>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
         <!--question BOX-->
         <div class="row p-2 border-bottom">
         
@@ -125,13 +131,7 @@
     </div>
 
     
-    <div class="col-md-3 ">
-        <div class="row px-2">
-            <div class="col-md-12 border p-2 bg-white">
-              row
-            </div>
-        </div>
-    </div>
+    @include('inc.question.right')
     
 </div>
 <script>
